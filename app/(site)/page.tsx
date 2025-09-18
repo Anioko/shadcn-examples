@@ -2,6 +2,9 @@ import data from "@/app/(site)/[slug]/data.json";
 import ComponentIframe from "@/app/(site)/[slug]/components/component-iframe";
 import Image from "next/image";
 import Categories from "@/components/categories";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import React from "react";
 
 export default function Page() {
   return (
@@ -14,6 +17,20 @@ export default function Page() {
           Examples and components built with React and Tailwind CSS, compatible with Shadcn UI. It
           is open-source and includes a total of {data.length} examples and components.
         </p>
+        <div className="mt-6 flex justify-center gap-2">
+          <Button>
+            <Link href="https://github.com/shadcn-examples/shadcn-examples" target="_blank">
+              Github
+            </Link>
+          </Button>
+          <Button variant="outline">
+            <Link
+              href="https://github.com/shadcn-examples/shadcn-examples/discussions/categories/suggestions"
+              target="_blank">
+              Make a suggestion
+            </Link>
+          </Button>
+        </div>
       </header>
 
       <Categories />
@@ -23,13 +40,21 @@ export default function Page() {
           <Image
             src={`${process.env.BASE_URL}/${data[0].info.cover_image}`}
             fill
-            alt={`shadcn example ${data[0].meta.title}`}
+            alt={`shadcn examples ${data[0].meta.title}`}
           />
         </figure>
       </div>
 
       <div className="hidden lg:block">
         <ComponentIframe id={data[0].href} url={`/demo/${data[0].href}`} />
+      </div>
+
+      <div className="hidden lg:block">
+        <ComponentIframe id={data[1].href} url={`/demo/${data[1].href}`} />
+      </div>
+
+      <div className="hidden lg:block">
+        <ComponentIframe id={data[2].href} url={`/demo/${data[2].href}`} />
       </div>
     </div>
   );
