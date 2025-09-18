@@ -11,8 +11,8 @@ export default function Page() {
           Reusable Shadcn UI Examples and Components
         </h1>
         <p className="text-muted-foreground text-balance lg:text-lg">
-          Examples and solutions built with React and Tailwind CSS, compatible with Shadcn UI. It is
-          open-source and includes a total of {data.length} examples and components.
+          Examples and components built with React and Tailwind CSS, compatible with Shadcn UI. It
+          is open-source and includes a total of {data.length} examples and components.
         </p>
       </header>
 
