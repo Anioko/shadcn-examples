@@ -471,6 +471,70 @@
     "isComing": true
   },
   {
+    "href": "updates-page",
+    "meta": {
+      "title": "Updates Page",
+      "description": "An updates page is a page that displays the latest news, changes, or feature releases for users. Built with React, Tailwind CSS, Shadcn UI & Radix UI.",
+      "image": ""
+    },
+    "info": {
+      "cover_image": "",
+      "description": "An updates page is a page that displays the latest news, changes, or feature releases for users.",
+      "framework": "",
+      "demo_url": "",
+      "last_updated": ""
+    },
+    "isComing": true
+  },
+  {
+    "href": "task-detail",
+    "meta": {
+      "title": "Task Detail Page",
+      "description": "A task detail page is a page that shows comprehensive information about a specific task, including status, deadlines, and notes. Built with React, Tailwind CSS, Shadcn UI & Radix UI.",
+      "image": ""
+    },
+    "info": {
+      "cover_image": "",
+      "description": "A task detail page is a page that shows comprehensive information about a specific task, including status, deadlines, and notes.",
+      "framework": "",
+      "demo_url": "",
+      "last_updated": ""
+    },
+    "isComing": true
+  },
+  {
+    "href": "course-detail",
+    "meta": {
+      "title": "Course Detail Page",
+      "description": "A course progress page is a page that shows a learner’s progress, completed lessons, and remaining tasks in a course. Built with React, Tailwind CSS, Shadcn UI & Radix UI.",
+      "image": ""
+    },
+    "info": {
+      "cover_image": "",
+      "description": "A course progress page is a page that shows a learner’s progress, completed lessons, and remaining tasks in a course.",
+      "framework": "",
+      "demo_url": "",
+      "last_updated": ""
+    },
+    "isComing": true
+  },
+  {
+    "href": "hero-sections",
+    "meta": {
+      "title": "Hero sections",
+      "description": "Hero sections are prominent webpage areas, usually at the top, that showcase key content, messages, or calls-to-action. Built with React, Tailwind CSS, Shadcn UI & Radix UI.",
+      "image": ""
+    },
+    "info": {
+      "cover_image": "",
+      "description": "These are prominent areas of a web page, usually located at the top, that showcase important content, messages, or calls to action.",
+      "framework": "",
+      "demo_url": "",
+      "last_updated": ""
+    },
+    "isComing": true
+  },
+  {
     "href": "video-call-chat",
     "meta": {
       "title": "Video Call Chat",
@@ -528,6 +592,22 @@
     "info": {
       "cover_image": "",
       "description": "Pre-designed dashboard page layouts.",
+      "framework": "",
+      "demo_url": "",
+      "last_updated": ""
+    },
+    "isComing": true
+  },
+  {
+    "href": "add-product-form",
+    "meta": {
+      "title": "Add Product Form",
+      "description": "The product addition form is a page composed of form elements that allow users to enter details and create a new product listing. Built with React, Tailwind CSS, Shadcn UI & Radix UI.",
+      "image": ""
+    },
+    "info": {
+      "cover_image": "",
+      "description": "The product addition form is a page composed of form elements that allow users to enter details and create a new product listing.",
       "framework": "",
       "demo_url": "",
       "last_updated": ""
