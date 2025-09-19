@@ -5,19 +5,11 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "http",
-        hostname: "localhost"
+        hostname: "**"
       },
       {
         protocol: "https",
-        hostname: "shadcnexamples.com"
-      },
-      {
-        protocol: "https",
-        hostname: "bundui-images.netlify.app"
-      },
-      {
-        protocol: "https",
-        hostname: "placehold.co"
+        hostname: "**"
       }
     ]
   }

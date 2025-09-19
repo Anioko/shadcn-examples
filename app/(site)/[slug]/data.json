@@ -583,9 +583,9 @@
     "isComing": true
   },
   {
-    "href": "dashboard-page-layouts",
+    "href": "dashboard-layouts",
     "meta": {
-      "title": "Dashboard Page Layouts",
+      "title": "Dashboard Layouts",
       "description": "Pre-designed responsive dashboard page layouts. Built with React, Tailwind CSS, Shadcn UI & Radix UI.",
       "image": ""
     },
