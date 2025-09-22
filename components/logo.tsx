@@ -1,8 +1,9 @@
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
-export function Logo() {
+export function Logo({ className }: { className?: string }) {
   return (
-    <div className="flex items-center justify-center gap-2">
+    <div className={cn("flex items-center justify-center gap-2", className)}>
       <div className="relative size-6">
         <Image
           className="dark:invert"

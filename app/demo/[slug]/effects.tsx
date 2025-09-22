@@ -15,7 +15,8 @@ export default function Effects() {
   }, []);
 
   useEffect(() => {
-    const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const params = new URLSearchParams(window.location.search);
+    const isDark = Boolean(params.get("dark"));
     document.documentElement.classList.toggle("dark", isDark);
   }, []);
 
@@ -61,7 +62,7 @@ export default function Effects() {
       <div className="bg-gradient-to-b from-blue-500 to-blue-600 py-2">
         <div className="flex items-center justify-between px-4">
           <Link href="/">
-            <Logo />
+            <Logo className="invert" />
           </Link>
           <div className="flex gap-3">
             <Button size="sm" asChild>

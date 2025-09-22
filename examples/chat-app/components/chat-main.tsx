@@ -2,6 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, ImageIcon, MoreVertical } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 interface MessageBubbleProps {
   message: string;
@@ -20,9 +21,7 @@ const MessageBubble = ({ message, isUserMessage, avatarSrc }: MessageBubbleProps
     <div
       className={cn(
         "max-w-[70%] rounded-lg p-3",
-        isUserMessage
-          ? "rounded-br-none bg-blue-500 text-white"
-          : "rounded-bl-none bg-gray-200 text-gray-800"
+        isUserMessage ? "bg-primary text-primary-foreground rounded-br-none" : "rounded-bl-none"
       )}>
       <p className="text-sm">{message}</p>
     </div>
@@ -70,8 +69,8 @@ export function ChatMain() {
   ];
 
   return (
-    <div className="m-4 flex flex-1 flex-col rounded-lg bg-white shadow-sm">
-      <div className="flex items-center justify-between border-b border-gray-200 p-4">
+    <div className="m-4 flex flex-1 flex-col rounded-lg shadow-sm">
+      <div className="flex items-center justify-between border border-b p-4">
         <div className="flex items-center gap-3">
           <Avatar className="h-10 w-10">
             <AvatarImage
@@ -81,11 +80,11 @@ export function ChatMain() {
             <AvatarFallback>{currentChatUser.name.charAt(0)}</AvatarFallback>
           </Avatar>
           <div>
-            <h2 className="font-semibold text-gray-800">{currentChatUser.name}</h2>
-            <p className="text-sm text-gray-500">{currentChatUser.status}</p>
+            <h2 className="font-semibold">{currentChatUser.name}</h2>
+            <p className="text-muted-foreground text-sm">{currentChatUser.status}</p>
           </div>
         </div>
-        <MoreVertical className="h-5 w-5 cursor-pointer text-gray-500" />
+        <MoreVertical className="text-muted-foreground h-5 w-5 cursor-pointer" />
       </div>
 
       <div className="flex-1 space-y-4 overflow-y-auto p-6">
@@ -99,15 +98,15 @@ export function ChatMain() {
         ))}
       </div>
 
-      <div className="flex items-center gap-3 border-t border-gray-200 p-4">
-        <ImageIcon className="h-5 w-5 cursor-pointer text-gray-500" />
+      <div className="flex items-center gap-3 border border-t p-4">
+        <ImageIcon className="text-muted-foreground h-5 w-5 cursor-pointer" />
         <Input
           placeholder="Enter a prompt here"
-          className="flex-1 border-none bg-gray-100 focus-visible:ring-0 focus-visible:ring-offset-0"
+          className="flex-1 border-none focus-visible:ring-0 focus-visible:ring-offset-0"
         />
-        <button className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-600 text-white transition-colors hover:bg-blue-700">
-          <ArrowRight className="h-5 w-5" />
-        </button>
+        <Button size="icon" className="rounded-full">
+          <ArrowRight />
+        </Button>
       </div>
     </div>
   );

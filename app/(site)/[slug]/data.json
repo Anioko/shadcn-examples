@@ -305,7 +305,7 @@
     "href": "settings-page",
     "meta": {
       "title": "Settings Page",
-      "description": "Manage and customize your app preferences on a settings page. Built with React, Tailwind CSS, Shadcn UI & Radix UI.",
+      "description": "Manage and customize your app preferences on a settings page. Built with Next.js, React, Tailwind CSS, shadcn/ui and radix ui. Typescript included.",
       "image": ""
     },
     "info": {
@@ -395,7 +395,7 @@
     "href": "file-manager",
     "meta": {
       "title": "File Manager App",
-      "description": "Organize, upload, and manage files efficiently with a file manager app. Built with React, Tailwind CSS, Shadcn UI & Radix UI.",
+      "description": "Organize, upload, and manage files efficiently with a file manager app. Built with Next.js, React, Tailwind CSS, shadcn/ui and radix ui. Typescript included.",
       "image": ""
     },
     "info": {
@@ -423,10 +423,26 @@
     "isComing": true
   },
   {
+    "href": "multi-step-form",
+    "meta": {
+      "title": "Multi Step Form",
+      "description": "A multi-step form is a form divided into multiple steps or sections to simplify data entry and improve user experience. Built with Next.js, React, Tailwind CSS, shadcn/ui and radix ui. Supports Typescript.",
+      "image": ""
+    },
+    "info": {
+      "cover_image": "",
+      "description": "A multi-step form is a form divided into multiple steps or sections to simplify data entry and improve user experience.",
+      "framework": "",
+      "demo_url": "",
+      "last_updated": ""
+    },
+    "isNew": true
+  },
+  {
     "href": "checkout-page",
     "meta": {
       "title": "Checkout Page",
-      "description": "A secure, conversion-optimized checkout page for fast payments and clear order review. Built with React, Tailwind CSS, Shadcn UI & Radix UI.",
+      "description": "A secure, conversion-optimized checkout page for fast payments and clear order review. Built with Next.js, React, Tailwind CSS, shadcn/ui and radix ui. Typescript included.",
       "image": ""
     },
     "info": {
@@ -442,7 +458,7 @@
     "href": "help-center",
     "meta": {
       "title": "Help Center",
-      "description": "A searchable help center with guides, FAQs and support resources to help users quickly find answers. Built with React, Tailwind CSS, Shadcn UI & Radix UI.",
+      "description": "A searchable help center with guides, FAQs and support resources to help users quickly find answers. Built with Next.js, React, Tailwind CSS, shadcn/ui and radix ui. Typescript included.",
       "image": ""
     },
     "info": {
@@ -458,7 +474,7 @@
     "href": "roadmap",
     "meta": {
       "title": "Roadmap",
-      "description": "A roadmap page is a page that outlines goals, milestones, and future plans in a visual timeline. Built with React, Tailwind CSS, Shadcn UI & Radix UI.",
+      "description": "A roadmap page is a page that outlines goals, milestones, and future plans in a visual timeline. Built with Next.js, React, Tailwind CSS, shadcn/ui and radix ui. Typescript included.",
       "image": ""
     },
     "info": {
@@ -474,7 +490,7 @@
     "href": "updates-page",
     "meta": {
       "title": "Updates Page",
-      "description": "An updates page is a page that displays the latest news, changes, or feature releases for users. Built with React, Tailwind CSS, Shadcn UI & Radix UI.",
+      "description": "An updates page is a page that displays the latest news, changes, or feature releases for users. Built with Next.js, React, Tailwind CSS, shadcn/ui and radix ui. Typescript included.",
       "image": ""
     },
     "info": {
@@ -490,7 +506,7 @@
     "href": "task-detail",
     "meta": {
       "title": "Task Detail Page",
-      "description": "A task detail page is a page that shows comprehensive information about a specific task, including status, deadlines, and notes. Built with React, Tailwind CSS, Shadcn UI & Radix UI.",
+      "description": "A task detail page is a page that shows comprehensive information about a specific task, including status, deadlines, and notes. Built with Next.js, React, Tailwind CSS, shadcn/ui and radix ui. Typescript included.",
       "image": ""
     },
     "info": {
@@ -506,7 +522,7 @@
     "href": "course-detail",
     "meta": {
       "title": "Course Detail Page",
-      "description": "A course progress page is a page that shows a learner’s progress, completed lessons, and remaining tasks in a course. Built with React, Tailwind CSS, Shadcn UI & Radix UI.",
+      "description": "A course progress page is a page that shows a learner’s progress, completed lessons, and remaining tasks in a course. Built with Next.js, React, Tailwind CSS, shadcn/ui and radix ui. Typescript included.",
       "image": ""
     },
     "info": {
@@ -522,7 +538,7 @@
     "href": "hero-sections",
     "meta": {
       "title": "Hero sections",
-      "description": "Hero sections are prominent webpage areas, usually at the top, that showcase key content, messages, or calls-to-action. Built with React, Tailwind CSS, Shadcn UI & Radix UI.",
+      "description": "Hero sections are prominent webpage areas, usually at the top, that showcase key content, messages, or calls-to-action. Built with Next.js, React, Tailwind CSS, shadcn/ui and radix ui. Typescript included.",
       "image": ""
     },
     "info": {
@@ -538,7 +554,7 @@
     "href": "video-call-chat",
     "meta": {
       "title": "Video Call Chat",
-      "description": "An app template that enables video communication and messaging between users. Built with React, Tailwind CSS, Shadcn UI & Radix UI.",
+      "description": "An app template that enables video communication and messaging between users. Built with Next.js, React, Tailwind CSS, shadcn/ui and radix ui. Typescript included.",
       "image": ""
     },
     "info": {
@@ -554,7 +570,7 @@
     "href": "podcast-app",
     "meta": {
       "title": "Podcast App",
-      "description": "It is an application used to stream, download and manage podcast episodes. Built with React, Tailwind CSS, Shadcn UI & Radix UI.",
+      "description": "It is an application used to stream, download and manage podcast episodes. Built with Next.js, React, Tailwind CSS, shadcn/ui and radix ui. Typescript included.",
       "image": ""
     },
     "info": {
@@ -570,7 +586,7 @@
     "href": "saas-landing-page",
     "meta": {
       "title": "SaaS Landing Page",
-      "description": "A SaaS landing page showcases product features, pricing, and aims to increase conversions. Built with React, Tailwind CSS, Shadcn UI & Radix UI.",
+      "description": "A SaaS landing page showcases product features, pricing, and aims to increase conversions. Built with Next.js, React, Tailwind CSS, shadcn/ui and radix ui. Typescript included.",
       "image": ""
     },
     "info": {
@@ -586,7 +602,7 @@
     "href": "dashboard-layouts",
     "meta": {
       "title": "Dashboard Layouts",
-      "description": "Pre-designed responsive dashboard page layouts. Built with React, Tailwind CSS, Shadcn UI & Radix UI.",
+      "description": "Pre-designed responsive dashboard page layouts. Built with Next.js, React, Tailwind CSS, shadcn/ui and radix ui. Typescript included.",
       "image": ""
     },
     "info": {
@@ -602,7 +618,7 @@
     "href": "add-product-form",
     "meta": {
       "title": "Add Product Form",
-      "description": "The product addition form is a page composed of form elements that allow users to enter details and create a new product listing. Built with React, Tailwind CSS, Shadcn UI & Radix UI.",
+      "description": "The product addition form is a page composed of form elements that allow users to enter details and create a new product listing. Built with Next.js, React, Tailwind CSS, shadcn/ui and radix ui. Typescript included.",
       "image": ""
     },
     "info": {
@@ -618,7 +634,7 @@
     "href": "cart",
     "meta": {
       "title": "Cart",
-      "description": "A cart is a virtual space where users collect selected products before proceeding to checkout. Built with React, Tailwind CSS, Shadcn UI & Radix UI.",
+      "description": "A cart is a virtual space where users collect selected products before proceeding to checkout. Built with Next.js, React, Tailwind CSS, shadcn/ui and radix ui. Typescript included.",
       "image": ""
     },
     "info": {

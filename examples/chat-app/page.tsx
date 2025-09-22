@@ -3,7 +3,7 @@ import { ChatSidebar } from "./components/chat-sidebar";
 
 export default function Home() {
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen">
       <ChatSidebar />
       <ChatMain />
     </div>

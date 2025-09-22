@@ -29,20 +29,20 @@ const ChatContact = ({
 }: ChatContactProps) => (
   <div
     className={cn(
-      "flex cursor-pointer items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-200",
-      isActive && "bg-gray-200"
+      "hover:bg-muted flex cursor-pointer items-center gap-3 rounded-lg p-3 transition-colors",
+      isActive && "bg-muted"
     )}
     onClick={() => onClick(id)}>
-    <Avatar className="h-10 w-10">
-      <AvatarImage src={avatarSrc || "/placeholder.svg"} alt={name} />
+    <Avatar>
+      <AvatarImage src={avatarSrc} alt={name} />
       <AvatarFallback>{name.charAt(0)}</AvatarFallback>
     </Avatar>
     <div className="flex-1">
       <div className="flex items-center justify-between">
-        <span className="font-medium text-gray-800">{name}</span>
-        <span className="text-xs text-gray-500">{timestamp}</span>
+        <span className="font-medium">{name}</span>
+        <span className="text-muted-foreground text-xs">{timestamp}</span>
       </div>
-      <div className="flex items-center justify-between text-sm text-gray-600">
+      <div className="text-muted-foreground flex items-center justify-between text-sm">
         <p className="truncate">{lastMessage}</p>
         {hasUnread && <div className="ml-2 h-2 w-2 rounded-full bg-blue-500" />}
       </div>
@@ -106,20 +106,18 @@ export function ChatSidebar() {
   ];
 
   return (
-    <div className="flex w-80 flex-col border-r border-gray-200 bg-white p-4">
+    <div className="flex w-80 flex-col border border-r p-4">
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-800">Chat</h1>
-        <Search className="h-5 w-5 cursor-pointer text-gray-500" />
+        <h1 className="text-2xl font-bold">Chat</h1>
+        <Search className="text-muted-foreground h-5 w-5 cursor-pointer" />
       </div>
 
-      <div className="mb-6 flex rounded-lg bg-gray-100 p-1">
+      <div className="mb-6 flex rounded-lg border p-1">
         <Button
           variant="ghost"
           className={cn(
             "h-9 flex-1 rounded-md text-sm font-medium",
-            activeTab === "personal"
-              ? "bg-white text-gray-800 shadow-sm"
-              : "text-gray-600 hover:bg-transparent"
+            activeTab === "personal" ? "shadow-sm" : "text-muted-foreground hover:bg-transparent"
           )}
           onClick={() => setActiveTab("personal")}>
           <User className="mr-2 h-4 w-4" />
@@ -129,9 +127,7 @@ export function ChatSidebar() {
           variant="ghost"
           className={cn(
             "h-9 flex-1 rounded-md text-sm font-medium",
-            activeTab === "groups"
-              ? "bg-white text-gray-800 shadow-sm"
-              : "text-gray-600 hover:bg-transparent"
+            activeTab === "groups" ? "shadow-sm" : "text-muted-foreground hover:bg-transparent"
           )}
           onClick={() => setActiveTab("groups")}>
           <Users className="mr-2 h-4 w-4" />
@@ -151,9 +147,7 @@ export function ChatSidebar() {
       </div>
 
       <div className="mt-6">
-        <Button className="w-full rounded-lg bg-blue-600 py-2 text-base font-semibold text-white hover:bg-blue-700">
-          New chat
-        </Button>
+        <Button className="w-full">New chat</Button>
       </div>
     </div>
   );
