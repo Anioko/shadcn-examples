@@ -137,7 +137,7 @@ const data = {
       icon: IconDatabase
     },
     {
-      name: "Twitter",
+      name: "X (Twitter)",
       url: "https://x.com/ShadcnExamples",
       icon: IconReport
     },

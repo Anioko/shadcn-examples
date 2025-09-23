@@ -7,18 +7,18 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 export default function Page() {
-  const lastExample = data.slice(-1)[0];
+  const lastExample = data.filter((a) => a.isNew).slice(-1)[0];
 
   return (
     <>
-      <header className="bg-muted py-20">
+      <section className="bg-linear-to-t from-transparent to-black/10 py-20 dark:to-white/15">
         <div className="mx-auto w-full max-w-3xl space-y-4 text-center">
           <a
             href={lastExample.href}
             className="group bg-muted inline-flex items-center justify-center gap-2 rounded-full border p-1 pr-3">
-            <Badge className="rounded-full">NEW</Badge>
+            <Badge className="rounded-full text-[10px] tracking-widest">NEW EXAMPLE</Badge>
             <p className="flex items-center gap-1 text-xs">
-              <span>&#34;{lastExample.meta.title}&#34; example added</span>
+              <span>{lastExample.meta.title}</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -56,7 +56,7 @@ export default function Page() {
             </Button>
           </div>
         </div>
-      </header>
+      </section>
 
       <div className="container mx-auto space-y-10 px-4">
         <div className="block lg:hidden">

@@ -6,10 +6,11 @@ import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Logo } from "@/components/logo";
 import * as React from "react";
+import { GithubIcon } from "lucide-react";
 
 export function SiteHeader() {
   return (
-    <header className="bg-background/30 sticky top-0 flex h-(--header-height) shrink-0 items-center gap-2 border-b backdrop-blur-md transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-(--header-height)">
+    <header className="bg-background/30 sticky top-0 flex h-(--header-height) shrink-0 items-center gap-2 backdrop-blur-md transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-(--header-height)">
       <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
         <div className="flex items-center gap-2 md:hidden">
           <Link href="/">
@@ -20,10 +21,18 @@ export function SiteHeader() {
         <SidebarTrigger className="-ml-1" />
         <Separator orientation="vertical" className="mx-2 data-[orientation=vertical]:h-4" />
         <HeaderSearch />
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex items-center gap-1">
+          <Button variant="ghost" asChild size="sm">
+            <Link href="/">Home</Link>
+          </Button>
+          <Button variant="ghost" asChild size="sm">
+            <a href="https://shadcncomponents.dev?utm_source=shadcnexamples" target="_blank">
+              Components
+            </a>
+          </Button>
           <Button variant="ghost" asChild size="sm">
             <a href="https://github.com/shadcn-examples/shadcn-examples" target="_blank">
-              GitHub
+              <GithubIcon />
             </a>
           </Button>
           <Button variant="ghost" size="icon" asChild>

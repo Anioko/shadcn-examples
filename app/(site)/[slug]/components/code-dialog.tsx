@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { ChevronDownIcon, CodeIcon } from "lucide-react";
 import { extractCodeFromFilePath, getFilesInDirectory } from "@/lib/code";
 
@@ -80,11 +80,11 @@ export default async function CodeDialog({ example }: Props) {
             <div className="grid grid-cols-[200px_1fr]">
               {files && files.length ? (
                 <div className="min-h-[400px] border-e border-e-white/15">
-                  {files.map((file) => {
+                  {files.map((file, i) => {
                     const fileContent =
                       file.type === "file" ? extractCodeFromFilePath(file.path) : "";
                     return (
-                      <>
+                      <Fragment key={i}>
                         {file.children && file.children.length > 0 ? (
                           <Collapsible>
                             <CollapsibleTrigger asChild className="w-full">
@@ -108,7 +108,7 @@ export default async function CodeDialog({ example }: Props) {
                         ) : (
                           <ComponentCodeTabItem file={file} code={fileContent} />
                         )}
-                      </>
+                      </Fragment>
                     );
                   })}
                 </div>

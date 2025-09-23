@@ -1,9 +1,10 @@
 import { Logo } from "@/components/logo";
+import Link from "next/link";
 
 export function SiteFooter() {
   return (
     <footer className="border-t">
-      <div className="px-4 py-6 md:py-8">
+      <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between gap-8">
           <div className="flex flex-col gap-4 md:max-w-96">
             <div className="flex items-center gap-2">
@@ -14,8 +15,11 @@ export function SiteFooter() {
           <div className="md:ms-auto md:max-w-96">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-muted-foreground text-xs">
-                © {new Date().getFullYear()} Shadcn Examples.{" "}
-                <span className="hidden md:inline">All rights reserved.</span>
+                © {new Date().getFullYear()}{" "}
+                <Link href="/" className="hover:underline">
+                  Shadcn Examples
+                </Link>
+                . <span className="hidden md:inline">All rights reserved.</span>
               </p>
             </div>
           </div>

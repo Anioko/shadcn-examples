@@ -11,9 +11,9 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Shadcnexamples: Shadcn UI Examples, Components and Blocks",
+  title: "Shadcnexamples: Shadcn UI Components and Blocks",
   description:
-    "Shadcn UI examples, components, and blocks built with Tailwind CSS. For React and Vue.js. Open source. TypeScript compatible."
+    "Shadcn UI examples, components, and blocks. Built with Tailwind CSS, Shadcn/ui, Next.js, React, Vue.js. Typescript compatible."
 };
 
 export default function RootLayout({
