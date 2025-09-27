@@ -462,7 +462,7 @@
       "demo_url": "",
       "last_updated": ""
     },
-    "isComing": true
+    "isNew": true
   },
   {
     "href": "cv-templates",
@@ -558,7 +558,7 @@
       "demo_url": "",
       "last_updated": ""
     },
-    "isComing": true
+    "isNew": true
   },
   {
     "href": "course-detail",
@@ -574,7 +574,7 @@
       "demo_url": "",
       "last_updated": ""
     },
-    "isComing": true
+    "isNew": true
   },
   {
     "href": "hero-sections",
@@ -686,7 +686,7 @@
       "demo_url": "",
       "last_updated": ""
     },
-    "isComing": true
+    "isNew": true
   },
   {
     "href": "cart",
@@ -701,8 +701,7 @@
       "framework": "",
       "demo_url": "",
       "last_updated": ""
-    },
-    "isNew": true
+    }
   },
   {
     "href": "multi-step-form",
@@ -717,7 +716,6 @@
       "framework": "",
       "demo_url": "",
       "last_updated": ""
-    },
-    "isNew": true
+    }
   }
 ]
