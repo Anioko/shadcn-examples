@@ -161,7 +161,10 @@
       "framework": "",
       "demo_url": "",
       "last_updated": ""
-    }
+    },
+    "similars": [
+      "product-detail-page"
+    ]
   },
   {
     "href": "product-detail-page",
@@ -176,7 +179,10 @@
       "framework": "",
       "demo_url": "",
       "last_updated": ""
-    }
+    },
+    "similars": [
+      "product-list"
+    ]
   },
   {
     "href": "coming-soon-page",

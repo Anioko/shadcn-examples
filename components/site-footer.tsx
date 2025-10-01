@@ -24,6 +24,18 @@ export function SiteFooter() {
             </div>
           </div>
         </div>
+        <div className="mt-4">
+          <a
+            href="https://startupfa.me/s/shadcn-examples?utm_source=shadcnexamples.com"
+            target="_blank">
+            <img
+              src="https://startupfa.me/badges/featured/dark-small-rounded.webp"
+              alt="Featured on Startup Fame"
+              width="240"
+              height="37"
+            />
+          </a>
+        </div>
       </div>
     </footer>
   );
