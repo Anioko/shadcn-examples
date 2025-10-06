@@ -31,6 +31,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   return new ImageResponse(
     (
       <div
+        tw="bg-black text-white"
         style={{
           height: "100%",
           width: "100%",
@@ -39,10 +40,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           alignItems: "center",
           justifyContent: "center",
           flexDirection: "column",
-          flexWrap: "nowrap",
-          backgroundColor: "#ffc2df",
-          background:
-            "radial-gradient(circle,rgba(255, 194, 223, 1) 0%, rgba(190, 206, 230, 1) 100%)"
+          flexWrap: "nowrap"
         }}>
         <div
           style={{
@@ -53,37 +51,32 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             left: 30,
             gap: 20
           }}>
-          <div style={{ display: "flex" }}>
-            <img width={48} height={48} src={logoBase64} />
+          <div tw="invert bg-white/80 p-2 rounded-lg flex">
+            <img width={36} height={36} src={logoBase64} />
           </div>
-          <span style={{ fontSize: 28 }}>Shadcn Examples</span>
+          <span style={{ fontSize: 28 }}>shadcnexamples.com</span>
         </div>
         <div
+          tw="font-bold text-5xl mb-8"
           style={{
             display: "flex",
-            fontSize: 56,
-            fontStyle: "normal",
-            color: "black",
             marginTop: 30,
-            lineHeight: 1.8,
             whiteSpace: "pre-wrap"
           }}>
           <b>{exampleData.meta.title}</b>
         </div>
         <div
+          tw="text-white/70 text-2xl max-w-3xl"
           style={{
             display: "flex",
-            fontSize: 20,
             fontStyle: "normal",
-            color: "#666",
-            lineHeight: 1.8,
             whiteSpace: "pre-wrap"
           }}>
           <b>{exampleData.info.description}</b>
         </div>
-        <div tw="ml-3 mt-6 flex">
-          <a tw="flex gap-3 items-center justify-center rounded-md bg-black px-7 py-4 text-base font-medium text-white">
-            View Demo <span style={{ display: "flex", marginLeft: "10px" }}>&#62;</span>
+        <div tw="ml-3 mt-14 flex ">
+          <a tw="flex gap-3 items-center justify-center bg-white rounded-lg px-7 py-4 text-base font-medium text-black">
+            Preview Example <span style={{ display: "flex", marginLeft: "10px" }}>&#62;</span>
           </a>
         </div>
       </div>

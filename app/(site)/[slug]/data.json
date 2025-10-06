@@ -471,9 +471,9 @@
     "isNew": true
   },
   {
-    "href": "cv-templates",
+    "href": "cv-template",
     "meta": {
-      "title": "Cv Templates",
+      "title": "Cv Template",
       "description": "They are pre-designed ui templates that help users create professional resumes quickly and consistently. Built with Tailwind CSS, Shadcn/ui, Radix ui, Next.js, React, Vue.js. Typescript compatible.",
       "image": ""
     },

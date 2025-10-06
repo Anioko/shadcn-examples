@@ -2,14 +2,28 @@ import ComponentIframe from "@/app/(site)/[slug]/components/component-iframe";
 
 import React from "react";
 import Link from "next/link";
-import { ExternalLinkIcon, FullscreenIcon, GithubIcon } from "lucide-react";
+import {
+  ExternalLinkIcon,
+  FullscreenIcon,
+  GithubIcon,
+  Monitor,
+  Smartphone,
+  Tablet
+} from "lucide-react";
 import { Example } from "@/types/example";
 import CodeDialog from "@/app/(site)/[slug]/components/code-dialog";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import data from "../data.json";
+import ExamplePagination from "@/app/(site)/[slug]/components/pagination";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import BreakpointChanger from "@/app/(site)/[slug]/components/breakpoint-changer";
 
 export default function ExampleDetail({ example }: { example: Example }) {
+  const exampleIndex = data.findIndex((a) => a.href === example.href);
+  const prevExample = data[exampleIndex - 1];
+  const nextExample = data[exampleIndex + 1];
+
   return (
     <>
       <header className="border-b bg-linear-to-t from-transparent to-black/10 py-6 lg:py-10 dark:to-white/15">
@@ -42,9 +56,10 @@ export default function ExampleDetail({ example }: { example: Example }) {
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Full screen</p>
+              <p>Full Screen</p>
             </TooltipContent>
           </Tooltip>
+          <BreakpointChanger id={example.href} />
           <CodeDialog example={example} />
         </div>
 
@@ -82,6 +97,8 @@ export default function ExampleDetail({ example }: { example: Example }) {
             </div>
           </div>
         )}
+
+        <ExamplePagination prevExample={prevExample} nextExample={nextExample} />
       </div>
     </>
   );

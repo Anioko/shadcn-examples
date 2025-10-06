@@ -26,7 +26,7 @@ export function NavMain({
   }[];
 }) {
   const pathname = usePathname();
-  console.log("pathname", pathname);
+
   return (
     <SidebarGroup>
       <SidebarGroupLabel className="opacity-60">Examples</SidebarGroupLabel>
@@ -39,9 +39,7 @@ export function NavMain({
                 tooltip={item.meta.title}
                 isActive={pathname.replace("/", "") === item.href}
                 className="data-[active=true]:bg-primary data-[active=true]:text-primary-foreground">
-                <Link
-                  href={item.isComing ? "#" : item.href}
-                  className={cn({ "opacity-45": item.isComing })}>
+                <Link href={item.href} className={cn({ "opacity-45": item.isComing })}>
                   <span>{item.meta.title}</span>
                   {item?.isComing ? (
                     <SidebarMenuBadge className="opacity-45">Soon</SidebarMenuBadge>

@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 import { useTheme } from "next-themes";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { breakpoints, breakpointsStore, BreakpointType } from "@/store/breakpoint-store";
 
 type ComponentIframeProps = {
   id: string;
@@ -12,11 +13,13 @@ type ComponentIframeProps = {
 
 export default function ComponentIframe({ id, url }: ComponentIframeProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const { breakpoints: allBreakpoints } = breakpointsStore();
   const { theme } = useTheme();
+
+  const selectedBreakpoint = allBreakpoints.find((e) => e.id === id);
 
   const iframeUrlSearchParams = new URLSearchParams(url);
   const customHeight = iframeUrlSearchParams.get("customHeight");
-  const responsive = iframeUrlSearchParams.get("responsive") === "true";
 
   const isMobile = useIsMobile();
 
@@ -48,19 +51,27 @@ export default function ComponentIframe({ id, url }: ComponentIframeProps) {
   }, [theme]);
 
   return (
-    <ResizablePanelGroup
-      direction="horizontal"
-      className="w-full overflow-visible! rounded-lg border-e-0">
-      <ResizablePanel defaultSize={100} minSize={34} className="rounded-lg border">
-        <iframe
-          ref={iframeRef}
-          src={`${url}?id=${id}`}
-          className="w-full border-0"
-          style={{ height }}
-        />
-      </ResizablePanel>
-      {!isMobile && <ResizableHandle withHandle className="bg-transparent" />}
-      <ResizablePanel defaultSize={0}></ResizablePanel>
-    </ResizablePanelGroup>
+    <div key={breakpoints[selectedBreakpoint?.value as "desktop" | "tablet" | "mobile"]}>
+      <ResizablePanelGroup
+        direction="horizontal"
+        className="w-30 overflow-visible! rounded-lg border-e-0">
+        <ResizablePanel
+          defaultSize={breakpoints[selectedBreakpoint?.value as "desktop" | "tablet" | "mobile"]}
+          minSize={34}
+          className="rounded-lg border">
+          <iframe
+            ref={iframeRef}
+            src={`${url}?id=${id}`}
+            className="w-full border-0"
+            style={{ height }}
+          />
+        </ResizablePanel>
+        {!isMobile && <ResizableHandle withHandle className="bg-transparent" />}
+        <ResizablePanel
+          defaultSize={
+            100 - breakpoints[selectedBreakpoint?.value as "desktop" | "tablet" | "mobile"]
+          }></ResizablePanel>
+      </ResizablePanelGroup>
+    </div>
   );
 }
