@@ -99,6 +99,22 @@
     ]
   },
   {
+    "href": "sortable-cards",
+    "meta": {
+      "title": "Sortable Cards",
+      "description": "Sortable cards are interactive UI elements that can be rearranged by dragging and dropping. Built with Tailwind CSS, Shadcn/ui, Radix ui, Next.js, React, Vue.js. Typescript compatible.",
+      "image": ""
+    },
+    "info": {
+      "cover_image": "",
+      "description": "Sortable cards are interactive UI elements that can be rearranged by dragging and dropping.",
+      "framework": "",
+      "demo_url": "",
+      "last_updated": ""
+    },
+    "isNew": true
+  },
+  {
     "href": "chat-app",
     "meta": {
       "title": "Chat App",
