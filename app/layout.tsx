@@ -1,13 +1,38 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import React from "react";
 import GoogleAnalyticsInit from "@/lib/ga";
 import { ThemeProvider } from "next-themes";
 
-const geist = Geist({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"]
+const geist = localFont({
+  src: [
+    {
+      path: "../assets/Inter/Inter_18pt-Light.ttf",
+      weight: "300",
+      style: "normal"
+    },
+    {
+      path: "../assets/Inter/Inter_18pt-Regular.ttf",
+      weight: "400",
+      style: "normal"
+    },
+    {
+      path: "../assets/Inter/Inter_18pt-Medium.ttf",
+      weight: "500",
+      style: "normal"
+    },
+    {
+      path: "../assets/Inter/Inter_18pt-SemiBold.ttf",
+      weight: "600",
+      style: "normal"
+    },
+    {
+      path: "../assets/Inter/Inter_18pt-Bold.ttf",
+      weight: "700",
+      style: "normal"
+    }
+  ]
 });
 
 export const metadata: Metadata = {
