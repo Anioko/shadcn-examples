@@ -16,6 +16,18 @@ Clone the project:
 git clone git@github.com:shadcn-examples/shadcn-examples.git
 ```
 
+Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
 Run the development server:
 
 ```bash
@@ -29,6 +41,32 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Building for Production
+
+To build the project for production:
+
+```bash
+npm run build
+# or
+yarn build
+# or
+pnpm build
+# or
+bun build
+```
+
+To start the production server:
+
+```bash
+npm run start
+# or
+yarn start
+# or
+pnpm start
+# or
+bun start
+```
 
 ## Preview
 
