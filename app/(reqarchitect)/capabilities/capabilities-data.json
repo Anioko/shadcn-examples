@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Customer Acquisition",
+    "owner": "Sarah Johnson",
+    "status": "Active",
+    "supportingApps": "Salesforce, HubSpot, Mailchimp",
+    "healthScore": 92,
+    "lastUpdated": "2025-10-23"
+  },
+  {
+    "id": 2,
+    "name": "Payment Processing",
+    "owner": "Mike Chen",
+    "status": "Active",
+    "supportingApps": "Stripe, PayPal, Square",
+    "healthScore": 88,
+    "lastUpdated": "2025-10-22"
+  },
+  {
+    "id": 3,
+    "name": "Customer Support",
+    "owner": "Lisa Rodriguez",
+    "status": "Review",
+    "supportingApps": "Zendesk, Slack, Zoom",
+    "healthScore": 76,
+    "lastUpdated": "2025-10-20"
+  },
+  {
+    "id": 4,
+    "name": "Data Analytics",
+    "owner": "David Kim",
+    "status": "Active",
+    "supportingApps": "Google Analytics, Mixpanel, Tableau",
+    "healthScore": 94,
+    "lastUpdated": "2025-10-21"
+  },
+  {
+    "id": 5,
+    "name": "Inventory Management",
+    "owner": "Alex Thompson",
+    "status": "Planning",
+    "supportingApps": "TradeGecko, NetSuite, SAP",
+    "healthScore": 65,
+    "lastUpdated": "2025-10-19"
+  },
+  {
+    "id": 6,
+    "name": "Marketing Automation",
+    "owner": "Sarah Johnson",
+    "status": "Active",
+    "supportingApps": "Marketo, Pardot, ActiveCampaign",
+    "healthScore": 89,
+    "lastUpdated": "2025-10-23"
+  },
+  {
+    "id": 7,
+    "name": "Financial Reporting",
+    "owner": "Mike Chen",
+    "status": "Active",
+    "supportingApps": "QuickBooks, Xero, FreshBooks",
+    "healthScore": 91,
+    "lastUpdated": "2025-10-22"
+  },
+  {
+    "id": 8,
+    "name": "HR Management",
+    "owner": "Lisa Rodriguez",
+    "status": "Planning",
+    "supportingApps": "BambooHR, Workday, ADP",
+    "healthScore": 72,
+    "lastUpdated": "2025-10-18"
+  }
+]

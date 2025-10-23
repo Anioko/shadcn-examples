@@ -219,20 +219,250 @@ interface TableData {
 ### Admin Dashboard
 **Source**: https://shadcnexamples.com/admin-dashboard
 
-**Immutable Elements**:
-- Sidebar width, collapse behavior, and positioning
-- Top navigation bar height and content layout
-- Main content area grid (typically 12-column)
+**Critical Navigation Structure (Must Copy Exactly)**:
+
+#### 1. Top Header Bar (SiteHeader)
+**IMMUTABLE Structure**:
+```tsx
+<header className="bg-background/90 sticky top-0 z-10 flex h-(--header-height) shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-(--header-height)">
+  <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
+    <h1 className="text-base font-medium">{pageTitle}</h1> {/* ONLY change title text */}
+    <div className="ml-auto flex items-center gap-2">
+      <Button size="sm" className="hidden h-7 sm:flex">
+        {/* ONLY change icon and button text */}
+      </Button>
+    </div>
+  </div>
+</header>
+```
+
+**Allowed Changes**:
+- Page title text: "Documents" → "Business Model Canvas"
+- Button text: "Quick Create" → "Add Capability" 
+- Button icon (same size, same library)
+
+**FORBIDDEN**:
+- Header height, sticky positioning, z-index
+- Background blur, border styling
+- Responsive classes or breakpoints
+- Button positioning (ml-auto must stay)
+- Gap spacing or padding values
+
+#### 2. Sidebar Structure (AppSidebar)
+**IMMUTABLE Layout**:
+```tsx
+<Sidebar collapsible="none" className="h-auto border-r" {...props}>
+  <SidebarHeader className="border-b">
+    {/* Company logo/brand section - exact structure required */}
+  </SidebarHeader>
+  <SidebarContent>
+    <NavMain items={navMain} />        {/* Primary navigation */}
+    <NavDocuments items={documents} /> {/* Secondary navigation */}
+    <NavSecondary items={navSecondary} className="mt-auto" /> {/* Footer nav */}
+  </SidebarContent>
+  <SidebarFooter>
+    <NavUser user={user} />           {/* User profile section */}
+  </SidebarFooter>
+</Sidebar>
+```
+
+**Required Sub-Components (Must Include All)**:
+- **SidebarHeader**: Company branding with logo and name
+- **NavMain**: Primary navigation menu (Dashboard, Analytics, etc.)
+- **NavDocuments**: Secondary tool/document navigation
+- **NavSecondary**: Settings, Help, Search (with `mt-auto` positioning)
+- **NavUser**: User profile in footer
+
+**Allowed Changes**:
+- Company name: "Acme Inc." → "ReqArchitect"
+- Company logo icon (same size from same library)
+- Menu item labels: "Analytics" → "Capabilities"
+- Menu item icons (same size from same library)
+- Menu item URLs for routing
+
+**FORBIDDEN**:
+- Removing any nav sections (NavMain, NavDocuments, NavSecondary, NavUser)
+- Changing sidebar width variables
+- Modifying collapsible behavior
+- Changing border classes
+- Altering section ordering or spacing
+- Adding new nav sections
+
+#### 3. Navigation Sub-Menus (Critical Pattern)
+**NavDocuments Structure (Must Copy)**:
+```tsx
+<SidebarGroup>
+  <SidebarGroupLabel>Documents</SidebarGroupLabel> {/* Section label */}
+  <SidebarMenu>
+    {items.map((item) => (
+      <SidebarMenuItem key={item.name}>
+        <SidebarMenuButton asChild>
+          <Link href={item.url}>
+            <item.icon />
+            <span>{item.name}</span>
+          </Link>
+        </SidebarMenuButton>
+      </SidebarMenuItem>
+    ))}
+  </SidebarMenu>
+</SidebarGroup>
+```
+
+**Allowed Changes**:
+- Section label: "Documents" → "Architecture Tools"
+- Menu item names: "Data Library" → "Capability Map"
+- Menu item icons (same library, same size)
+- Menu item URLs
+
+**FORBIDDEN**:
+- Changing SidebarGroup/Menu/MenuItem structure
+- Adding custom styling to menu items
+- Changing hover/active state styling
+- Modifying spacing between menu items
+
+#### 4. Layout Container (SidebarProvider + SidebarInset)
+**IMMUTABLE Structure**:
+```tsx
+<SidebarProvider
+  className="min-h-auto"
+  style={{
+    "--sidebar-width": "calc(var(--spacing) * 64)",
+    "--header-height": "calc(var(--spacing) * 12 + 1px)"
+  } as React.CSSProperties}>
+  <AppSidebar variant="sidebar" />
+  <SidebarInset>
+    <SiteHeader />
+    <div className="flex flex-1 flex-col">
+      <div className="@container/main flex flex-1 flex-col gap-2">
+        {/* Page content */}
+      </div>
+    </div>
+  </SidebarInset>
+</SidebarProvider>
+```
+
+**FORBIDDEN**:
+- Changing CSS custom properties (sidebar width, header height)
+- Modifying SidebarProvider className
+- Altering SidebarInset structure
+- Changing container gap values
+- Removing @container/main class
+
+#### 5. Data Table with Drawer (CRITICAL - Must Copy Exactly)
+**Source Pattern**: https://shadcnexamples.com/admin-dashboard (DataTable component)
+
+**IMMUTABLE Table Structure**:
+```tsx
+<Tabs defaultValue="outline" className="w-full flex-col justify-start gap-6">
+  <div className="flex items-center justify-between px-4 lg:px-6">
+    {/* Tab selector and column customization controls */}
+  </div>
+  <TabsContent value="outline" className="relative flex flex-col gap-4 overflow-auto px-4 lg:px-6">
+    <div className="overflow-hidden rounded-lg border">
+      <DndContext> {/* Drag and drop context */}
+        <Table>
+          <TableHeader className="bg-muted sticky top-0 z-10">
+            {/* Column headers */}
+          </TableHeader>
+          <TableBody className="**:data-[slot=table-cell]:first:w-8">
+            <SortableContext items={dataIds} strategy={verticalListSortingStrategy}>
+              {/* Draggable rows */}
+            </SortableContext>
+          </TableBody>
+        </Table>
+      </DndContext>
+    </div>
+    <div className="flex items-center justify-between px-4">
+      {/* Pagination controls */}
+    </div>
+  </TabsContent>
+</Tabs>
+```
+
+**Required Table Features (Must Include All)**:
+1. **Tabs Structure**: Multiple tabs with TabsList and TabsContent
+2. **Column Customization**: DropdownMenu with column visibility toggles
+3. **Drag Handle Column**: First column with IconGripVertical for reordering
+4. **Selection Column**: Checkbox column for row selection
+5. **Drawer Integration**: TableCellViewer component with Drawer for detailed view
+6. **Pagination**: Full pagination controls with page size selector
+7. **Inline Editing**: Editable Input fields within table cells
+8. **Action Menu**: DropdownMenu in last column with action items
+9. **Sorting**: Column sorting with tanstack/react-table
+10. **Filtering**: Built-in filtering capabilities
+
+**CRITICAL Drawer Pattern (Must Copy)**:
+```tsx
+function TableCellViewer({ item }: { item: DataType }) {
+  const isMobile = useIsMobile();
+  
+  return (
+    <Drawer direction={isMobile ? "bottom" : "right"}>
+      <DrawerTrigger asChild>
+        <Button variant="link" className="text-foreground w-fit px-0 text-left">
+          {item.primaryField}
+        </Button>
+      </DrawerTrigger>
+      <DrawerContent>
+        <DrawerHeader className="gap-1">
+          <DrawerTitle>{item.primaryField}</DrawerTitle>
+          <DrawerDescription>{item.description}</DrawerDescription>
+        </DrawerHeader>
+        <div className="flex flex-col gap-4 overflow-y-auto px-4 text-sm">
+          {/* Chart component (if applicable) */}
+          {/* Form fields for editing */}
+        </div>
+        <DrawerFooter>
+          <Button>Submit</Button>
+          <DrawerClose asChild>
+            <Button variant="outline">Done</Button>
+          </DrawerClose>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
+  );
+}
+```
+
+**Table Dependencies (Must Install)**:
+```json
+{
+  "@dnd-kit/core": "^6.1.0",
+  "@dnd-kit/modifiers": "^7.0.0", 
+  "@dnd-kit/sortable": "^8.0.0",
+  "@dnd-kit/utilities": "^3.2.2",
+  "@tanstack/react-table": "^8.20.5"
+}
+```
+
+**Allowed Changes in Tables**:
+- Column headers: "Header" → "Capability Name"
+- Data content: Mock project data → Real business capability data
+- Form field labels in drawer
+- Chart data (if chart is included)
+- Table schema field names
+- Tab labels: "Outline" → "Active Capabilities"
+
+**STRICTLY FORBIDDEN in Tables**:
+- Removing drag and drop functionality
+- Removing drawer integration
+- Changing table visual structure
+- Removing pagination controls
+- Removing column customization
+- Simplifying to basic HTML table
+- Removing tabs structure
+- Custom table implementations
+- Different table libraries (no MUI, Ant Design, etc.)
+
+**Other Immutable Elements**:
 - Card arrangements and spacing
 - Chart containers and sizing
 - Stat cards layout (typically 4-column grid)
 
 **Allowed Changes**:
-- Sidebar menu item labels: "Analytics" → "Capability Map"
 - Stat card values: "$45,231" → "$127,450"
 - Chart data points and labels
-- Table row content
-- Dashboard title: "Dashboard" → "ReqArchitect Overview"
+- Page-specific content within the layout structure
 
 ### Onboarding Flow
 **Source**: https://shadcnexamples.com/onboarding-flow

@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Customer Management",
+    "owner": "Sarah Johnson",
+    "status": "Active",
+    "applications": "Salesforce, HubSpot",
+    "lastUpdated": "2025-10-20"
+  },
+  {
+    "id": 2,
+    "name": "Payment Processing",
+    "owner": "Michael Chen",
+    "status": "Active",
+    "applications": "Stripe, PayPal",
+    "lastUpdated": "2025-10-19"
+  },
+  {
+    "id": 3,
+    "name": "Inventory Management",
+    "owner": "Emily Rodriguez",
+    "status": "Active",
+    "applications": "NetSuite, TradeGecko",
+    "lastUpdated": "2025-10-18"
+  },
+  {
+    "id": 4,
+    "name": "Human Resources",
+    "owner": "David Wilson",
+    "status": "Review",
+    "applications": "BambooHR, Workday",
+    "lastUpdated": "2025-10-17"
+  },
+  {
+    "id": 5,
+    "name": "Financial Reporting",
+    "owner": "Lisa Thompson",
+    "status": "Active",
+    "applications": "QuickBooks, Xero",
+    "lastUpdated": "2025-10-16"
+  },
+  {
+    "id": 6,
+    "name": "Marketing Automation",
+    "owner": "James Anderson",
+    "status": "Active",
+    "applications": "Mailchimp, Marketo",
+    "lastUpdated": "2025-10-15"
+  },
+  {
+    "id": 7,
+    "name": "Project Management",
+    "owner": "Maria Garcia",
+    "status": "Active",
+    "applications": "Asana, Jira",
+    "lastUpdated": "2025-10-14"
+  },
+  {
+    "id": 8,
+    "name": "Data Analytics",
+    "owner": "Robert Kim",
+    "status": "Planning",
+    "applications": "Tableau, Power BI",
+    "lastUpdated": "2025-10-13"
+  },
+  {
+    "id": 9,
+    "name": "Security Management",
+    "owner": "Jennifer Lee",
+    "status": "Active",
+    "applications": "Okta, LastPass",
+    "lastUpdated": "2025-10-12"
+  },
+  {
+    "id": 10,
+    "name": "Communication",
+    "owner": "Thomas Brown",
+    "status": "Active",
+    "applications": "Slack, Microsoft Teams",
+    "lastUpdated": "2025-10-11"
+  }
+]
