@@ -16,7 +16,17 @@ import {
   Zap,
   Scale,
   TrendingUp,
-  Shield
+  Shield,
+  ShoppingCart,
+  DollarSign,
+  Calculator,
+  Compass,
+  Code,
+  Activity,
+  FileCheck,
+  Target,
+  CheckSquare,
+  Brain
 } from "lucide-react";
 
 import {
@@ -46,14 +56,39 @@ const data = {
       icon: LayoutDashboard
     },
     {
+      title: "Strategic Goals",
+      url: "/strategic-goals",
+      icon: Target
+    },
+    {
       title: "Business Model",
       url: "/business-model",
       icon: Building2
     },
     {
+      title: "Enterprise Architecture",
+      url: "/enterprise-architecture",
+      icon: Network
+    },
+    {
+      title: "Integrations",
+      url: "/integrations", 
+      icon: GitBranch
+    },
+    {
+      title: "AI Capabilities",
+      url: "/ai-capabilities",
+      icon: Brain
+    },
+    {
+      title: "Controls & Policies",
+      url: "/controls-policies",
+      icon: Shield
+    },
+    {
       title: "Capabilities",
       url: "/capabilities",
-      icon: Network
+      icon: Zap
     },
     {
       title: "Tech Stack",
@@ -63,17 +98,52 @@ const data = {
     {
       title: "Context Graph",
       url: "/context-graph",
-      icon: GitBranch
+      icon: Activity
+    },
+    {
+      title: "Financial Modeling",
+      url: "/financial-modeling",
+      icon: Calculator
+    },
+    {
+      title: "Strategic Planning",
+      url: "/strategic-planning",
+      icon: Compass
+    },
+    {
+      title: "Collaboration",
+      url: "/collaboration",
+      icon: Users
+    },
+    {
+      title: "Project Management",
+      url: "/project-management",
+      icon: CheckSquare
+    },
+    {
+      title: "Products & Services",
+      url: "/products-services",
+      icon: ShoppingCart
+    },
+    {
+      title: "Sales & CRM",
+      url: "/sales-crm",
+      icon: DollarSign
     },
     {
       title: "Enterprise Integrations",
       url: "/enterprise-integrations",
-      icon: Zap
+      icon: Database
     },
     {
       title: "Universal Connector",
       url: "/universal-connector",
       icon: Network
+    },
+    {
+      title: "Code Generation",
+      url: "/code-generation",
+      icon: Code
     },
     {
       title: "Capability Maturity",
@@ -86,15 +156,20 @@ const data = {
       icon: Scale
     },
     {
-      title: "Analytics",
-      url: "#",
+      title: "Performance Analytics",
+      url: "/performance-analytics",
       icon: BarChart3
+    },
+    {
+      title: "Governance & Risk",
+      url: "/governance-risk",
+      icon: FileCheck
     }
   ],
   navSecondary: [
     {
       title: "Settings",
-      url: "#",
+      url: "/settings",
       icon: Settings
     },
     {

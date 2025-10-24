@@ -2,31 +2,30 @@ import { Metadata } from "next"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { AppSidebar } from "../dashboard/components/app-sidebar"
 import { SiteHeader } from "../dashboard/components/site-header"
-import { ContextGraphClient } from "./context-graph-client"
+import { IntegrationsClient } from "./integrations-client"
 
 export const metadata: Metadata = {
-  title: "Context Graph & Relationship Intelligence | ReqArchitect",
-  description: "Interactive graph visualization and analysis of entity relationships in your architecture",
+  title: "Integrations | ReqArchitect",
+  description: "Enterprise integration management and API orchestration",
 }
 
-function ContextGraphPageContent() {
+function IntegrationsPageContent() {
   return (
     <div className="container mx-auto py-6">
       <div className="space-y-6">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Context Graph & Relationship Intelligence</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Integrations</h1>
           <p className="text-muted-foreground">
-            Visualize and analyze relationships between all architecture entities. 
-            Discover dependencies, assess impact, and get AI-powered relationship recommendations.
+            Manage APIs, webhooks, data connectors, and integration workflows across your enterprise ecosystem.
           </p>
         </div>
-        <ContextGraphClient />
+        <IntegrationsClient />
       </div>
     </div>
   )
 }
 
-export default function ContextGraphPage() {
+export default function IntegrationsPage() {
   return (
     <SidebarProvider
       className="min-h-auto"
@@ -40,7 +39,7 @@ export default function ContextGraphPage() {
       <SidebarInset>
         <SiteHeader />
         <div className="flex flex-1 flex-col">
-          <ContextGraphPageContent />
+          <IntegrationsPageContent />
         </div>
       </SidebarInset>
     </SidebarProvider>

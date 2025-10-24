@@ -2,31 +2,30 @@ import { Metadata } from "next"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { AppSidebar } from "../dashboard/components/app-sidebar"
 import { SiteHeader } from "../dashboard/components/site-header"
-import { ContextGraphClient } from "./context-graph-client"
+import { AiCapabilitiesClient } from "./ai-capabilities-client"
 
 export const metadata: Metadata = {
-  title: "Context Graph & Relationship Intelligence | ReqArchitect",
-  description: "Interactive graph visualization and analysis of entity relationships in your architecture",
+  title: "AI-Powered Capabilities | ReqArchitect",
+  description: "Intelligent guidance, automated modeling, and AI-driven insights",
 }
 
-function ContextGraphPageContent() {
+function AiCapabilitiesPageContent() {
   return (
     <div className="container mx-auto py-6">
       <div className="space-y-6">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Context Graph & Relationship Intelligence</h1>
+          <h1 className="text-3xl font-bold tracking-tight">AI-Powered Capabilities</h1>
           <p className="text-muted-foreground">
-            Visualize and analyze relationships between all architecture entities. 
-            Discover dependencies, assess impact, and get AI-powered relationship recommendations.
+            Leverage artificial intelligence for intelligent guidance, automated financial modeling, risk monitoring, and predictive analytics.
           </p>
         </div>
-        <ContextGraphClient />
+        <AiCapabilitiesClient />
       </div>
     </div>
   )
 }
 
-export default function ContextGraphPage() {
+export default function AiCapabilitiesPage() {
   return (
     <SidebarProvider
       className="min-h-auto"
@@ -40,7 +39,7 @@ export default function ContextGraphPage() {
       <SidebarInset>
         <SiteHeader />
         <div className="flex flex-1 flex-col">
-          <ContextGraphPageContent />
+          <AiCapabilitiesPageContent />
         </div>
       </SidebarInset>
     </SidebarProvider>

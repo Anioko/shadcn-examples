@@ -2,31 +2,30 @@ import { Metadata } from "next"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { AppSidebar } from "../dashboard/components/app-sidebar"
 import { SiteHeader } from "../dashboard/components/site-header"
-import { ContextGraphClient } from "./context-graph-client"
+import { EnterpriseArchitectureClient } from "./enterprise-architecture-client"
 
 export const metadata: Metadata = {
-  title: "Context Graph & Relationship Intelligence | ReqArchitect",
-  description: "Interactive graph visualization and analysis of entity relationships in your architecture",
+  title: "Enterprise Architecture | ReqArchitect",
+  description: "Comprehensive enterprise architecture planning and management",
 }
 
-function ContextGraphPageContent() {
+function EnterpriseArchitecturePageContent() {
   return (
     <div className="container mx-auto py-6">
       <div className="space-y-6">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Context Graph & Relationship Intelligence</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Enterprise Architecture</h1>
           <p className="text-muted-foreground">
-            Visualize and analyze relationships between all architecture entities. 
-            Discover dependencies, assess impact, and get AI-powered relationship recommendations.
+            Design and manage your enterprise architecture with capability mapping, value streams, and service catalogs.
           </p>
         </div>
-        <ContextGraphClient />
+        <EnterpriseArchitectureClient />
       </div>
     </div>
   )
 }
 
-export default function ContextGraphPage() {
+export default function EnterpriseArchitecturePage() {
   return (
     <SidebarProvider
       className="min-h-auto"
@@ -40,7 +39,7 @@ export default function ContextGraphPage() {
       <SidebarInset>
         <SiteHeader />
         <div className="flex flex-1 flex-col">
-          <ContextGraphPageContent />
+          <EnterpriseArchitecturePageContent />
         </div>
       </SidebarInset>
     </SidebarProvider>
