@@ -1,3 +1,5 @@
+"use client";
+
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "../dashboard/components/app-sidebar";
 import { SiteHeader } from "../dashboard/components/site-header";
@@ -10,18 +12,66 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Users, Building2, DollarSign, Target, Truck, Heart, Handshake, Cog, Wallet, Download } from "lucide-react";
+import { 
+  Users, 
+  Building2, 
+  DollarSign, 
+  Target, 
+  Truck, 
+  Heart, 
+  Handshake, 
+  Cog, 
+  Wallet, 
+  Download, 
+  Plus,
+  Sparkles,
+  ArrowRight 
+} from "lucide-react";
+import { useState } from "react";
+import BusinessModelWizard from "./components/business-model-wizard";
 
 function BusinessModelContent() {
+  const [showWizard, setShowWizard] = useState(false);
+
+  if (showWizard) {
+    return (
+      <div className="flex flex-1 flex-col">
+        <div className="@container/main flex flex-1 flex-col gap-2">
+          <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
+            <div className="mb-6 flex items-center justify-between">
+              <div>
+                <h1 className="text-3xl font-bold">AI-Powered Business Model Creator</h1>
+                <p className="text-muted-foreground">
+                  Create your business model canvas with AI-powered insights and recommendations
+                </p>
+              </div>
+              <Button variant="outline" onClick={() => setShowWizard(false)}>
+                Back to Canvas
+              </Button>
+            </div>
+            <BusinessModelWizard />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-1 flex-col">
       <div className="@container/main flex flex-1 flex-col gap-2">
         <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
-          <div className="mb-6">
-            <h1 className="text-3xl font-bold">Business Model Canvas</h1>
-            <p className="text-muted-foreground">
-              Visual overview of your startup&apos;s business model and key components
-            </p>
+          <div className="mb-6 flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold">Business Model Canvas</h1>
+              <p className="text-muted-foreground">
+                Visual overview of your startup&apos;s business model and key components
+              </p>
+            </div>
+            <Button onClick={() => setShowWizard(true)} className="flex items-center gap-2">
+              <Sparkles className="h-4 w-4" />
+              Create New with AI
+              <ArrowRight className="h-4 w-4" />
+            </Button>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 mb-6">

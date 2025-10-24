@@ -36,9 +36,9 @@ const geist = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Shadcnexamples: Shadcn UI Components and Blocks",
+  title: "ReqArchitect: Enterprise Architecture Platform",
   description:
-    "Shadcn UI examples, components, and blocks. Built with Tailwind CSS, Shadcn/ui, Next.js, React, Vue.js. Typescript compatible."
+    "ReqArchitect is a comprehensive enterprise architecture platform for strategic planning, requirements management, and business model analysis. Built with modern web technologies."
 };
 
 export default function RootLayout({

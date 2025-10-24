@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import {
   ReactFlow,
   Background,
@@ -879,6 +879,7 @@ export function ReactFlowCanvas() {
   const [aiSuggestions, setAiSuggestions] = useState<string[]>([]);
   const [isValidating, setIsValidating] = useState(false);
   const [selectedFramework, setSelectedFramework] = useState<ArchitectureFramework>('archimate');
+  const [activeTab, setActiveTab] = useState<string>('');
 
   // Get elements based on selected framework
   const getCurrentFrameworkElements = () => {
@@ -908,6 +909,14 @@ export function ReactFlowCanvas() {
 
   const currentCategories = getFrameworkCategories();
   const currentElements = getCurrentFrameworkElements();
+
+  // Update active tab when framework changes
+  useEffect(() => {
+    console.log('Framework changed to:', selectedFramework);
+    console.log('Available categories:', currentCategories);
+    console.log('Available elements:', currentElements.length);
+    setActiveTab(currentCategories[0]);
+  }, [selectedFramework, currentCategories, currentElements]);
 
   // Handle edge creation with custom styling
   const onConnect = useCallback(
@@ -1255,7 +1264,7 @@ ${nodes.map(node => `- ${(node.data as NodeData).label || 'Unnamed'}: ${(node.da
           </p>
         </div>
         <div className="flex-1 overflow-y-auto p-4">
-          <Tabs defaultValue="Business" className="w-full">
+          <Tabs key={selectedFramework} value={activeTab} onValueChange={setActiveTab} className="w-full">
             {/* Dynamic tabs based on framework */}
             <TabsList className="grid w-full grid-cols-3">
               {currentCategories.slice(0, 3).map(category => (
@@ -1323,6 +1332,7 @@ ${nodes.map(node => `- ${(node.data as NodeData).label || 'Unnamed'}: ${(node.da
             <Separator orientation="vertical" className="h-6" />
             
             <div className="flex items-center gap-2">
+              <span className="text-sm font-medium">Framework:</span>
               <Select value={selectedFramework} onValueChange={(value: ArchitectureFramework) => setSelectedFramework(value)}>
                 <SelectTrigger className="w-[180px] h-8">
                   <SelectValue placeholder="Select Framework" />
@@ -1348,6 +1358,9 @@ ${nodes.map(node => `- ${(node.data as NodeData).label || 'Unnamed'}: ${(node.da
                   </SelectItem>
                 </SelectContent>
               </Select>
+              <span className="text-xs text-muted-foreground">
+                ({currentElements.length} elements available)
+              </span>
             </div>
             
             <Separator orientation="vertical" className="h-6" />

@@ -1,25 +1,20 @@
-import { Suspense } from "react";
-import dynamic from "next/dynamic";
-import Effects from "@/app/demo/[slug]/effects";
-import { LoaderIcon } from "lucide-react";
-import * as React from "react";
+"use client";
+
+import { redirect } from 'next/navigation'
+import { useEffect } from 'react'
 
 export default function DemoPageGenerator({ name }: { name: string }) {
-  const Component = dynamic(() => import(`@/examples/${name}/page.tsx`), {
-    ssr: true
-  });
+  useEffect(() => {
+    // Since examples have been removed, redirect to ReqArchitect dashboard
+    window.location.href = '/dashboard';
+  }, []);
 
   return (
-    <Suspense
-      fallback={
-        <div className="flex h-[500px] items-center justify-center">
-          <LoaderIcon className="text-muted-foreground animate-spin lg:size-8" />
-        </div>
-      }>
-      <Effects />
-      <div className="bg-background">
-        <Component />
+    <div className="flex min-h-screen items-center justify-center">
+      <div className="text-center">
+        <h1 className="text-2xl font-bold mb-4">Redirecting to ReqArchitect...</h1>
+        <p className="text-muted-foreground">Examples have been moved to ReqArchitect modules.</p>
       </div>
-    </Suspense>
+    </div>
   );
 }

@@ -995,3 +995,494 @@ If you're unsure whether a change violates these guidelines:
 4. Wait for approval before implementing
 
 **Default answer to "Can I change this?" is NO unless explicitly listed in the "Permitted Changes" section above.**
+
+---
+
+## Form Design Patterns & Standards
+
+### Enhanced Tag-Based Multi-Entry Form Pattern
+
+**Source Reference**: Business Model Wizard implementation in ReqArchitect demonstrates the gold standard for complex form design.
+
+#### Core Principle: Multi-Entry Flexibility with Beautiful Design
+Forms should support both **predefined options** and **custom user entries** while maintaining shadcn design parity.
+
+---
+
+### Standard Form Field Types
+
+#### 1. Tag-Based Multi-Entry Fields (Preferred Pattern)
+
+**When to Use**:
+- Fields that benefit from multiple values (skills, technologies, categories)
+- Lists with common options but need custom flexibility
+- Any field where users might want to select 2+ items
+
+**Implementation Pattern**:
+```typescript
+const renderTagInput = (
+  field: string,
+  label: string,
+  placeholder: string,
+  suggestions: string[] = [],
+  required: boolean = false
+) => {
+  const currentTags = formData[field as keyof typeof formData] as string[];
+  const availableSuggestions = suggestions.filter(suggestion => !currentTags.includes(suggestion));
+  
+  return (
+    <div>
+      <Label className="text-base font-medium">
+        {label} {required && <span className="text-red-500">*</span>}
+      </Label>
+      <div className="mt-2 space-y-4">
+        {/* Display existing tags */}
+        {currentTags.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {currentTags.map((tag, index) => (
+              <Badge
+                key={index}
+                variant="secondary"
+                className="flex items-center gap-1 px-3 py-1 bg-black text-white hover:bg-gray-800">
+                {tag}
+                <button
+                  type="button"
+                  onClick={() => removeTagItem(field, tag)}
+                  className="ml-1 hover:text-red-300 transition-colors">
+                  <X className="h-3 w-3" />
+                </button>
+              </Badge>
+            ))}
+          </div>
+        )}
+        
+        {/* Input for new tags */}
+        <div>
+          <Input
+            placeholder={placeholder}
+            onKeyDown={(e) => handleTagInput(field, e)}
+            className="w-full"
+          />
+          <p className="mt-1 text-xs text-gray-500">
+            Press Enter to add custom items
+          </p>
+        </div>
+        
+        {/* Suggestion buttons */}
+        {availableSuggestions.length > 0 && (
+          <div>
+            <div className="mb-2 flex items-center justify-between">
+              <Label className="text-sm text-gray-600">Popular Options:</Label>
+              <span className="text-xs text-gray-500">
+                {availableSuggestions.length} options available
+              </span>
+            </div>
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 max-h-48 overflow-y-auto border rounded-md p-3 bg-gray-50">
+              {availableSuggestions.map((suggestion) => (
+                <button
+                  key={suggestion}
+                  type="button"
+                  onClick={() => addTagItem(field, suggestion)}
+                  className="flex items-center justify-start rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:border-gray-300 transition-colors text-left">
+                  <Plus className="mr-2 h-3 w-3 text-gray-400" />
+                  {suggestion}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+        
+        {currentTags.length > 0 && (
+          <p className="text-sm text-green-600">
+            ✓ {currentTags.length} item{currentTags.length !== 1 ? 's' : ''} selected
+          </p>
+        )}
+      </div>
+    </div>
+  );
+};
+```
+
+**Required Helper Functions**:
+```typescript
+const addTagItem = (field: string, value: string) => {
+  if (value.trim()) {
+    const currentArray = formData[field as keyof typeof formData] as string[];
+    if (!currentArray.includes(value.trim())) {
+      updateFormData(field, [...currentArray, value.trim()]);
+    }
+  }
+};
+
+const removeTagItem = (field: string, item: string) => {
+  const currentArray = formData[field as keyof typeof formData] as string[];
+  updateFormData(field, currentArray.filter(i => i !== item));
+};
+
+const handleTagInput = (field: string, e: React.KeyboardEvent<HTMLInputElement>) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    const input = e.target as HTMLInputElement;
+    addTagItem(field, input.value);
+    input.value = '';
+  }
+};
+```
+
+#### 2. Enhanced Multi-Select Button Groups
+
+**When to Use**:
+- Fixed set of predefined options (5-12 choices)
+- Categories where multiple selections make sense
+- Visual button selection preferred over dropdowns
+
+**Implementation Pattern**:
+```typescript
+<div>
+  <Label className="mb-4 block text-base font-medium">
+    {label} {required && <span className="text-red-500">*</span>}
+  </Label>
+  <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
+    {options.map((option) => (
+      <button
+        key={option}
+        onClick={() => toggleArrayItem(field, option)}
+        className={cn(
+          "rounded-lg border-2 p-3 text-left transition-all text-sm",
+          selectedItems.includes(option)
+            ? "bg-muted border-black ring-2 ring-black"
+            : "border-gray-200 text-gray-700 hover:border-gray-300"
+        )}>
+        {option}
+      </button>
+    ))}
+  </div>
+</div>
+```
+
+#### 3. Comprehensive Suggestion Lists
+
+**Standard Categories for Common Fields**:
+
+**Technology/Platform Fields** (Minimum 50+ options):
+```typescript
+const technologySuggestions = [
+  // Frontend
+  "React", "Vue.js", "Angular", "Next.js", "Nuxt.js", "Svelte",
+  "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS",
+  
+  // Backend
+  "Node.js", "Python", "Java", "C#", ".NET", "PHP", "Ruby",
+  "Go", "Rust", "Scala", "Express.js", "FastAPI", "Spring Boot",
+  
+  // Databases
+  "PostgreSQL", "MySQL", "MongoDB", "Redis", "SQLite", "DynamoDB",
+  "Elasticsearch", "InfluxDB", "Neo4j", "Cassandra",
+  
+  // Cloud & Infrastructure
+  "AWS", "Azure", "Google Cloud", "Docker", "Kubernetes",
+  "Terraform", "Ansible", "Jenkins", "GitHub Actions", "GitLab CI",
+  
+  // Mobile
+  "React Native", "Flutter", "iOS Native", "Android Native",
+  "Ionic", "Xamarin", "Cordova"
+];
+```
+
+**Business Functions** (Minimum 40+ options):
+```typescript
+const businessFunctionSuggestions = [
+  // Core Business
+  "Strategic Planning", "Business Development", "Market Research",
+  "Competitive Analysis", "Partnership Management", "Vendor Management",
+  
+  // Operations
+  "Project Management", "Process Optimization", "Quality Assurance",
+  "Supply Chain Management", "Procurement", "Inventory Management",
+  
+  // Customer-Facing
+  "Customer Support", "Customer Success", "Sales", "Marketing",
+  "Account Management", "Business Analysis", "User Research",
+  
+  // Technology
+  "Software Development", "DevOps", "System Administration",
+  "Data Analytics", "Security Management", "IT Support",
+  
+  // Finance & Legal
+  "Financial Planning", "Budget Management", "Legal Compliance",
+  "Risk Management", "Audit & Review", "Contract Management"
+];
+```
+
+**Industry Categories** (Minimum 30+ options):
+```typescript
+const industrySuggestions = [
+  // Technology
+  "Software Development", "SaaS", "E-commerce", "Gaming",
+  "Cybersecurity", "AI/Machine Learning", "Blockchain", "IoT",
+  
+  // Traditional Industries
+  "Healthcare", "Finance", "Banking", "Insurance", "Real Estate",
+  "Manufacturing", "Retail", "Education", "Transportation",
+  "Energy", "Utilities", "Agriculture", "Construction",
+  
+  // Services
+  "Consulting", "Legal Services", "Accounting", "Marketing Services",
+  "Professional Services", "Entertainment", "Media", "Publishing",
+  
+  // Emerging
+  "Green Technology", "Renewable Energy", "Biotechnology",
+  "Space Technology", "Autonomous Vehicles", "Digital Health"
+];
+```
+
+#### 4. Form Validation Standards
+
+**Visual Feedback Pattern**:
+```typescript
+// Error states
+<Input 
+  className={cn(
+    "w-full",
+    hasError && "border-red-500 focus:border-red-500 focus:ring-red-500"
+  )}
+/>
+{hasError && (
+  <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
+    <AlertTriangle className="h-4 w-4" />
+    {errorMessage}
+  </p>
+)}
+
+// Success states
+{isValid && (
+  <p className="mt-1 text-sm text-green-600 flex items-center gap-1">
+    <Check className="h-4 w-4" />
+    Looks good!
+  </p>
+)}
+```
+
+**Required Field Indicators**:
+```typescript
+<Label className="text-base font-medium">
+  {label} <span className="text-red-500">*</span>
+</Label>
+```
+
+#### 5. Multi-Step Form Navigation
+
+**Step Indicator Pattern** (from Business Model Wizard):
+```typescript
+<div className="mb-6 flex items-center justify-between">
+  {steps.map((step) => (
+    <div key={step.id} className="relative flex flex-1 flex-col items-center">
+      <div
+        className={cn(
+          "flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold transition-colors duration-300",
+          currentStep > step.id
+            ? "bg-black text-white"
+            : currentStep === step.id
+              ? "bg-black text-white"
+              : "bg-gray-200 text-gray-600"
+        )}>
+        {currentStep > step.id ? <Check className="h-5 w-5" /> : step.id}
+      </div>
+      <div
+        className={cn(
+          "mt-2 text-center text-sm font-medium",
+          currentStep >= step.id ? "text-gray-800" : "text-gray-500"
+        )}>
+        {step.title}
+      </div>
+      {step.id < steps.length && (
+        <div
+          className={cn(
+            "absolute top-5 left-[calc(50%+20px)] h-0.5 w-[calc(100%-40px)] -translate-y-1/2 bg-gray-200 transition-colors duration-300",
+            currentStep > step.id && "bg-black"
+          )}
+        />
+      )}
+    </div>
+  ))}
+</div>
+```
+
+**Navigation Buttons**:
+```typescript
+<div className="flex items-center justify-between pt-6">
+  <Button
+    type="button"
+    variant="outline"
+    onClick={handlePrevious}
+    disabled={currentStep === 1}
+    className="flex items-center gap-2">
+    <ChevronLeft className="h-4 w-4" />
+    Previous
+  </Button>
+  
+  <Button
+    type="button"
+    onClick={handleNext}
+    disabled={!isStepValid}
+    className="flex items-center gap-2">
+    {currentStep === totalSteps ? 'Complete' : 'Next'}
+    {currentStep < totalSteps && <ChevronRight className="h-4 w-4" />}
+  </Button>
+</div>
+```
+
+---
+
+### Form Design Standards
+
+#### Layout Standards
+
+**Single Column Layout (Preferred)**:
+```typescript
+<div className="space-y-6">
+  {/* Each form section gets space-y-6 */}
+  <div className="space-y-4">
+    {/* Individual fields get space-y-4 */}
+    <FormField />
+    <FormField />
+  </div>
+</div>
+```
+
+**Two Column Layout (When Needed)**:
+```typescript
+<div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+  <FormField />
+  <FormField />
+</div>
+```
+
+#### Typography Standards
+
+**Form Labels**:
+```typescript
+<Label className="text-base font-medium">
+  Field Label {required && <span className="text-red-500">*</span>}
+</Label>
+```
+
+**Field Descriptions**:
+```typescript
+<p className="mt-1 text-sm text-gray-500">
+  Helper text explaining the field purpose
+</p>
+```
+
+**Section Headers**:
+```typescript
+<CardTitle className="flex items-center gap-2">
+  <Icon className="h-5 w-5 text-purple-600" />
+  Section Title
+</CardTitle>
+<CardDescription>
+  Section description with helpful context
+</CardDescription>
+```
+
+#### Color Standards
+
+**Tag Colors**:
+- Selected tags: `bg-black text-white`
+- Hover states: `hover:bg-gray-800`
+- Remove button hover: `hover:text-red-300`
+
+**Border Colors**:
+- Default: `border-gray-200`
+- Hover: `hover:border-gray-300`
+- Selected: `border-black ring-2 ring-black`
+- Error: `border-red-500`
+
+**Text Colors**:
+- Primary labels: `text-gray-800`
+- Secondary text: `text-gray-600`
+- Helper text: `text-gray-500`
+- Success: `text-green-600`
+- Error: `text-red-600`
+
+---
+
+### Implementation Checklist
+
+When creating forms, ensure:
+
+#### ✅ Required Elements
+- [ ] Tag-based inputs for multi-value fields
+- [ ] Comprehensive suggestion lists (20+ options minimum)
+- [ ] Custom entry capability (Enter key support)
+- [ ] Visual feedback for selections
+- [ ] Clear removal mechanisms
+- [ ] Proper validation with visual indicators
+- [ ] Mobile-responsive design
+- [ ] Keyboard accessibility
+- [ ] Loading states for async operations
+- [ ] Success/error messaging
+
+#### ✅ Visual Standards
+- [ ] Black tags for selected items
+- [ ] Consistent spacing (space-y-4, space-y-6)
+- [ ] Proper label typography (text-base font-medium)
+- [ ] Required field indicators (red asterisk)
+- [ ] Helper text styling (text-sm text-gray-500)
+- [ ] Hover states for interactive elements
+- [ ] Focus states for accessibility
+
+#### ✅ Data Handling
+- [ ] Array-based form state for multi-select
+- [ ] Duplicate prevention
+- [ ] Trim whitespace from entries
+- [ ] Proper TypeScript typing
+- [ ] Optimistic UI updates
+- [ ] Form persistence (if applicable)
+
+#### ❌ Avoid These Anti-Patterns
+- [ ] Single-select dropdowns for multi-value fields
+- [ ] Limited suggestion lists (< 10 options)
+- [ ] No custom entry options
+- [ ] Poor mobile experience
+- [ ] Lack of visual feedback
+- [ ] Custom styling that breaks design system
+- [ ] Poor keyboard navigation
+- [ ] Missing validation feedback
+
+---
+
+### LLM Instructions for Form Implementation
+
+When building forms, LLMs **MUST**:
+
+1. **Start with tag-based pattern** for any field that could have multiple values
+2. **Provide comprehensive suggestions** (minimum 20 options per field)
+3. **Maintain exact visual styling** from the Business Model Wizard reference
+4. **Include all accessibility features** (ARIA labels, keyboard navigation)
+5. **Implement proper validation** with visual feedback
+6. **Follow mobile-first responsive design**
+7. **Use only shadcn components** - no custom form libraries
+
+#### Example LLM Prompt Template:
+```
+Create a form field for [field description] using the tag-based multi-entry pattern.
+
+STRICT REQUIREMENTS:
+- Use the exact renderTagInput pattern from ReqArchitect Business Model Wizard
+- Provide 25+ relevant suggestions for [domain area]
+- Support custom entries via Enter key
+- Include proper validation and error states
+- Maintain black tag styling for selections (bg-black text-white)
+- Ensure mobile responsiveness
+- Include accessibility features (ARIA labels, keyboard navigation)
+- Use only shadcn components
+
+Field specifications:
+- Label: [field label]
+- Required: [yes/no]
+- Placeholder: [placeholder text]
+- Validation: [validation rules]
+```
+
+This form pattern is now the **OFFICIAL STANDARD** for all complex forms in ReqArchitect. Any deviation requires explicit approval and documentation.
