@@ -26,7 +26,8 @@ import {
   FileCheck,
   Target,
   CheckSquare,
-  Brain
+  Brain,
+  Layers
 } from "lucide-react";
 
 import {
@@ -164,6 +165,11 @@ const data = {
       title: "Governance & Risk",
       url: "/governance-risk",
       icon: FileCheck
+    },
+    {
+      title: "Enterprise Frameworks",
+      url: "/frameworks",
+      icon: Layers
     }
   ],
   navSecondary: [

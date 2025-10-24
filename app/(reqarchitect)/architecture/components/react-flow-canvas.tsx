@@ -27,6 +27,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Separator } from '@/components/ui/separator';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import {
   Users,
   Briefcase,
@@ -60,7 +61,12 @@ import {
   CheckCircle,
   AlertTriangle,
   Wand2,
+  Layers3,
+  Settings,
 } from 'lucide-react';
+
+// Define architecture frameworks
+type ArchitectureFramework = 'archimate' | 'c4' | 'togaf' | 'zachman';
 
 // Define node data interface
 interface NodeData {
@@ -571,6 +577,192 @@ const ARCHIMATE_ELEMENTS: ElementType[] = [
   },
 ];
 
+// C4 Model Elements
+const C4_ELEMENTS: ElementType[] = [
+  // C4 Level 1: System Context
+  {
+    id: "person",
+    name: "Person",
+    icon: Users,
+    color: "text-blue-800",
+    bgColor: "bg-blue-50",
+    borderColor: "border-blue-300",
+    category: "Context"
+  },
+  {
+    id: "software-system",
+    name: "Software System",
+    icon: Square,
+    color: "text-blue-800",
+    bgColor: "bg-blue-50",
+    borderColor: "border-blue-300",
+    category: "Context"
+  },
+  {
+    id: "external-system",
+    name: "External System",
+    icon: Square,
+    color: "text-gray-800",
+    bgColor: "bg-gray-50",
+    borderColor: "border-gray-300",
+    category: "Context"
+  },
+  
+  // C4 Level 2: Container
+  {
+    id: "web-application",
+    name: "Web Application",
+    icon: Monitor,
+    color: "text-green-800",
+    bgColor: "bg-green-50",
+    borderColor: "border-green-300",
+    category: "Container"
+  },
+  {
+    id: "mobile-app",
+    name: "Mobile App",
+    icon: Monitor,
+    color: "text-green-800",
+    bgColor: "bg-green-50",
+    borderColor: "border-green-300",
+    category: "Container"
+  },
+  {
+    id: "api",
+    name: "API",
+    icon: Circle,
+    color: "text-green-800",
+    bgColor: "bg-green-50",
+    borderColor: "border-green-300",
+    category: "Container"
+  },
+  {
+    id: "database",
+    name: "Database",
+    icon: Database,
+    color: "text-green-800",
+    bgColor: "bg-green-50",
+    borderColor: "border-green-300",
+    category: "Container"
+  },
+  {
+    id: "message-bus",
+    name: "Message Bus",
+    icon: ArrowRight,
+    color: "text-green-800",
+    bgColor: "bg-green-50",
+    borderColor: "border-green-300",
+    category: "Container"
+  },
+  
+  // C4 Level 3: Component
+  {
+    id: "controller",
+    name: "Controller",
+    icon: Square,
+    color: "text-purple-800",
+    bgColor: "bg-purple-50",
+    borderColor: "border-purple-300",
+    category: "Component"
+  },
+  {
+    id: "service",
+    name: "Service",
+    icon: Circle,
+    color: "text-purple-800",
+    bgColor: "bg-purple-50",
+    borderColor: "border-purple-300",
+    category: "Component"
+  },
+  {
+    id: "repository",
+    name: "Repository",
+    icon: Database,
+    color: "text-purple-800",
+    bgColor: "bg-purple-50",
+    borderColor: "border-purple-300",
+    category: "Component"
+  },
+  {
+    id: "facade",
+    name: "Facade",
+    icon: Square,
+    color: "text-purple-800",
+    bgColor: "bg-purple-50",
+    borderColor: "border-purple-300",
+    category: "Component"
+  },
+  
+  // C4 Deployment
+  {
+    id: "deployment-node",
+    name: "Deployment Node",
+    icon: Square,
+    color: "text-orange-800",
+    bgColor: "bg-orange-50",
+    borderColor: "border-orange-300",
+    category: "Deployment"
+  },
+  {
+    id: "infrastructure-node",
+    name: "Infrastructure Node",
+    icon: Monitor,
+    color: "text-orange-800",
+    bgColor: "bg-orange-50",
+    borderColor: "border-orange-300",
+    category: "Deployment"
+  },
+];
+
+// TOGAF Elements
+const TOGAF_ELEMENTS: ElementType[] = [
+  {
+    id: "business-service",
+    name: "Business Service",
+    icon: Circle,
+    color: "text-yellow-800",
+    bgColor: "bg-yellow-50",
+    borderColor: "border-yellow-300",
+    category: "Business"
+  },
+  {
+    id: "business-process",
+    name: "Business Process",
+    icon: ArrowRight,
+    color: "text-yellow-800",
+    bgColor: "bg-yellow-50",
+    borderColor: "border-yellow-300",
+    category: "Business"
+  },
+  {
+    id: "data-entity",
+    name: "Data Entity",
+    icon: Database,
+    color: "text-blue-800",
+    bgColor: "bg-blue-50",
+    borderColor: "border-blue-300",
+    category: "Data"
+  },
+  {
+    id: "application-service",
+    name: "Application Service",
+    icon: Circle,
+    color: "text-green-800",
+    bgColor: "bg-green-50",
+    borderColor: "border-green-300",
+    category: "Application"
+  },
+  {
+    id: "technology-service",
+    name: "Technology Service",
+    icon: Circle,
+    color: "text-purple-800",
+    bgColor: "bg-purple-50",
+    borderColor: "border-purple-300",
+    category: "Technology"
+  },
+];
+
 // Custom ArchiMate Node Component
 function ArchiMateNode({ data, selected }: { data: { type: string; label?: string; description?: string }; selected: boolean }) {
   const elementType = ARCHIMATE_ELEMENTS.find(el => el.id === data.type) || ARCHIMATE_ELEMENTS[0];
@@ -686,6 +878,36 @@ export function ReactFlowCanvas() {
   const [validationIssues, setValidationIssues] = useState<string[]>([]);
   const [aiSuggestions, setAiSuggestions] = useState<string[]>([]);
   const [isValidating, setIsValidating] = useState(false);
+  const [selectedFramework, setSelectedFramework] = useState<ArchitectureFramework>('archimate');
+
+  // Get elements based on selected framework
+  const getCurrentFrameworkElements = () => {
+    switch (selectedFramework) {
+      case 'c4':
+        return C4_ELEMENTS;
+      case 'togaf':
+        return TOGAF_ELEMENTS;
+      case 'archimate':
+      default:
+        return ARCHIMATE_ELEMENTS;
+    }
+  };
+
+  // Get categories based on selected framework
+  const getFrameworkCategories = () => {
+    switch (selectedFramework) {
+      case 'c4':
+        return ['Context', 'Container', 'Component', 'Deployment'];
+      case 'togaf':
+        return ['Business', 'Data', 'Application', 'Technology'];
+      case 'archimate':
+      default:
+        return ['Business', 'Application', 'Technology', 'Physical', 'Motivation', 'Strategy', 'Implementation'];
+    }
+  };
+
+  const currentCategories = getFrameworkCategories();
+  const currentElements = getCurrentFrameworkElements();
 
   // Handle edge creation with custom styling
   const onConnect = useCallback(
@@ -792,74 +1014,113 @@ export function ReactFlowCanvas() {
       issues.push(`${orphanedNodes.length} isolated elements found - consider connecting them to show relationships`);
     }
 
-    // Check layer violations (ArchiMate 3.2 best practices)
-    edges.forEach(edge => {
-      const sourceNode = nodes.find(n => n.id === edge.source);
-      const targetNode = nodes.find(n => n.id === edge.target);
+    // Framework-specific validation
+    if (selectedFramework === 'archimate') {
+      // ArchiMate 3.2 Layer relationship rules
+      edges.forEach(edge => {
+        const sourceNode = nodes.find(n => n.id === edge.source);
+        const targetNode = nodes.find(n => n.id === edge.target);
+        
+        if (sourceNode && targetNode) {
+          const sourceType = (sourceNode.data as NodeData).type;
+          const targetType = (targetNode.data as NodeData).type;
+          
+          // Business layer should not directly connect to Technology layer
+          if (sourceType?.includes('business') && targetType?.includes('technology')) {
+            issues.push(`ArchiMate 3.2 Violation: Direct connection between Business and Technology layers - consider adding Application layer`);
+          }
+          
+          // Physical elements should connect to Technology layer
+          if (sourceType?.includes('physical') && !targetType?.includes('technology')) {
+            issues.push(`ArchiMate 3.2 Violation: Physical elements should connect to Technology layer`);
+          }
+          
+          // Strategy elements should influence Motivation elements
+          if (sourceType?.includes('strategy') && !targetType?.includes('motivation') && !targetType?.includes('business')) {
+            issues.push(`ArchiMate 3.2 Violation: Strategy elements should influence Motivation or Business elements`);
+          }
+          
+          // Implementation elements should realize other layers
+          if (sourceType?.includes('implementation') && targetType?.includes('implementation')) {
+            issues.push(`ArchiMate 3.2 Violation: Implementation elements should realize elements from other layers`);
+          }
+        }
+      });
       
-      if (sourceNode && targetNode) {
-        const sourceType = (sourceNode.data as NodeData).type;
-        const targetType = (targetNode.data as NodeData).type;
-        
-        // ArchiMate 3.2 Layer relationship rules
-        // Business layer should not directly connect to Technology layer
-        if (sourceType?.includes('business') && targetType?.includes('technology')) {
-          issues.push(`ArchiMate 3.2 Violation: Direct connection between Business and Technology layers - consider adding Application layer`);
-        }
-        
-        // Physical elements should connect to Technology layer
-        if (sourceType?.includes('physical') && !targetType?.includes('technology')) {
-          issues.push(`ArchiMate 3.2 Violation: Physical elements should connect to Technology layer`);
-        }
-        
-        // Strategy elements should influence Motivation elements
-        if (sourceType?.includes('strategy') && !targetType?.includes('motivation') && !targetType?.includes('business')) {
-          issues.push(`ArchiMate 3.2 Violation: Strategy elements should influence Motivation or Business elements`);
-        }
-        
-        // Implementation elements should realize other layers
-        if (sourceType?.includes('implementation') && targetType?.includes('implementation')) {
-          issues.push(`ArchiMate 3.2 Violation: Implementation elements should realize elements from other layers`);
-        }
+      // Check for required ArchiMate elements
+      const businessNodes = nodes.filter(n => (n.data as NodeData).type?.includes('business'));
+      const applicationNodes = nodes.filter(n => (n.data as NodeData).type?.includes('application'));
+      const technologyNodes = nodes.filter(n => (n.data as NodeData).type?.includes('technology'));
+      
+      if (businessNodes.length === 0) {
+        suggestions.push("ArchiMate 3.2: Consider adding Business layer elements to represent organizational structure");
       }
-    });
-
-    // Check for required ArchiMate 3.2 relationships
-    const businessNodes = nodes.filter(n => (n.data as NodeData).type?.includes('business'));
-    const appNodes = nodes.filter(n => (n.data as NodeData).type?.includes('application'));
-    const techNodes = nodes.filter(n => (n.data as NodeData).type?.includes('technology'));
-    const motivationNodes = nodes.filter(n => (n.data as NodeData).type?.includes('goal') || (n.data as NodeData).type?.includes('principle') || (n.data as NodeData).type?.includes('requirement'));
-    const strategyNodes = nodes.filter(n => (n.data as NodeData).type?.includes('strategy') || (n.data as NodeData).type?.includes('capability'));
-
-    // Generate ArchiMate 3.2 compliant suggestions
-    if (motivationNodes.length === 0 && nodes.length > 2) {
-      suggestions.push("ArchiMate 3.2: Consider adding Motivation elements (Goals, Requirements, Principles) to define the 'why' of your architecture");
+      if (applicationNodes.length === 0 && businessNodes.length > 0 && technologyNodes.length > 0) {
+        suggestions.push("ArchiMate 3.2: Consider adding Application layer elements to bridge Business and Technology");
+      }
+      if (nodes.filter(n => (n.data as NodeData).type?.includes('motivation')).length === 0) {
+        suggestions.push("ArchiMate 3.2: Consider adding Motivation elements (Goals, Requirements) to capture why aspects");
+      }
+      if (nodes.filter(n => (n.data as NodeData).type?.includes('strategy')).length === 0 && businessNodes.length > 2) {
+        suggestions.push("ArchiMate 3.2: Consider adding Strategy elements (Capabilities, Resources) to bridge Motivation and Business layers");
+      }
+    } else if (selectedFramework === 'c4') {
+      // C4 Model validation
+      const contextNodes = nodes.filter(n => (n.data as NodeData).type?.includes('context'));
+      const containerNodes = nodes.filter(n => (n.data as NodeData).type?.includes('container'));
+      const componentNodes = nodes.filter(n => (n.data as NodeData).type?.includes('component'));
+      
+      if (contextNodes.length === 0) {
+        suggestions.push("C4 Model: Start with Context diagram showing system in environment");
+      }
+      if (containerNodes.length === 0 && contextNodes.length > 0) {
+        suggestions.push("C4 Model: Add Container diagram to show high-level technology choices");
+      }
+      if (componentNodes.length > 0 && containerNodes.length === 0) {
+        issues.push("C4 Model Violation: Component diagrams should build on Container diagrams");
+      }
+    } else if (selectedFramework === 'togaf') {
+      // TOGAF validation
+      const businessServices = nodes.filter(n => (n.data as NodeData).type?.includes('business'));
+      const dataEntities = nodes.filter(n => (n.data as NodeData).type?.includes('data'));
+      const applicationServices = nodes.filter(n => (n.data as NodeData).type?.includes('application'));
+      const technologyServices = nodes.filter(n => (n.data as NodeData).type?.includes('technology'));
+      
+      if (businessServices.length === 0) {
+        suggestions.push("TOGAF: Consider defining Business Architecture services and processes");
+      }
+      if (dataEntities.length === 0 && applicationServices.length > 0) {
+        suggestions.push("TOGAF: Consider adding Data Architecture entities and flows");
+      }
+      if (technologyServices.length === 0 && applicationServices.length > 0) {
+        suggestions.push("TOGAF: Consider defining Technology Architecture components");
+      }
     }
-    
-    if (businessNodes.length > 0 && motivationNodes.length === 0) {
-      suggestions.push("ArchiMate 3.2: Business elements should be motivated by Goals or Requirements from the Motivation layer");
-    }
-    
-    if (strategyNodes.length === 0 && businessNodes.length > 2) {
-      suggestions.push("ArchiMate 3.2: Consider adding Strategy elements (Capabilities, Resources) to bridge Motivation and Business layers");
-    }
-    
-    if (nodes.length > 5 && !nodes.some(n => (n.data as NodeData).type?.includes('implementation'))) {
-      suggestions.push("ArchiMate 3.2: Consider adding Implementation & Migration elements to show transformation path");
-    }
-
+    // Generate final validation report
     setValidationIssues(issues);
     setAiSuggestions(suggestions);
     setIsValidating(false);
-  }, [nodes, edges]);
+  }, [nodes, edges, selectedFramework]);
 
   // Auto-generate documentation
   const generateDocumentation = useCallback(() => {
+    const frameworkName = {
+      'archimate': 'ArchiMate 3.2',
+      'c4': 'C4 Model',
+      'togaf': 'TOGAF',
+      'zachman': 'Zachman Framework'
+    }[selectedFramework];
+
     const doc = {
-      title: "Enterprise Architecture Overview",
+      title: `Enterprise Architecture Overview (${frameworkName})`,
+      framework: frameworkName,
       elements: nodes.length,
       relationships: edges.length,
-      layers: {
+    };
+
+    let layerText = "";
+    if (selectedFramework === 'archimate') {
+      const layers = {
         business: nodes.filter(n => (n.data as NodeData).type?.includes('business')).length,
         application: nodes.filter(n => (n.data as NodeData).type?.includes('application')).length,
         technology: nodes.filter(n => (n.data as NodeData).type?.includes('technology')).length,
@@ -867,25 +1128,51 @@ export function ReactFlowCanvas() {
         motivation: nodes.filter(n => (n.data as NodeData).type?.includes('goal') || (n.data as NodeData).type?.includes('principle') || (n.data as NodeData).type?.includes('requirement') || (n.data as NodeData).type?.includes('stakeholder')).length,
         strategy: nodes.filter(n => (n.data as NodeData).type?.includes('capability') || (n.data as NodeData).type?.includes('resource') || (n.data as NodeData).type?.includes('course-of-action')).length,
         implementation: nodes.filter(n => (n.data as NodeData).type?.includes('work-package') || (n.data as NodeData).type?.includes('deliverable') || (n.data as NodeData).type?.includes('plateau')).length,
-      }
-    };
+      };
+      layerText = `## Layer Distribution (ArchiMate 3.2 Compliant)
+- Business Layer: ${layers.business} elements
+- Application Layer: ${layers.application} elements
+- Technology Layer: ${layers.technology} elements
+- Physical Layer: ${layers.physical} elements
+- Motivation Layer: ${layers.motivation} elements
+- Strategy Layer: ${layers.strategy} elements
+- Implementation Layer: ${layers.implementation} elements`;
+    } else if (selectedFramework === 'c4') {
+      const levels = {
+        context: nodes.filter(n => (n.data as NodeData).type?.includes('context')).length,
+        container: nodes.filter(n => (n.data as NodeData).type?.includes('container')).length,
+        component: nodes.filter(n => (n.data as NodeData).type?.includes('component')).length,
+        deployment: nodes.filter(n => (n.data as NodeData).type?.includes('deployment')).length,
+      };
+      layerText = `## C4 Model Levels
+- Context Level: ${levels.context} elements
+- Container Level: ${levels.container} elements
+- Component Level: ${levels.component} elements
+- Deployment Level: ${levels.deployment} elements`;
+    } else if (selectedFramework === 'togaf') {
+      const domains = {
+        business: nodes.filter(n => (n.data as NodeData).type?.includes('business')).length,
+        data: nodes.filter(n => (n.data as NodeData).type?.includes('data')).length,
+        application: nodes.filter(n => (n.data as NodeData).type?.includes('application')).length,
+        technology: nodes.filter(n => (n.data as NodeData).type?.includes('technology')).length,
+      };
+      layerText = `## TOGAF Architecture Domains
+- Business Architecture: ${domains.business} elements
+- Data Architecture: ${domains.data} elements
+- Application Architecture: ${domains.application} elements
+- Technology Architecture: ${domains.technology} elements`;
+    }
 
     const docText = `# ${doc.title}
 
 Generated on: ${new Date().toLocaleDateString()}
+Framework: ${doc.framework}
 
 ## Architecture Summary
 - Total Elements: ${doc.elements}
 - Total Relationships: ${doc.relationships}
 
-## Layer Distribution (ArchiMate 3.2 Compliant)
-- Business Layer: ${doc.layers.business} elements
-- Application Layer: ${doc.layers.application} elements
-- Technology Layer: ${doc.layers.technology} elements
-- Physical Layer: ${doc.layers.physical} elements
-- Motivation Layer: ${doc.layers.motivation} elements
-- Strategy Layer: ${doc.layers.strategy} elements
-- Implementation & Migration Layer: ${doc.layers.implementation} elements
+${layerText}
 
 ## Elements Detail
 ${nodes.map(node => `- ${(node.data as NodeData).label || 'Unnamed'}: ${(node.data as NodeData).description || 'No description'}`).join('\n')}
@@ -895,10 +1182,10 @@ ${nodes.map(node => `- ${(node.data as NodeData).label || 'Unnamed'}: ${(node.da
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'architecture-documentation.md';
+    a.download = `${selectedFramework}-architecture-documentation.md`;
     a.click();
     URL.revokeObjectURL(url);
-  }, [nodes, edges]);
+  }, [nodes, edges, selectedFramework]);
 
   // Clear diagram
   const clearDiagram = useCallback(() => {
@@ -908,6 +1195,54 @@ ${nodes.map(node => `- ${(node.data as NodeData).label || 'Unnamed'}: ${(node.da
     setValidationIssues([]);
     setAiSuggestions([]);
   }, [setNodes, setEdges]);
+
+  // Create sample diagram based on framework
+  const createSampleDiagram = useCallback(() => {
+    if (selectedFramework === 'archimate') {
+      // ArchiMate sample
+      const sampleNodes = [
+        { id: '1', position: { x: 100, y: 100 }, data: { type: 'business-actor', label: 'Customer', description: 'External customer' }, type: 'customNode' },
+        { id: '2', position: { x: 300, y: 100 }, data: { type: 'business-service', label: 'Order Service', description: 'Online ordering service' }, type: 'customNode' },
+        { id: '3', position: { x: 500, y: 100 }, data: { type: 'application-service', label: 'Order App', description: 'Order management application' }, type: 'customNode' },
+        { id: '4', position: { x: 700, y: 100 }, data: { type: 'technology-service', label: 'Database', description: 'Order database system' }, type: 'customNode' },
+      ];
+      const sampleEdges = [
+        { id: 'e1-2', source: '1', target: '2', markerEnd: { type: MarkerType.ArrowClosed } },
+        { id: 'e2-3', source: '2', target: '3', markerEnd: { type: MarkerType.ArrowClosed } },
+        { id: 'e3-4', source: '3', target: '4', markerEnd: { type: MarkerType.ArrowClosed } },
+      ];
+      setNodes(sampleNodes);
+      setEdges(sampleEdges);
+    } else if (selectedFramework === 'c4') {
+      // C4 Model sample
+      const sampleNodes = [
+        { id: '1', position: { x: 200, y: 50 }, data: { type: 'context-person', label: 'Customer', description: 'End user of the system' }, type: 'customNode' },
+        { id: '2', position: { x: 200, y: 200 }, data: { type: 'context-system', label: 'E-commerce System', description: 'Online shopping platform' }, type: 'customNode' },
+        { id: '3', position: { x: 500, y: 200 }, data: { type: 'context-system', label: 'Payment System', description: 'External payment processing' }, type: 'customNode' },
+      ];
+      const sampleEdges = [
+        { id: 'e1-2', source: '1', target: '2', markerEnd: { type: MarkerType.ArrowClosed } },
+        { id: 'e2-3', source: '2', target: '3', markerEnd: { type: MarkerType.ArrowClosed } },
+      ];
+      setNodes(sampleNodes);
+      setEdges(sampleEdges);
+    } else if (selectedFramework === 'togaf') {
+      // TOGAF sample
+      const sampleNodes = [
+        { id: '1', position: { x: 100, y: 100 }, data: { type: 'business-service', label: 'Customer Service', description: 'Customer support operations' }, type: 'customNode' },
+        { id: '2', position: { x: 300, y: 100 }, data: { type: 'data-entity', label: 'Customer Data', description: 'Customer information store' }, type: 'customNode' },
+        { id: '3', position: { x: 500, y: 100 }, data: { type: 'application-service', label: 'CRM System', description: 'Customer relationship management' }, type: 'customNode' },
+        { id: '4', position: { x: 700, y: 100 }, data: { type: 'technology-service', label: 'Cloud Platform', description: 'Cloud infrastructure' }, type: 'customNode' },
+      ];
+      const sampleEdges = [
+        { id: 'e1-2', source: '1', target: '2', markerEnd: { type: MarkerType.ArrowClosed } },
+        { id: 'e2-3', source: '2', target: '3', markerEnd: { type: MarkerType.ArrowClosed } },
+        { id: 'e3-4', source: '3', target: '4', markerEnd: { type: MarkerType.ArrowClosed } },
+      ];
+      setNodes(sampleNodes);
+      setEdges(sampleEdges);
+    }
+  }, [selectedFramework, setNodes, setEdges]);
 
   return (
     <div className="h-screen flex bg-background">
@@ -921,23 +1256,30 @@ ${nodes.map(node => `- ${(node.data as NodeData).label || 'Unnamed'}: ${(node.da
         </div>
         <div className="flex-1 overflow-y-auto p-4">
           <Tabs defaultValue="Business" className="w-full">
+            {/* Dynamic tabs based on framework */}
             <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="Business">Business</TabsTrigger>
-              <TabsTrigger value="Application">Application</TabsTrigger>
-              <TabsTrigger value="Technology">Technology</TabsTrigger>
+              {currentCategories.slice(0, 3).map(category => (
+                <TabsTrigger key={category} value={category}>{category}</TabsTrigger>
+              ))}
             </TabsList>
-            <TabsList className="grid w-full grid-cols-3 mt-2">
-              <TabsTrigger value="Physical">Physical</TabsTrigger>
-              <TabsTrigger value="Motivation">Motivation</TabsTrigger>
-              <TabsTrigger value="Strategy">Strategy</TabsTrigger>
-            </TabsList>
-            <TabsList className="grid w-full grid-cols-1 mt-2">
-              <TabsTrigger value="Implementation">Implementation</TabsTrigger>
-            </TabsList>
+            {currentCategories.length > 3 && (
+              <TabsList className="grid w-full grid-cols-3 mt-2">
+                {currentCategories.slice(3, 6).map(category => (
+                  <TabsTrigger key={category} value={category}>{category}</TabsTrigger>
+                ))}
+              </TabsList>
+            )}
+            {currentCategories.length > 6 && (
+              <TabsList className="grid w-full grid-cols-1 mt-2">
+                {currentCategories.slice(6).map(category => (
+                  <TabsTrigger key={category} value={category}>{category}</TabsTrigger>
+                ))}
+              </TabsList>
+            )}
 
-            {["Business", "Application", "Technology", "Physical", "Motivation", "Strategy", "Implementation"].map(category => (
+            {currentCategories.map(category => (
               <TabsContent key={category} value={category} className="space-y-2 mt-4">
-                {ARCHIMATE_ELEMENTS
+                {currentElements
                   .filter(el => el.category === category)
                   .map(element => {
                     const IconComponent = element.icon;
@@ -976,6 +1318,36 @@ ${nodes.map(node => `- ${(node.data as NodeData).label || 'Unnamed'}: ${(node.da
               <Button variant="outline" size="sm">
                 <Redo className="w-4 h-4" />
               </Button>
+            </div>
+            
+            <Separator orientation="vertical" className="h-6" />
+            
+            <div className="flex items-center gap-2">
+              <Select value={selectedFramework} onValueChange={(value: ArchitectureFramework) => setSelectedFramework(value)}>
+                <SelectTrigger className="w-[180px] h-8">
+                  <SelectValue placeholder="Select Framework" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="archimate">
+                    <div className="flex items-center gap-2">
+                      <Layers3 className="h-4 w-4" />
+                      <span>ArchiMate 3.2</span>
+                    </div>
+                  </SelectItem>
+                  <SelectItem value="c4">
+                    <div className="flex items-center gap-2">
+                      <Settings className="h-4 w-4" />
+                      <span>C4 Model</span>
+                    </div>
+                  </SelectItem>
+                  <SelectItem value="togaf">
+                    <div className="flex items-center gap-2">
+                      <Settings className="h-4 w-4" />
+                      <span>TOGAF</span>
+                    </div>
+                  </SelectItem>
+                </SelectContent>
+              </Select>
             </div>
             
             <Separator orientation="vertical" className="h-6" />
@@ -1020,6 +1392,10 @@ ${nodes.map(node => `- ${(node.data as NodeData).label || 'Unnamed'}: ${(node.da
               >
                 <Trash2 className="w-4 h-4" />
                 Delete
+              </Button>
+              <Button variant="outline" size="sm" onClick={createSampleDiagram}>
+                <Wand2 className="w-4 h-4" />
+                Sample
               </Button>
               <Button variant="outline" size="sm" onClick={clearDiagram}>
                 Clear All
