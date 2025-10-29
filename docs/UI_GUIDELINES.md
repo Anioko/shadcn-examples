@@ -1486,3 +1486,123 @@ Field specifications:
 ```
 
 This form pattern is now the **OFFICIAL STANDARD** for all complex forms in ReqArchitect. Any deviation requires explicit approval and documentation.
+
+---
+
+## AI-Powered Canvas Button Pattern (OFFICIAL STANDARD)
+
+### Core Pattern for All Canvas Pages
+
+All canvas pages in ReqArchitect **MUST** implement the standardized AI-powered button pattern for 99.99% consistency across the platform.
+
+#### Required Button Structure
+
+**EXACT Implementation Pattern**:
+```typescript
+import { CanvasFormButton } from "~/components/canvas-form-button"
+import { Sparkles, ArrowRight } from 'lucide-react';
+
+// In canvas page component
+<CanvasFormButton 
+  canvasName="[CanvasType]"  // e.g., "Capability", "Strategy", "Risk"
+  formComponent={Create[CanvasType]CanvasCard}
+  onSuccess={() => {
+    window.location.reload();
+  }}
+/>
+```
+
+#### Button Visual Specifications
+
+**Icon Pattern**:
+- **Left Icon**: `Sparkles` (`h-4 w-4`) indicating AI-powered functionality
+- **Right Icon**: `ArrowRight` (`h-4 w-4`) indicating forward action
+- **Text Format**: "Add {CanvasName}" (no "Form" suffix)
+
+**Button Styling**:
+```typescript
+<Button variant="default" size="lg" className="flex items-center gap-2">
+  <Sparkles className="h-4 w-4" />
+  Add {canvasName}
+  <ArrowRight className="h-4 w-4" />
+</Button>
+```
+
+#### Page Header Integration
+
+**Standard Canvas Page Header**:
+```typescript
+<div className="flex items-center justify-between">
+  <div>
+    <h1 className="text-3xl font-bold">{CanvasName} Canvas</h1>
+    <p className="text-muted-foreground mt-2">
+      {Canvas-specific description}
+    </p>
+  </div>
+  <CanvasFormButton 
+    canvasName="{CanvasName}"
+    formComponent={Create{CanvasName}CanvasCard}
+    onSuccess={() => window.location.reload()}
+  />
+</div>
+```
+
+#### Mandatory Components for Canvas Pages
+
+1. **CanvasFormButton Component**: Standard AI-powered button wrapper
+2. **AI-Enhanced Form Component**: Must use AI-powered patterns like CreateCapabilityCanvasCard
+3. **Canvas Component**: Domain-specific canvas visualization (e.g., CapabilityCanvas, RiskCanvas)
+4. **Standard Tabs Structure**: Canvas view, Detail view, Analysis view
+
+#### Canvas Form Requirements
+
+All canvas form components **MUST**:
+- Use AI-powered multi-step workflow (2-4 steps maximum)
+- Include contextual AI suggestions and recommendations
+- Implement intelligent pre-filling based on industry/domain
+- Provide maturity assessment or gap analysis features
+- Use Brain/Sparkles icons to indicate AI functionality
+- Follow modal dialog pattern with proper sizing (`max-w-6xl max-h-[90vh]`)
+
+#### Strict Implementation Rules
+
+**✅ REQUIRED for ALL Canvas Pages**:
+- Sparkles + ArrowRight icon pattern
+- "Add {CanvasName}" text format (no "Form")
+- CanvasFormButton wrapper component
+- AI-enhanced form components
+- Modal dialog display
+- Consistent header layout
+- Standard tabs structure
+
+**❌ FORBIDDEN**:
+- Plus icon for AI-powered features
+- "Add {CanvasName} Form" text format
+- Generic CRUD forms without AI features
+- Non-modal form display
+- Custom button implementations
+- Inconsistent icon patterns
+
+#### Generator Template Requirements
+
+Canvas page generators **MUST** include:
+- Complete CanvasFormButton integration
+- Proper AI form component imports
+- Standard tabs structure with Canvas/Overview/Analysis views
+- Consistent data handling patterns
+- Proper TypeScript typing
+- Error handling and loading states
+
+#### Compliance Verification
+
+Before deployment, ALL canvas pages must verify:
+- [ ] Sparkles + ArrowRight button icons
+- [ ] "Add {CanvasName}" text format
+- [ ] CanvasFormButton component usage
+- [ ] AI-enhanced form component
+- [ ] Modal dialog functionality
+- [ ] Standard page header layout
+- [ ] Consistent tabs structure
+- [ ] Proper error handling
+
+This AI-powered canvas button pattern is now the **OFFICIAL STANDARD** for all canvas implementations in ReqArchitect. Any deviation requires explicit architectural approval and documentation.
