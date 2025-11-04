@@ -4,6 +4,8 @@ import { SiteHeader } from "../../dashboard/components/site-header"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Link from "next/link"
 import { getFrameworkKanbanConfig } from "@/lib/kanban-config"
+import { supportsRoadmap } from "@/lib/roadmap-config"
+import { supportsWorkflow } from "@/lib/workflow-config"
 
 export default async function FrameworkLayout({
   children,
@@ -15,6 +17,10 @@ export default async function FrameworkLayout({
   const { slug } = await params
   const config = getFrameworkKanbanConfig(slug)
   const frameworkName = config?.frameworkName || slug
+  
+  // Check which views are supported
+  const hasRoadmap = supportsRoadmap(slug)
+  const hasWorkflow = supportsWorkflow(slug)
 
   return (
     <SidebarProvider
@@ -34,12 +40,18 @@ export default async function FrameworkLayout({
             {/* Framework Navigation Tabs */}
             <div className="mb-6">
               <Tabs defaultValue="kanban" className="w-full">
-                <TabsList className="grid w-full max-w-md grid-cols-4">
+                <TabsList className="grid w-full max-w-2xl grid-cols-6">
                   <TabsTrigger value="overview" asChild>
                     <Link href={`/frameworks/${slug}`}>Overview</Link>
                   </TabsTrigger>
                   <TabsTrigger value="kanban" asChild>
                     <Link href={`/frameworks/${slug}/kanban`}>Kanban</Link>
+                  </TabsTrigger>
+                  <TabsTrigger value="roadmap" asChild={hasRoadmap} disabled={!hasRoadmap}>
+                    <Link href={`/frameworks/${slug}/roadmap`}>Roadmap</Link>
+                  </TabsTrigger>
+                  <TabsTrigger value="workflow" asChild={hasWorkflow} disabled={!hasWorkflow}>
+                    <Link href={`/frameworks/${slug}/workflow`}>Workflow</Link>
                   </TabsTrigger>
                   <TabsTrigger value="assessment" disabled>
                     Assessment
