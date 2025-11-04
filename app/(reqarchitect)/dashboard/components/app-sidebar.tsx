@@ -15,7 +15,11 @@ import {
   Layers,
   Briefcase,
   UserCog,
-  Calculator
+  Calculator,
+  Users,
+  Brain,
+  Code,
+  Webhook
 } from "lucide-react";
 
 import {
@@ -845,6 +849,144 @@ const navigationData: NavigationItem[] = [
     ]
   },
 
+  // Sales & CRM
+  {
+    id: "sales-crm",
+    label: "Sales & CRM",
+    icon: Users,
+    url: "/sales/dashboard",
+    children: [
+      { id: "contacts", label: "Contacts", url: "/sales/contacts/dashboard" },
+      { id: "companies", label: "Companies", url: "/sales/companies/dashboard" },
+      { id: "opportunities", label: "Opportunities", url: "/sales/opportunities/dashboard" },
+      { id: "activities", label: "Activities", url: "/sales/activities/dashboard" },
+      { id: "sales-pipeline", label: "Sales Pipeline", url: "/sales/pipeline/dashboard" },
+      { id: "lead-management", label: "Lead Management", url: "/sales/leads/dashboard" }
+    ]
+  },
+
+  // AI & Evaluation
+  {
+    id: "ai-evaluation",
+    label: "AI & Evaluation",
+    icon: Brain,
+    url: "/ai/dashboard",
+    children: [
+      { id: "ai-evaluations", label: "AI Evaluations", url: "/ai/evaluations/dashboard" },
+      { id: "model-performance", label: "Model Performance", url: "/ai/models/dashboard" },
+      { id: "test-scenarios", label: "Test Scenarios", url: "/ai/scenarios/dashboard" },
+      { id: "evaluation-metrics", label: "Evaluation Metrics", url: "/ai/metrics/dashboard" },
+      { id: "ai-reports", label: "AI Reports", url: "/ai/reports/dashboard" },
+      { id: "dataset-management", label: "Dataset Management", url: "/ai/datasets/dashboard" }
+    ]
+  },
+
+  // Code Generation
+  {
+    id: "code-generation",
+    label: "Code Generation",
+    icon: Code,
+    url: "/code/dashboard",
+    children: [
+      { id: "code-templates", label: "Code Templates", url: "/code/templates/dashboard" },
+      { id: "generators", label: "Generators", url: "/code/generators/dashboard" },
+      { id: "workflows", label: "Workflows", url: "/code/workflows/dashboard" },
+      { id: "generation-history", label: "Generation History", url: "/code/history/dashboard" },
+      { id: "code-quality", label: "Code Quality", url: "/code/quality/dashboard" },
+      { id: "documentation", label: "Documentation", url: "/code/docs/dashboard" }
+    ]
+  },
+
+  // Integrations
+  {
+    id: "integrations",
+    label: "Integrations",
+    icon: Webhook,
+    url: "/integrations/dashboard",
+    children: [
+      { id: "api-endpoints", label: "API Endpoints", url: "/integrations/apis/dashboard" },
+      { id: "webhooks", label: "Webhooks", url: "/integrations/webhooks/dashboard" },
+      { id: "data-connectors", label: "Data Connectors", url: "/integrations/connectors/dashboard" },
+      { id: "event-streams", label: "Event Streams", url: "/integrations/events/dashboard" },
+      { id: "integration-logs", label: "Integration Logs", url: "/integrations/logs/dashboard" },
+      { id: "api-documentation", label: "API Documentation", url: "/integrations/docs/dashboard" }
+    ]
+  },
+
+  // Enterprise Frameworks (Parent → Children with Kanban Workflows)
+  {
+    id: "agile-pm-capability",
+    label: "Agile & Project Management",
+    icon: Briefcase,
+    url: "/capabilities/agile-project-management",
+    children: [
+      { 
+        id: "scrum-framework", 
+        label: "Scrum", 
+        url: "/frameworks/scrum",
+        children: [
+          { id: "scrum-workflow", label: "Workflow (Kanban)", url: "/frameworks/scrum/kanban" }
+        ]
+      },
+      { 
+        id: "kanban-framework", 
+        label: "Kanban Method", 
+        url: "/frameworks/kanban",
+        children: [
+          { id: "kanban-workflow", label: "Workflow (Kanban)", url: "/frameworks/kanban/kanban" }
+        ]
+      },
+      { 
+        id: "safe-framework", 
+        label: "SAFe", 
+        url: "/frameworks/safe",
+        children: [
+          { id: "safe-workflow", label: "Workflow (Kanban)", url: "/frameworks/safe/kanban" }
+        ]
+      },
+      { 
+        id: "six-sigma-framework", 
+        label: "Six Sigma / DMAIC", 
+        url: "/frameworks/six-sigma",
+        children: [
+          { id: "six-sigma-workflow", label: "Workflow (Kanban)", url: "/frameworks/six-sigma/kanban" }
+        ]
+      },
+      { 
+        id: "less-framework", 
+        label: "LeSS", 
+        url: "/frameworks/less",
+        children: [
+          { id: "less-workflow", label: "Workflow (Kanban)", url: "/frameworks/less/kanban" }
+        ]
+      },
+      { 
+        id: "prince2-framework", 
+        label: "PRINCE2", 
+        url: "/frameworks/prince2",
+        children: [
+          { id: "prince2-workflow", label: "Workflow (Kanban)", url: "/frameworks/prince2/kanban" }
+        ]
+      },
+      { 
+        id: "pmbok-framework", 
+        label: "PMBOK", 
+        url: "/frameworks/pmbok",
+        children: [
+          { id: "pmbok-workflow", label: "Workflow (Kanban)", url: "/frameworks/pmbok/kanban" }
+        ]
+      },
+      { 
+        id: "lean-vsm-framework", 
+        label: "Lean / VSM", 
+        url: "/frameworks/lean-vsm",
+        children: [
+          { id: "lean-workflow", label: "Workflow (Kanban)", url: "/frameworks/lean-vsm/kanban" }
+        ]
+      },
+    ]
+  },
+
   // Cross-Cutting Features
   {
     id: "tech-stack",
@@ -1145,10 +1287,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenu>
         </SidebarGroup>
 
+        {/* Sales, AI, Code & Integrations Section */}
+        <SidebarGroup>
+          <SidebarMenu>
+            {navigationData.slice(8, 12).map((item) => (
+              <NavigationItemComponent key={item.id} item={item} level={0} />
+            ))}
+          </SidebarMenu>
+        </SidebarGroup>
+
         {/* Innovation & Customer Section */}
         <SidebarGroup>
           <SidebarMenu>
-            {navigationData.slice(8, 10).map((item) => (
+            {navigationData.slice(12, 14).map((item) => (
               <NavigationItemComponent key={item.id} item={item} level={0} />
             ))}
           </SidebarMenu>
@@ -1158,7 +1309,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarGroup>
           <SidebarGroupLabel>Administration</SidebarGroupLabel>
           <SidebarMenu>
-            {navigationData.slice(10).map((item) => (
+            {navigationData.slice(14).map((item) => (
               <NavigationItemComponent key={item.id} item={item} level={0} />
             ))}
           </SidebarMenu>
