@@ -1,20 +1,17 @@
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
-import { AppSidebar } from "../../dashboard/components/app-sidebar"
-import { SiteHeader } from "../../dashboard/components/site-header"
-import { getFrameworkKanbanConfig } from "@/lib/kanban-config"
+import { AppSidebar } from "../../../dashboard/components/app-sidebar"
+import { SiteHeader } from "../../../dashboard/components/site-header"
 import { getFrameworkDashboardConfig } from "@/lib/framework-config"
+import { Toaster } from "@/components/ui/toaster"
 
-export default async function FrameworkLayout({
+export default function ITIL4CapabilityMapLayout({
   children,
-  params,
 }: {
   children: React.ReactNode
-  params: Promise<{ slug: string }>
 }) {
-  const { slug } = await params
-  const config = getFrameworkKanbanConfig(slug)
+  const slug = 'itil4'
   const dashboardConfig = getFrameworkDashboardConfig(slug)
-  const frameworkName = dashboardConfig?.frameworkName || config?.frameworkName || slug
+  const frameworkName = dashboardConfig?.frameworkName || 'ITIL 4'
 
   return (
     <SidebarProvider
@@ -28,19 +25,17 @@ export default async function FrameworkLayout({
     >
       <AppSidebar variant="sidebar" />
       <SidebarInset>
-        <SiteHeader 
+        <SiteHeader
           title={`${frameworkName} Dashboard`}
           frameworkName={frameworkName}
           frameworkSlug={slug}
           grandchildren={dashboardConfig?.grandchildren}
         />
         <div className="flex flex-1 flex-col">
-          <div className="container mx-auto py-6">
-            {/* Page Content */}
-            {children}
-          </div>
+          {children}
         </div>
       </SidebarInset>
+      <Toaster />
     </SidebarProvider>
   )
 }

@@ -1,10 +1,9 @@
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
 import { AppSidebar } from "../../dashboard/components/app-sidebar"
 import { SiteHeader } from "../../dashboard/components/site-header"
-import { getFrameworkKanbanConfig } from "@/lib/kanban-config"
 import { getFrameworkDashboardConfig } from "@/lib/framework-config"
 
-export default async function FrameworkLayout({
+export default async function StrategyFrameworkLayout({
   children,
   params,
 }: {
@@ -12,9 +11,8 @@ export default async function FrameworkLayout({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const config = getFrameworkKanbanConfig(slug)
   const dashboardConfig = getFrameworkDashboardConfig(slug)
-  const frameworkName = dashboardConfig?.frameworkName || config?.frameworkName || slug
+  const frameworkName = dashboardConfig?.frameworkName || slug
 
   return (
     <SidebarProvider
@@ -28,7 +26,7 @@ export default async function FrameworkLayout({
     >
       <AppSidebar variant="sidebar" />
       <SidebarInset>
-        <SiteHeader 
+        <SiteHeader
           title={`${frameworkName} Dashboard`}
           frameworkName={frameworkName}
           frameworkSlug={slug}

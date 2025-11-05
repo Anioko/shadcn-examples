@@ -1,20 +1,17 @@
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
 import { AppSidebar } from "../../dashboard/components/app-sidebar"
 import { SiteHeader } from "../../dashboard/components/site-header"
-import { getFrameworkKanbanConfig } from "@/lib/kanban-config"
 import { getFrameworkDashboardConfig } from "@/lib/framework-config"
+import { Toaster } from "@/components/ui/toaster"
 
-export default async function FrameworkLayout({
+export default function CapabilityModelLayout({
   children,
-  params,
 }: {
   children: React.ReactNode
-  params: Promise<{ slug: string }>
 }) {
-  const { slug } = await params
-  const config = getFrameworkKanbanConfig(slug)
+  const slug = 'capability-model'
   const dashboardConfig = getFrameworkDashboardConfig(slug)
-  const frameworkName = dashboardConfig?.frameworkName || config?.frameworkName || slug
+  const frameworkName = dashboardConfig?.frameworkName || 'Capability Model'
 
   return (
     <SidebarProvider
@@ -28,7 +25,7 @@ export default async function FrameworkLayout({
     >
       <AppSidebar variant="sidebar" />
       <SidebarInset>
-        <SiteHeader 
+        <SiteHeader
           title={`${frameworkName} Dashboard`}
           frameworkName={frameworkName}
           frameworkSlug={slug}
@@ -41,6 +38,7 @@ export default async function FrameworkLayout({
           </div>
         </div>
       </SidebarInset>
+      <Toaster />
     </SidebarProvider>
   )
 }

@@ -72,52 +72,61 @@ const navigationData: NavigationItem[] = [
         id: "bmc",
         label: "Business Model Canvas",
         icon: Briefcase,
-        url: "/strategy/business-model-canvas/dashboard",
+        url: "/frameworks/business-model-canvas/dashboard",
         children: [
-          { id: "customer-segments", label: "Customer Segments", url: "/strategy/bmc/customer-segments/dashboard" },
-          { id: "value-propositions", label: "Value Propositions", url: "/strategy/bmc/value-propositions/dashboard" },
-          { id: "channels", label: "Channels", url: "/strategy/bmc/channels/dashboard" },
-          { id: "customer-relationships", label: "Customer Relationships", url: "/strategy/bmc/customer-relationships/dashboard" },
-          { id: "revenue-streams", label: "Revenue Streams", url: "/strategy/bmc/revenue-streams/dashboard" },
-          { id: "key-resources", label: "Key Resources", url: "/strategy/bmc/key-resources/dashboard" },
-          { id: "key-activities", label: "Key Activities", url: "/strategy/bmc/key-activities/dashboard" },
-          { id: "key-partnerships", label: "Key Partnerships", url: "/strategy/bmc/key-partnerships/dashboard" },
-          { id: "cost-structure", label: "Cost Structure", url: "/strategy/bmc/cost-structure/dashboard" }
+          { id: "canvas", label: "Canvas", url: "/canvases/business-model-canvas" },
+          { id: "key-partners", label: "Key Partners", url: "/frameworks/business-model-canvas/key-partners" },
+          { id: "key-activities", label: "Key Activities", url: "/frameworks/business-model-canvas/key-activities" },
+          { id: "key-resources", label: "Key Resources", url: "/frameworks/business-model-canvas/key-resources" },
+          { id: "value-propositions", label: "Value Propositions", url: "/frameworks/business-model-canvas/value-propositions" },
+          { id: "customer-relationships", label: "Customer Relationships", url: "/frameworks/business-model-canvas/customer-relationships" },
+          { id: "channels", label: "Channels", url: "/frameworks/business-model-canvas/channels" },
+          { id: "customer-segments", label: "Customer Segments", url: "/frameworks/business-model-canvas/customer-segments" },
+          { id: "cost-structure", label: "Cost Structure", url: "/frameworks/business-model-canvas/cost-structure" },
+          { id: "revenue-streams", label: "Revenue Streams", url: "/frameworks/business-model-canvas/revenue-streams" }
         ]
       },
       {
         id: "lean-canvas",
         label: "Lean Canvas",
-        url: "/strategy/lean-canvas/dashboard",
+        url: "/frameworks/lean-canvas/dashboard",
         children: [
-          { id: "problem", label: "Problem", url: "/strategy/lean-canvas/problem/dashboard" },
-          { id: "solution", label: "Solution", url: "/strategy/lean-canvas/solution/dashboard" },
-          { id: "key-metrics", label: "Key Metrics", url: "/strategy/lean-canvas/key-metrics/dashboard" },
-          { id: "unique-value-prop", label: "Unique Value Proposition", url: "/strategy/lean-canvas/uvp/dashboard" },
-          { id: "unfair-advantage", label: "Unfair Advantage", url: "/strategy/lean-canvas/unfair-advantage/dashboard" }
+          { id: "canvas", label: "Canvas", url: "/canvases/lean-canvas" },
+          { id: "problems", label: "Problems", url: "/frameworks/lean-canvas/problems" },
+          { id: "solutions", label: "Solutions", url: "/frameworks/lean-canvas/solutions" },
+          { id: "key-metrics", label: "Key Metrics", url: "/frameworks/lean-canvas/key-metrics" },
+          { id: "unique-value-propositions", label: "Unique Value Propositions", url: "/frameworks/lean-canvas/unique-value-propositions" },
+          { id: "unfair-advantages", label: "Unfair Advantages", url: "/frameworks/lean-canvas/unfair-advantages" },
+          { id: "channels", label: "Channels", url: "/frameworks/lean-canvas/channels" },
+          { id: "customer-segments", label: "Customer Segments", url: "/frameworks/lean-canvas/customer-segments" },
+          { id: "cost-structure", label: "Cost Structure", url: "/frameworks/lean-canvas/cost-structure" },
+          { id: "revenue-streams", label: "Revenue Streams", url: "/frameworks/lean-canvas/revenue-streams" }
         ]
       },
       {
         id: "value-proposition-canvas",
         label: "Value Proposition Canvas",
-        url: "/strategy/value-proposition-canvas/dashboard",
-        children: [
-          { id: "customer-jobs", label: "Customer Jobs", url: "/strategy/vpc/customer-jobs/dashboard" },
-          { id: "pains", label: "Pains", url: "/strategy/vpc/pains/dashboard" },
-          { id: "gains", label: "Gains", url: "/strategy/vpc/gains/dashboard" },
-          { id: "pain-relievers", label: "Pain Relievers", url: "/strategy/vpc/pain-relievers/dashboard" },
-          { id: "gain-creators", label: "Gain Creators", url: "/strategy/vpc/gain-creators/dashboard" }
-        ]
+        url: "/canvases/value-proposition-canvas"
+      },
+      {
+        id: "empathy-map",
+        label: "Empathy Map",
+        url: "/canvases/empathy-map"
+      },
+      {
+        id: "product-vision-board",
+        label: "Product Vision Board",
+        url: "/canvases/product-vision-board"
       },
       {
         id: "okr",
         label: "OKRs",
-        url: "/strategy/okrs/dashboard",
+        url: "/frameworks/okr/dashboard",
         children: [
-          { id: "company-objectives", label: "Company Objectives", url: "/strategy/okrs/company-objectives/dashboard" },
-          { id: "team-objectives", label: "Team Objectives", url: "/strategy/okrs/team-objectives/dashboard" },
-          { id: "individual-objectives", label: "Individual Objectives", url: "/strategy/okrs/individual-objectives/dashboard" },
-          { id: "key-results", label: "Key Results Tracking", url: "/strategy/okrs/key-results/dashboard" }
+          { id: "canvas", label: "Canvas", url: "/canvases/okr" },
+          { id: "objectives", label: "Objectives", url: "/frameworks/okr/objectives" },
+          { id: "key-results", label: "Key Results", url: "/frameworks/okr/key-results" },
+          { id: "initiatives", label: "Initiatives", url: "/frameworks/okr/initiatives" }
         ]
       },
       {
@@ -125,11 +134,11 @@ const navigationData: NavigationItem[] = [
         label: "Porter's Five Forces",
         url: "/strategy/porters-five-forces/dashboard",
         children: [
-          { id: "new-entrants", label: "Threat of New Entrants", url: "/strategy/porters/new-entrants/dashboard" },
-          { id: "suppliers", label: "Bargaining Power of Suppliers", url: "/strategy/porters/suppliers/dashboard" },
-          { id: "buyers", label: "Bargaining Power of Buyers", url: "/strategy/porters/buyers/dashboard" },
-          { id: "substitutes", label: "Threat of Substitutes", url: "/strategy/porters/substitutes/dashboard" },
-          { id: "rivalry", label: "Competitive Rivalry", url: "/strategy/porters/rivalry/dashboard" }
+          { id: "threat-new-entrants", label: "Threat of New Entrants", url: "/strategy/porters-five-forces/threat-new-entrants" },
+          { id: "supplier-power", label: "Bargaining Power of Suppliers", url: "/strategy/porters-five-forces/supplier-power" },
+          { id: "buyer-power", label: "Bargaining Power of Buyers", url: "/strategy/porters-five-forces/buyer-power" },
+          { id: "threat-substitutes", label: "Threat of Substitutes", url: "/strategy/porters-five-forces/threat-substitutes" },
+          { id: "competitive-rivalry", label: "Competitive Rivalry", url: "/strategy/porters-five-forces/competitive-rivalry" }
         ]
       },
       {
@@ -137,10 +146,10 @@ const navigationData: NavigationItem[] = [
         label: "SWOT Analysis",
         url: "/strategy/swot/dashboard",
         children: [
-          { id: "strengths", label: "Strengths", url: "/strategy/swot/strengths/dashboard" },
-          { id: "weaknesses", label: "Weaknesses", url: "/strategy/swot/weaknesses/dashboard" },
-          { id: "opportunities", label: "Opportunities", url: "/strategy/swot/opportunities/dashboard" },
-          { id: "threats", label: "Threats", url: "/strategy/swot/threats/dashboard" }
+          { id: "strengths", label: "Strengths", url: "/strategy/swot/strengths" },
+          { id: "weaknesses", label: "Weaknesses", url: "/strategy/swot/weaknesses" },
+          { id: "opportunities", label: "Opportunities", url: "/strategy/swot/opportunities" },
+          { id: "threats", label: "Threats", url: "/strategy/swot/threats" }
         ]
       },
       {
@@ -148,12 +157,12 @@ const navigationData: NavigationItem[] = [
         label: "PESTLE Analysis",
         url: "/strategy/pestle/dashboard",
         children: [
-          { id: "political", label: "Political", url: "/strategy/pestle/political/dashboard" },
-          { id: "economic", label: "Economic", url: "/strategy/pestle/economic/dashboard" },
-          { id: "social", label: "Social", url: "/strategy/pestle/social/dashboard" },
-          { id: "technological", label: "Technological", url: "/strategy/pestle/technological/dashboard" },
-          { id: "legal", label: "Legal", url: "/strategy/pestle/legal/dashboard" },
-          { id: "environmental", label: "Environmental", url: "/strategy/pestle/environmental/dashboard" }
+          { id: "political", label: "Political", url: "/strategy/pestle/political" },
+          { id: "economic", label: "Economic", url: "/strategy/pestle/economic" },
+          { id: "social", label: "Social", url: "/strategy/pestle/social" },
+          { id: "technological", label: "Technological", url: "/strategy/pestle/technological" },
+          { id: "legal", label: "Legal", url: "/strategy/pestle/legal" },
+          { id: "environmental", label: "Environmental", url: "/strategy/pestle/environmental" }
         ]
       },
       {
@@ -161,10 +170,10 @@ const navigationData: NavigationItem[] = [
         label: "Balanced Scorecard",
         url: "/strategy/balanced-scorecard/dashboard",
         children: [
-          { id: "financial", label: "Financial Perspective", url: "/strategy/bsc/financial/dashboard" },
-          { id: "customer", label: "Customer Perspective", url: "/strategy/bsc/customer/dashboard" },
-          { id: "internal-process", label: "Internal Process Perspective", url: "/strategy/bsc/internal-process/dashboard" },
-          { id: "learning-growth", label: "Learning & Growth Perspective", url: "/strategy/bsc/learning-growth/dashboard" }
+          { id: "financial", label: "Financial Perspective", url: "/strategy/balanced-scorecard/financial" },
+          { id: "customer", label: "Customer Perspective", url: "/strategy/balanced-scorecard/customer" },
+          { id: "internal-process", label: "Internal Process Perspective", url: "/strategy/balanced-scorecard/internal-process" },
+          { id: "learning-growth", label: "Learning & Growth Perspective", url: "/strategy/balanced-scorecard/learning-growth" }
         ]
       },
       {
@@ -172,10 +181,10 @@ const navigationData: NavigationItem[] = [
         label: "Ansoff Matrix",
         url: "/strategy/ansoff/dashboard",
         children: [
-          { id: "market-penetration", label: "Market Penetration", url: "/strategy/ansoff/market-penetration/dashboard" },
-          { id: "market-development", label: "Market Development", url: "/strategy/ansoff/market-development/dashboard" },
-          { id: "product-development", label: "Product Development", url: "/strategy/ansoff/product-development/dashboard" },
-          { id: "diversification", label: "Diversification", url: "/strategy/ansoff/diversification/dashboard" }
+          { id: "market-penetration", label: "Market Penetration", url: "/strategy/ansoff/market-penetration" },
+          { id: "market-development", label: "Market Development", url: "/strategy/ansoff/market-development" },
+          { id: "product-development", label: "Product Development", url: "/strategy/ansoff/product-development" },
+          { id: "diversification", label: "Diversification", url: "/strategy/ansoff/diversification" }
         ]
       },
       {
@@ -183,10 +192,10 @@ const navigationData: NavigationItem[] = [
         label: "Blue Ocean Strategy",
         url: "/strategy/blue-ocean/dashboard",
         children: [
-          { id: "eliminate", label: "Eliminate", url: "/strategy/blue-ocean/eliminate/dashboard" },
-          { id: "reduce", label: "Reduce", url: "/strategy/blue-ocean/reduce/dashboard" },
-          { id: "raise", label: "Raise", url: "/strategy/blue-ocean/raise/dashboard" },
-          { id: "create", label: "Create", url: "/strategy/blue-ocean/create/dashboard" }
+          { id: "eliminate", label: "Eliminate", url: "/strategy/blue-ocean/eliminate" },
+          { id: "reduce", label: "Reduce", url: "/strategy/blue-ocean/reduce" },
+          { id: "raise", label: "Raise", url: "/strategy/blue-ocean/raise" },
+          { id: "create", label: "Create", url: "/strategy/blue-ocean/create" }
         ]
       },
       {
@@ -194,13 +203,13 @@ const navigationData: NavigationItem[] = [
         label: "McKinsey 7S Framework",
         url: "/strategy/mckinsey-7s/dashboard",
         children: [
-          { id: "strategy", label: "Strategy", url: "/strategy/7s/strategy/dashboard" },
-          { id: "structure", label: "Structure", url: "/strategy/7s/structure/dashboard" },
-          { id: "systems", label: "Systems", url: "/strategy/7s/systems/dashboard" },
-          { id: "shared-values", label: "Shared Values", url: "/strategy/7s/shared-values/dashboard" },
-          { id: "style", label: "Style", url: "/strategy/7s/style/dashboard" },
-          { id: "staff", label: "Staff", url: "/strategy/7s/staff/dashboard" },
-          { id: "skills", label: "Skills", url: "/strategy/7s/skills/dashboard" }
+          { id: "strategy", label: "Strategy", url: "/strategy/mckinsey-7s/strategy" },
+          { id: "structure", label: "Structure", url: "/strategy/mckinsey-7s/structure" },
+          { id: "systems", label: "Systems", url: "/strategy/mckinsey-7s/systems" },
+          { id: "shared-values", label: "Shared Values", url: "/strategy/mckinsey-7s/shared-values" },
+          { id: "style", label: "Style", url: "/strategy/mckinsey-7s/style" },
+          { id: "staff", label: "Staff", url: "/strategy/mckinsey-7s/staff" },
+          { id: "skills", label: "Skills", url: "/strategy/mckinsey-7s/skills" }
         ]
       },
       {
@@ -208,10 +217,10 @@ const navigationData: NavigationItem[] = [
         label: "Wardley Mapping",
         url: "/strategy/wardley-mapping/dashboard",
         children: [
-          { id: "value-chain", label: "Value Chain Analysis", url: "/strategy/wardley/value-chain/dashboard" },
-          { id: "evolution", label: "Evolution Stages", url: "/strategy/wardley/evolution/dashboard" },
-          { id: "movement", label: "Strategic Movement", url: "/strategy/wardley/movement/dashboard" },
-          { id: "gameplay", label: "Gameplay Patterns", url: "/strategy/wardley/gameplay/dashboard" }
+          { id: "value-chain", label: "Value Chain", url: "/strategy/wardley-mapping/value-chain" },
+          { id: "evolution", label: "Evolution Stages", url: "/strategy/wardley-mapping/evolution" },
+          { id: "components", label: "Components", url: "/strategy/wardley-mapping/components" },
+          { id: "strategic-play", label: "Strategic Play", url: "/strategy/wardley-mapping/strategic-play" }
         ]
       }
     ]
@@ -228,170 +237,91 @@ const navigationData: NavigationItem[] = [
         id: "togaf",
         label: "TOGAF 10",
         icon: Layers,
-        url: "/ea/togaf/dashboard",
+        url: "/frameworks/togaf/dashboard",
         children: [
-          { id: "preliminary-phase", label: "Preliminary Phase", url: "/ea/togaf/preliminary/dashboard" },
-          { id: "architecture-vision", label: "Phase A: Architecture Vision", url: "/ea/togaf/vision/dashboard" },
-          { id: "business-architecture", label: "Phase B: Business Architecture", url: "/ea/togaf/business/dashboard" },
-          { id: "information-systems", label: "Phase C: Information Systems", url: "/ea/togaf/information-systems/dashboard" },
-          { id: "technology-architecture", label: "Phase D: Technology Architecture", url: "/ea/togaf/technology/dashboard" },
-          { id: "opportunities-solutions", label: "Phase E: Opportunities & Solutions", url: "/ea/togaf/opportunities/dashboard" },
-          { id: "migration-planning", label: "Phase F: Migration Planning", url: "/ea/togaf/migration/dashboard" },
-          { id: "implementation-governance", label: "Phase G: Implementation Governance", url: "/ea/togaf/implementation/dashboard" },
-          { id: "architecture-change", label: "Phase H: Architecture Change Management", url: "/ea/togaf/change/dashboard" },
-          { id: "requirements-management", label: "Requirements Management", url: "/ea/togaf/requirements/dashboard" }
+          { id: "kanban", label: "Kanban Board", url: "/frameworks/togaf/kanban" },
+          { id: "architecture-vision", label: "Phase A: Architecture Vision", url: "/frameworks/togaf/architecture-vision" },
+          { id: "business-architecture", label: "Phase B: Business Architecture", url: "/frameworks/togaf/business-architecture" },
+          { id: "information-systems", label: "Phase C: Information Systems", url: "/frameworks/togaf/information-systems" },
+          { id: "technology-architecture", label: "Phase D: Technology Architecture", url: "/frameworks/togaf/technology-architecture" },
+          { id: "opportunities-solutions", label: "Phase E: Opportunities & Solutions", url: "/frameworks/togaf/opportunities-solutions" },
+          { id: "migration-planning", label: "Phase F: Migration Planning", url: "/frameworks/togaf/migration-planning" },
+          { id: "implementation-governance", label: "Phase G: Implementation Governance", url: "/frameworks/togaf/implementation-governance" },
+          { id: "change-management", label: "Phase H: Architecture Change Management", url: "/frameworks/togaf/change-management" }
         ]
       },
       {
         id: "archimate",
         label: "ArchiMate 3.2",
-        url: "/ea/archimate/dashboard",
+        url: "/frameworks/archimate/dashboard",
         children: [
-          {
-            id: "strategy-layer",
-            label: "Strategy Layer",
-            url: "/ea/archimate/strategy/dashboard",
-            children: [
-              { id: "resources", label: "Resources", url: "/ea/archimate/strategy/resources/dashboard" },
-              { id: "capabilities", label: "Capabilities", url: "/ea/archimate/strategy/capabilities/dashboard" },
-              { id: "courses-of-action", label: "Courses of Action", url: "/ea/archimate/strategy/courses-of-action/dashboard" },
-              { id: "value-streams", label: "Value Streams", url: "/ea/archimate/strategy/value-streams/dashboard" }
-            ]
-          },
-          {
-            id: "business-layer",
-            label: "Business Layer",
-            url: "/ea/archimate/business/dashboard",
-            children: [
-              { id: "active-structure", label: "Active Structure Elements", url: "/ea/archimate/business/active-structure/dashboard" },
-              { id: "behavior", label: "Behavior Elements", url: "/ea/archimate/business/behavior/dashboard" },
-              { id: "passive-structure", label: "Passive Structure Elements", url: "/ea/archimate/business/passive-structure/dashboard" },
-              { id: "business-actors", label: "Business Actors", url: "/ea/archimate/business/actors/dashboard" },
-              { id: "business-roles", label: "Business Roles", url: "/ea/archimate/business/roles/dashboard" },
-              { id: "business-collaboration", label: "Business Collaboration", url: "/ea/archimate/business/collaboration/dashboard" },
-              { id: "business-processes", label: "Business Processes", url: "/ea/archimate/business/processes/dashboard" },
-              { id: "business-functions", label: "Business Functions", url: "/ea/archimate/business/functions/dashboard" },
-              { id: "business-interactions", label: "Business Interactions", url: "/ea/archimate/business/interactions/dashboard" },
-              { id: "business-events", label: "Business Events", url: "/ea/archimate/business/events/dashboard" },
-              { id: "business-services", label: "Business Services", url: "/ea/archimate/business/services/dashboard" },
-              { id: "business-objects", label: "Business Objects", url: "/ea/archimate/business/objects/dashboard" },
-              { id: "contracts", label: "Contracts", url: "/ea/archimate/business/contracts/dashboard" },
-              { id: "representations", label: "Representations", url: "/ea/archimate/business/representations/dashboard" }
-            ]
-          },
-          {
-            id: "application-layer",
-            label: "Application Layer",
-            url: "/ea/archimate/application/dashboard",
-            children: [
-              { id: "application-components", label: "Application Components", url: "/ea/archimate/application/components/dashboard" },
-              { id: "application-collaboration", label: "Application Collaboration", url: "/ea/archimate/application/collaboration/dashboard" },
-              { id: "application-interface", label: "Application Interface", url: "/ea/archimate/application/interface/dashboard" },
-              { id: "application-functions", label: "Application Functions", url: "/ea/archimate/application/functions/dashboard" },
-              { id: "application-interactions", label: "Application Interactions", url: "/ea/archimate/application/interactions/dashboard" },
-              { id: "application-processes", label: "Application Processes", url: "/ea/archimate/application/processes/dashboard" },
-              { id: "application-events", label: "Application Events", url: "/ea/archimate/application/events/dashboard" },
-              { id: "application-services", label: "Application Services", url: "/ea/archimate/application/services/dashboard" },
-              { id: "data-objects", label: "Data Objects", url: "/ea/archimate/application/data-objects/dashboard" }
-            ]
-          },
-          {
-            id: "technology-layer",
-            label: "Technology Layer",
-            url: "/ea/archimate/technology/dashboard",
-            children: [
-              { id: "nodes", label: "Nodes", url: "/ea/archimate/technology/nodes/dashboard" },
-              { id: "devices", label: "Devices", url: "/ea/archimate/technology/devices/dashboard" },
-              { id: "system-software", label: "System Software", url: "/ea/archimate/technology/system-software/dashboard" },
-              { id: "technology-collaboration", label: "Technology Collaboration", url: "/ea/archimate/technology/collaboration/dashboard" },
-              { id: "technology-interface", label: "Technology Interface", url: "/ea/archimate/technology/interface/dashboard" },
-              { id: "paths", label: "Paths", url: "/ea/archimate/technology/paths/dashboard" },
-              { id: "communication-networks", label: "Communication Networks", url: "/ea/archimate/technology/networks/dashboard" },
-              { id: "technology-functions", label: "Technology Functions", url: "/ea/archimate/technology/functions/dashboard" },
-              { id: "technology-processes", label: "Technology Processes", url: "/ea/archimate/technology/processes/dashboard" },
-              { id: "technology-interactions", label: "Technology Interactions", url: "/ea/archimate/technology/interactions/dashboard" },
-              { id: "technology-events", label: "Technology Events", url: "/ea/archimate/technology/events/dashboard" },
-              { id: "technology-services", label: "Technology Services", url: "/ea/archimate/technology/services/dashboard" },
-              { id: "artifacts", label: "Artifacts", url: "/ea/archimate/technology/artifacts/dashboard" }
-            ]
-          },
-          {
-            id: "physical-layer",
-            label: "Physical Layer",
-            url: "/ea/archimate/physical/dashboard",
-            children: [
-              { id: "equipment", label: "Equipment", url: "/ea/archimate/physical/equipment/dashboard" },
-              { id: "facilities", label: "Facilities", url: "/ea/archimate/physical/facilities/dashboard" },
-              { id: "distribution-networks", label: "Distribution Networks", url: "/ea/archimate/physical/distribution-networks/dashboard" },
-              { id: "materials", label: "Materials", url: "/ea/archimate/physical/materials/dashboard" }
-            ]
-          },
-          {
-            id: "implementation-migration",
-            label: "Implementation & Migration",
-            url: "/ea/archimate/migration/dashboard",
-            children: [
-              { id: "work-packages", label: "Work Packages", url: "/ea/archimate/migration/work-packages/dashboard" },
-              { id: "deliverables", label: "Deliverables", url: "/ea/archimate/migration/deliverables/dashboard" },
-              { id: "implementation-events", label: "Implementation Events", url: "/ea/archimate/migration/events/dashboard" },
-              { id: "plateaus", label: "Plateaus", url: "/ea/archimate/migration/plateaus/dashboard" },
-              { id: "gaps", label: "Gaps", url: "/ea/archimate/migration/gaps/dashboard" }
-            ]
-          },
-          {
-            id: "motivation-elements",
-            label: "Motivation Elements",
-            url: "/ea/archimate/motivation/dashboard",
-            children: [
-              { id: "stakeholders", label: "Stakeholders", url: "/ea/archimate/motivation/stakeholders/dashboard" },
-              { id: "drivers", label: "Drivers", url: "/ea/archimate/motivation/drivers/dashboard" },
-              { id: "assessments", label: "Assessments", url: "/ea/archimate/motivation/assessments/dashboard" },
-              { id: "goals", label: "Goals", url: "/ea/archimate/motivation/goals/dashboard" },
-              { id: "outcomes", label: "Outcomes", url: "/ea/archimate/motivation/outcomes/dashboard" },
-              { id: "principles", label: "Principles", url: "/ea/archimate/motivation/principles/dashboard" },
-              { id: "requirements", label: "Requirements", url: "/ea/archimate/motivation/requirements/dashboard" },
-              { id: "constraints", label: "Constraints", url: "/ea/archimate/motivation/constraints/dashboard" },
-              { id: "meaning", label: "Meaning", url: "/ea/archimate/motivation/meaning/dashboard" },
-              { id: "value", label: "Value", url: "/ea/archimate/motivation/value/dashboard" }
-            ]
-          }
+          { id: "strategy-layer", label: "Strategy Layer", url: "/frameworks/archimate/strategy-layer" },
+          { id: "business-layer", label: "Business Layer", url: "/frameworks/archimate/business-layer" },
+          { id: "application-layer", label: "Application Layer", url: "/frameworks/archimate/application-layer" },
+          { id: "technology-layer", label: "Technology Layer", url: "/frameworks/archimate/technology-layer" },
+          { id: "physical-layer", label: "Physical Layer", url: "/frameworks/archimate/physical-layer" },
+          { id: "implementation-migration", label: "Implementation & Migration", url: "/frameworks/archimate/implementation-migration" }
         ]
       },
       {
         id: "zachman",
         label: "Zachman Framework",
-        url: "/ea/zachman/dashboard",
+        url: "/frameworks/zachman/dashboard",
         children: [
-          { id: "contextual", label: "Contextual (Planner's View)", url: "/ea/zachman/contextual/dashboard" },
-          { id: "conceptual", label: "Conceptual (Owner's View)", url: "/ea/zachman/conceptual/dashboard" },
-          { id: "logical", label: "Logical (Designer's View)", url: "/ea/zachman/logical/dashboard" },
-          { id: "physical", label: "Physical (Builder's View)", url: "/ea/zachman/physical/dashboard" },
-          { id: "detailed", label: "Detailed (Subcontractor's View)", url: "/ea/zachman/detailed/dashboard" }
+          { id: "contextual", label: "Contextual (Planner's View)", url: "/frameworks/zachman/contextual" },
+          { id: "conceptual", label: "Conceptual (Owner's View)", url: "/frameworks/zachman/conceptual" },
+          { id: "logical", label: "Logical (Designer's View)", url: "/frameworks/zachman/logical" },
+          { id: "physical", label: "Physical (Builder's View)", url: "/frameworks/zachman/physical" },
+          { id: "detailed", label: "Detailed (Subcontractor's View)", url: "/frameworks/zachman/detailed" }
         ]
       },
       {
-        id: "sabsa",
-        label: "SABSA",
-        url: "/ea/sabsa/dashboard",
+        id: "capability-model",
+        label: "Capability Model",
+        url: "/frameworks/capability-model/dashboard",
         children: [
-          { id: "contextual", label: "Contextual (Business View)", url: "/ea/sabsa/contextual/dashboard" },
-          { id: "conceptual", label: "Conceptual (Architect's View)", url: "/ea/sabsa/conceptual/dashboard" },
-          { id: "logical", label: "Logical (Designer's View)", url: "/ea/sabsa/logical/dashboard" },
-          { id: "physical", label: "Physical (Builder's View)", url: "/ea/sabsa/physical/dashboard" },
-          { id: "component", label: "Component (Tradesman's View)", url: "/ea/sabsa/component/dashboard" },
-          { id: "operational", label: "Operational (Facilities Manager View)", url: "/ea/sabsa/operational/dashboard" }
+          { id: "capability-map", label: "Capability Map", url: "/frameworks/capability-model/capability-map" },
+          { id: "workflow", label: "Workflow Designer", url: "/frameworks/capability-model/workflow" }
+        ]
+      },
+      {
+        id: "application-capability-model",
+        label: "Application Capability Model",
+        url: "/frameworks/application-capability-model/dashboard",
+        children: [
+          { id: "capability-map", label: "Capability Map", url: "/frameworks/application-capability-model/capability-map" },
+          { id: "workflow", label: "Workflow Designer", url: "/frameworks/application-capability-model/workflow" }
+        ]
+      },
+      {
+        id: "genai",
+        label: "IBM Gen AI Capability Model",
+        url: "/frameworks/genai/capability-map",
+        children: [
+          { id: "capability-map", label: "Capability Map", url: "/frameworks/genai/capability-map" },
+        ]
+      },
+      {
+        id: "pcf",
+        label: "Process Classification Framework (PCF)",
+        url: "/frameworks/pcf/dashboard",
+        children: [
+          { id: "capability-map", label: "Capability Map", url: "/frameworks/pcf/capability-map" },
+          { id: "operating-processes", label: "Operating Processes", url: "/frameworks/pcf/operating-processes" },
+          { id: "management-processes", label: "Management & Support Processes", url: "/frameworks/pcf/management-processes" }
         ]
       },
       {
         id: "feaf",
         label: "Federal Enterprise Architecture (FEAF)",
-        url: "/ea/feaf/dashboard",
+        url: "/frameworks/feaf/dashboard",
         children: [
-          { id: "business-reference", label: "Business Reference Model", url: "/ea/feaf/business-reference/dashboard" },
-          { id: "service-component", label: "Service Component Reference Model", url: "/ea/feaf/service-component/dashboard" },
-          { id: "technical-reference", label: "Technical Reference Model", url: "/ea/feaf/technical-reference/dashboard" },
-          { id: "data-reference", label: "Data Reference Model", url: "/ea/feaf/data-reference/dashboard" },
-          { id: "performance-reference", label: "Performance Reference Model", url: "/ea/feaf/performance-reference/dashboard" }
+          { id: "capability-map", label: "Capability Map", url: "/frameworks/feaf/capability-map" },
+          { id: "prm", label: "Performance Reference Model", url: "/frameworks/feaf/prm" },
+          { id: "brm", label: "Business Reference Model", url: "/frameworks/feaf/brm" },
+          { id: "srm", label: "Service Component Reference Model", url: "/frameworks/feaf/srm" },
+          { id: "drm", label: "Data Reference Model", url: "/frameworks/feaf/drm" },
+          { id: "trm", label: "Technical Reference Model", url: "/frameworks/feaf/trm" }
         ]
       }
     ]
@@ -409,97 +339,112 @@ const navigationData: NavigationItem[] = [
         id: "iso-27001",
         label: "ISO/IEC 27001:2022",
         icon: Shield,
-        url: "/risk/iso-27001/dashboard",
+        url: "/frameworks/iso-27001/dashboard",
         children: [
-          { id: "context-organization", label: "Clause 4: Context of Organization", url: "/risk/iso-27001/context/dashboard" },
-          { id: "leadership", label: "Clause 5: Leadership", url: "/risk/iso-27001/leadership/dashboard" },
-          { id: "planning", label: "Clause 6: Planning", url: "/risk/iso-27001/planning/dashboard" },
-          { id: "support", label: "Clause 7: Support", url: "/risk/iso-27001/support/dashboard" },
-          { id: "operation", label: "Clause 8: Operation", url: "/risk/iso-27001/operation/dashboard" },
-          { id: "performance-evaluation", label: "Clause 9: Performance Evaluation", url: "/risk/iso-27001/performance/dashboard" },
-          { id: "improvement", label: "Clause 10: Improvement", url: "/risk/iso-27001/improvement/dashboard" },
-          {
-            id: "annex-a",
-            label: "Annex A Controls",
-            url: "/risk/iso-27001/annex-a/dashboard",
-            children: [
-              { id: "organizational-controls", label: "Organizational Controls (37)", url: "/risk/iso-27001/annex-a/organizational/dashboard" },
-              { id: "people-controls", label: "People Controls (8)", url: "/risk/iso-27001/annex-a/people/dashboard" },
-              { id: "physical-controls", label: "Physical Controls (14)", url: "/risk/iso-27001/annex-a/physical/dashboard" },
-              { id: "technological-controls", label: "Technological Controls (34)", url: "/risk/iso-27001/annex-a/technological/dashboard" }
-            ]
-          }
+          { id: "capability-map", label: "Capability Map", url: "/frameworks/iso-27001/capability-map" },
+          { id: "context-organization", label: "Context of Organization", url: "/frameworks/iso-27001/context-organization" },
+          { id: "leadership", label: "Leadership", url: "/frameworks/iso-27001/leadership" },
+          { id: "planning", label: "Planning", url: "/frameworks/iso-27001/planning" },
+          { id: "support", label: "Support", url: "/frameworks/iso-27001/support" },
+          { id: "operation", label: "Operation", url: "/frameworks/iso-27001/operation" },
+          { id: "performance-evaluation", label: "Performance Evaluation", url: "/frameworks/iso-27001/performance-evaluation" },
+          { id: "improvement", label: "Improvement", url: "/frameworks/iso-27001/improvement" },
+          { id: "organizational-controls", label: "Organizational Controls", url: "/frameworks/iso-27001/organizational-controls" },
+          { id: "people-controls", label: "People Controls", url: "/frameworks/iso-27001/people-controls" },
+          { id: "physical-controls", label: "Physical Controls", url: "/frameworks/iso-27001/physical-controls" },
+          { id: "technological-controls", label: "Technological Controls", url: "/frameworks/iso-27001/technological-controls" }
         ]
       },
       {
         id: "nist-csf",
         label: "NIST Cybersecurity Framework",
-        url: "/risk/nist-csf/dashboard",
+        url: "/frameworks/nist-csf/dashboard",
         children: [
-          { id: "govern", label: "Govern", url: "/risk/nist-csf/govern/dashboard" },
-          { id: "identify", label: "Identify", url: "/risk/nist-csf/identify/dashboard" },
-          { id: "protect", label: "Protect", url: "/risk/nist-csf/protect/dashboard" },
-          { id: "detect", label: "Detect", url: "/risk/nist-csf/detect/dashboard" },
-          { id: "respond", label: "Respond", url: "/risk/nist-csf/respond/dashboard" },
-          { id: "recover", label: "Recover", url: "/risk/nist-csf/recover/dashboard" }
+          { id: "capability-map", label: "Capability Map", url: "/frameworks/nist-csf/capability-map" },
+          { id: "govern", label: "Govern", url: "/frameworks/nist-csf/govern" },
+          { id: "identify", label: "Identify", url: "/frameworks/nist-csf/identify" },
+          { id: "protect", label: "Protect", url: "/frameworks/nist-csf/protect" },
+          { id: "detect", label: "Detect", url: "/frameworks/nist-csf/detect" },
+          { id: "respond", label: "Respond", url: "/frameworks/nist-csf/respond" },
+          { id: "recover", label: "Recover", url: "/frameworks/nist-csf/recover" }
         ]
       },
       {
         id: "cis-controls",
         label: "CIS Controls v8",
-        url: "/risk/cis-controls/dashboard",
+        url: "/frameworks/cis-controls/dashboard",
         children: [
-          { id: "ig1", label: "Implementation Group 1 (Basic)", url: "/risk/cis/ig1/dashboard" },
-          { id: "ig2", label: "Implementation Group 2 (Foundational)", url: "/risk/cis/ig2/dashboard" },
-          { id: "ig3", label: "Implementation Group 3 (Organizational)", url: "/risk/cis/ig3/dashboard" }
+          { id: "capability-map", label: "Capability Map", url: "/frameworks/cis-controls/capability-map" },
+          { id: "ig1", label: "Implementation Group 1 (Basic)", url: "/frameworks/cis-controls/ig1" },
+          { id: "ig2", label: "Implementation Group 2 (Foundational)", url: "/frameworks/cis-controls/ig2" },
+          { id: "ig3", label: "Implementation Group 3 (Organizational)", url: "/frameworks/cis-controls/ig3" }
         ]
       },
       {
         id: "soc2",
         label: "SOC 2 Type II",
-        url: "/risk/soc2/dashboard",
+        url: "/frameworks/soc2/dashboard",
         children: [
-          { id: "security", label: "Security", url: "/risk/soc2/security/dashboard" },
-          { id: "availability", label: "Availability", url: "/risk/soc2/availability/dashboard" },
-          { id: "confidentiality", label: "Confidentiality", url: "/risk/soc2/confidentiality/dashboard" }
+          { id: "capability-map", label: "Capability Map", url: "/frameworks/soc2/capability-map" },
+          { id: "security", label: "Security", url: "/frameworks/soc2/security" },
+          { id: "availability", label: "Availability", url: "/frameworks/soc2/availability" },
+          { id: "processing-integrity", label: "Processing Integrity", url: "/frameworks/soc2/processing-integrity" },
+          { id: "confidentiality", label: "Confidentiality", url: "/frameworks/soc2/confidentiality" },
+          { id: "privacy", label: "Privacy", url: "/frameworks/soc2/privacy" }
         ]
       },
       {
         id: "cobit-2019",
         label: "COBIT 2019",
-        url: "/risk/cobit/dashboard",
+        url: "/frameworks/cobit-2019/dashboard",
         children: [
-          { id: "governance-system", label: "Governance System", url: "/risk/cobit/governance-system/dashboard" },
-          { id: "governance-objectives", label: "Governance & Management Objectives", url: "/risk/cobit/governance-objectives/dashboard" },
-          { id: "design-factors", label: "Design Factors", url: "/risk/cobit/design-factors/dashboard" },
-          { id: "performance-mgmt", label: "Performance Management", url: "/risk/cobit/performance/dashboard" }
+          { id: "capability-map", label: "Capability Map", url: "/frameworks/cobit-2019/capability-map" },
+          { id: "governance-system", label: "Governance System", url: "/frameworks/cobit-2019/governance-system" },
+          { id: "governance-objectives", label: "Governance & Management Objectives", url: "/frameworks/cobit-2019/governance-objectives" },
+          { id: "design-factors", label: "Design Factors", url: "/frameworks/cobit-2019/design-factors" },
+          { id: "performance-mgmt", label: "Performance Management", url: "/frameworks/cobit-2019/performance-mgmt" }
         ]
       },
       {
         id: "gdpr",
         label: "GDPR Compliance",
-        url: "/risk/gdpr/dashboard",
+        url: "/frameworks/gdpr/dashboard",
         children: [
-          { id: "lawfulness", label: "Lawfulness, Fairness & Transparency", url: "/risk/gdpr/lawfulness/dashboard" },
-          { id: "purpose-limitation", label: "Purpose Limitation", url: "/risk/gdpr/purpose-limitation/dashboard" },
-          { id: "data-minimization", label: "Data Minimization", url: "/risk/gdpr/data-minimization/dashboard" },
-          { id: "accuracy", label: "Accuracy", url: "/risk/gdpr/accuracy/dashboard" },
-          { id: "storage-limitation", label: "Storage Limitation", url: "/risk/gdpr/storage-limitation/dashboard" },
-          { id: "integrity-confidentiality", label: "Integrity & Confidentiality", url: "/risk/gdpr/integrity/dashboard" },
-          { id: "accountability", label: "Accountability", url: "/risk/gdpr/accountability/dashboard" }
+          { id: "lawfulness", label: "Lawfulness, Fairness & Transparency", url: "/frameworks/gdpr/lawfulness" },
+          { id: "purpose-limitation", label: "Purpose Limitation", url: "/frameworks/gdpr/purpose-limitation" },
+          { id: "data-minimization", label: "Data Minimization", url: "/frameworks/gdpr/data-minimization" },
+          { id: "accuracy", label: "Accuracy", url: "/frameworks/gdpr/accuracy" },
+          { id: "storage-limitation", label: "Storage Limitation", url: "/frameworks/gdpr/storage-limitation" },
+          { id: "integrity-confidentiality", label: "Integrity & Confidentiality", url: "/frameworks/gdpr/integrity-confidentiality" },
+          { id: "accountability", label: "Accountability", url: "/frameworks/gdpr/accountability" }
         ]
       },
       {
         id: "pci-dss",
         label: "PCI DSS 4.0",
-        url: "/risk/pci-dss/dashboard",
+        url: "/frameworks/pci-dss/dashboard",
         children: [
-          { id: "secure-network", label: "Build & Maintain Secure Network", url: "/risk/pci-dss/secure-network/dashboard" },
-          { id: "protect-data", label: "Protect Account Data", url: "/risk/pci-dss/protect-data/dashboard" },
-          { id: "vulnerability-mgmt", label: "Maintain Vulnerability Management", url: "/risk/pci-dss/vulnerability/dashboard" },
-          { id: "access-controls", label: "Implement Strong Access Controls", url: "/risk/pci-dss/access-controls/dashboard" },
-          { id: "monitor-test", label: "Monitor & Test Networks", url: "/risk/pci-dss/monitor-test/dashboard" },
-          { id: "security-policy", label: "Maintain Information Security Policy", url: "/risk/pci-dss/security-policy/dashboard" }
+          { id: "secure-network", label: "Build & Maintain Secure Network", url: "/frameworks/pci-dss/secure-network" },
+          { id: "protect-data", label: "Protect Account Data", url: "/frameworks/pci-dss/protect-data" },
+          { id: "vulnerability-mgmt", label: "Maintain Vulnerability Management", url: "/frameworks/pci-dss/vulnerability-mgmt" },
+          { id: "access-controls", label: "Implement Strong Access Controls", url: "/frameworks/pci-dss/access-controls" },
+          { id: "monitor-test", label: "Monitor & Test Networks", url: "/frameworks/pci-dss/monitor-test" },
+          { id: "security-policy", label: "Maintain Information Security Policy", url: "/frameworks/pci-dss/security-policy" }
+        ]
+      },
+      {
+        id: "sabsa",
+        label: "SABSA Security Architecture",
+        url: "/frameworks/sabsa/dashboard",
+        children: [
+          { id: "kanban", label: "Kanban Board", url: "/frameworks/sabsa/kanban" },
+          { id: "capability-map", label: "Capability Map", url: "/frameworks/sabsa/capability-map" },
+          { id: "contextual", label: "Contextual Layer", url: "/frameworks/sabsa/contextual" },
+          { id: "conceptual", label: "Conceptual Layer", url: "/frameworks/sabsa/conceptual" },
+          { id: "logical", label: "Logical Layer", url: "/frameworks/sabsa/logical" },
+          { id: "physical", label: "Physical Layer", url: "/frameworks/sabsa/physical" },
+          { id: "component", label: "Component Layer", url: "/frameworks/sabsa/component" },
+          { id: "operational", label: "Operational Layer", url: "/frameworks/sabsa/operational" }
         ]
       },
       {
@@ -507,11 +452,12 @@ const navigationData: NavigationItem[] = [
         label: "COSO Framework",
         url: "/risk/coso/dashboard",
         children: [
-          { id: "control-environment", label: "Control Environment", url: "/risk/coso/control-environment/dashboard" },
-          { id: "risk-assessment", label: "Risk Assessment", url: "/risk/coso/risk-assessment/dashboard" },
-          { id: "control-activities", label: "Control Activities", url: "/risk/coso/control-activities/dashboard" },
-          { id: "information-communication", label: "Information & Communication", url: "/risk/coso/information-communication/dashboard" },
-          { id: "monitoring", label: "Monitoring Activities", url: "/risk/coso/monitoring/dashboard" }
+          { id: "capability-map", label: "Capability Map", url: "/risk/coso/capability-map" },
+          { id: "control-environment", label: "Control Environment", url: "/risk/coso/control-environment" },
+          { id: "risk-assessment", label: "Risk Assessment", url: "/risk/coso/risk-assessment" },
+          { id: "control-activities", label: "Control Activities", url: "/risk/coso/control-activities" },
+          { id: "information-communication", label: "Information & Communication", url: "/risk/coso/information-communication" },
+          { id: "monitoring", label: "Monitoring Activities", url: "/risk/coso/monitoring" }
         ]
       },
       {
@@ -519,11 +465,12 @@ const navigationData: NavigationItem[] = [
         label: "ISO 31000 Risk Management",
         url: "/risk/iso-31000/dashboard",
         children: [
-          { id: "risk-identification", label: "Risk Identification", url: "/risk/iso-31000/identification/dashboard" },
-          { id: "risk-analysis", label: "Risk Analysis", url: "/risk/iso-31000/analysis/dashboard" },
-          { id: "risk-evaluation", label: "Risk Evaluation", url: "/risk/iso-31000/evaluation/dashboard" },
-          { id: "risk-treatment", label: "Risk Treatment", url: "/risk/iso-31000/treatment/dashboard" },
-          { id: "monitoring-review", label: "Monitoring & Review", url: "/risk/iso-31000/monitoring-review/dashboard" }
+          { id: "capability-map", label: "Capability Map", url: "/risk/iso-31000/capability-map" },
+          { id: "risk-identification", label: "Risk Identification", url: "/risk/iso-31000/identification" },
+          { id: "risk-analysis", label: "Risk Analysis", url: "/risk/iso-31000/analysis" },
+          { id: "risk-evaluation", label: "Risk Evaluation", url: "/risk/iso-31000/evaluation" },
+          { id: "risk-treatment", label: "Risk Treatment", url: "/risk/iso-31000/treatment" },
+          { id: "monitoring-review", label: "Monitoring & Review", url: "/risk/iso-31000/monitoring-review" }
         ]
       },
       {
@@ -531,9 +478,9 @@ const navigationData: NavigationItem[] = [
         label: "Three Lines of Defense",
         url: "/risk/three-lines/dashboard",
         children: [
-          { id: "first-line", label: "First Line: Operational Management", url: "/risk/three-lines/first-line/dashboard" },
-          { id: "second-line", label: "Second Line: Risk Management & Compliance", url: "/risk/three-lines/second-line/dashboard" },
-          { id: "third-line", label: "Third Line: Internal Audit", url: "/risk/three-lines/third-line/dashboard" }
+          { id: "first-line", label: "First Line: Operational Management", url: "/risk/three-lines/first-line" },
+          { id: "second-line", label: "Second Line: Risk Management & Compliance", url: "/risk/three-lines/second-line" },
+          { id: "third-line", label: "Third Line: Internal Audit", url: "/risk/three-lines/third-line" }
         ]
       }
     ]
@@ -549,30 +496,26 @@ const navigationData: NavigationItem[] = [
       {
         id: "scrum",
         label: "Scrum",
-        url: "/business/scrum/dashboard",
+        url: "/frameworks/scrum/dashboard",
         children: [
-          { id: "product-backlog", label: "Product Backlog", url: "/business/scrum/backlog/dashboard" },
-          { id: "sprint-backlog", label: "Sprint Backlog", url: "/business/scrum/sprint-backlog/dashboard" },
-          { id: "increment", label: "Increment", url: "/business/scrum/increment/dashboard" },
-          { id: "definition-done", label: "Definition of Done", url: "/business/scrum/dod/dashboard" },
-          { id: "sprint-planning", label: "Sprint Planning", url: "/business/scrum/planning/dashboard" },
-          { id: "daily-scrum", label: "Daily Scrum", url: "/business/scrum/daily/dashboard" },
-          { id: "sprint-review", label: "Sprint Review", url: "/business/scrum/review/dashboard" },
-          { id: "sprint-retrospective", label: "Sprint Retrospective", url: "/business/scrum/retrospective/dashboard" },
-          { id: "product-owner", label: "Product Owner", url: "/business/scrum/product-owner/dashboard" },
-          { id: "scrum-master", label: "Scrum Master", url: "/business/scrum/scrum-master/dashboard" },
-          { id: "developers", label: "Developers", url: "/business/scrum/developers/dashboard" }
+          { id: "kanban", label: "Kanban Board", url: "/frameworks/scrum/kanban" },
+          { id: "product-backlog", label: "Product Backlog", url: "/frameworks/scrum/product-backlog" },
+          { id: "sprint-planning", label: "Sprint Planning", url: "/frameworks/scrum/sprint-planning" },
+          { id: "daily-scrum", label: "Daily Scrum", url: "/frameworks/scrum/daily-scrum" },
+          { id: "sprint-review", label: "Sprint Review", url: "/frameworks/scrum/sprint-review" },
+          { id: "sprint-retrospective", label: "Sprint Retrospective", url: "/frameworks/scrum/sprint-retrospective" }
         ]
       },
       {
         id: "safe",
         label: "SAFe 6.0",
-        url: "/business/safe/dashboard",
+        url: "/frameworks/safe/dashboard",
         children: [
-          { id: "essential", label: "Essential SAFe", url: "/business/safe/essential/dashboard" },
-          { id: "large-solution", label: "Large Solution SAFe", url: "/business/safe/large-solution/dashboard" },
-          { id: "portfolio", label: "Portfolio SAFe", url: "/business/safe/portfolio/dashboard" },
-          { id: "full", label: "Full SAFe", url: "/business/safe/full/dashboard" }
+          { id: "kanban", label: "Kanban Board", url: "/frameworks/safe/kanban" },
+          { id: "essential", label: "Essential SAFe", url: "/frameworks/safe/essential" },
+          { id: "large-solution", label: "Large Solution SAFe", url: "/frameworks/safe/large-solution" },
+          { id: "portfolio", label: "Portfolio SAFe", url: "/frameworks/safe/portfolio" },
+          { id: "full", label: "Full SAFe", url: "/frameworks/safe/full" }
         ]
       },
       {
@@ -580,11 +523,12 @@ const navigationData: NavigationItem[] = [
         label: "Six Sigma / DMAIC",
         url: "/business/six-sigma/dashboard",
         children: [
-          { id: "define", label: "Define", url: "/business/six-sigma/define/dashboard" },
-          { id: "measure", label: "Measure", url: "/business/six-sigma/measure/dashboard" },
-          { id: "analyze", label: "Analyze", url: "/business/six-sigma/analyze/dashboard" },
-          { id: "improve", label: "Improve", url: "/business/six-sigma/improve/dashboard" },
-          { id: "control", label: "Control", url: "/business/six-sigma/control/dashboard" }
+          { id: "kanban", label: "Kanban Board", url: "/business/six-sigma/kanban" },
+          { id: "define", label: "Define", url: "/business/six-sigma/define" },
+          { id: "measure", label: "Measure", url: "/business/six-sigma/measure" },
+          { id: "analyze", label: "Analyze", url: "/business/six-sigma/analyze" },
+          { id: "improve", label: "Improve", url: "/business/six-sigma/improve" },
+          { id: "control", label: "Control", url: "/business/six-sigma/control" }
         ]
       },
       {
@@ -592,25 +536,26 @@ const navigationData: NavigationItem[] = [
         label: "Lean Management",
         url: "/business/lean/dashboard",
         children: [
-          { id: "value-stream", label: "Value Stream Mapping", url: "/business/lean/value-stream/dashboard" },
-          { id: "5s", label: "5S Methodology", url: "/business/lean/5s/dashboard" },
-          { id: "kaizen", label: "Kaizen", url: "/business/lean/kaizen/dashboard" },
-          { id: "kanban", label: "Kanban", url: "/business/lean/kanban/dashboard" },
-          { id: "waste-elimination", label: "Waste Elimination", url: "/business/lean/waste-elimination/dashboard" }
+          { id: "kanban", label: "Kanban Board", url: "/business/lean/kanban" },
+          { id: "value-stream", label: "Value Stream Mapping", url: "/business/lean/value-stream" },
+          { id: "5s", label: "5S Methodology", url: "/business/lean/5s" },
+          { id: "kaizen", label: "Kaizen", url: "/business/lean/kaizen" },
+          { id: "waste-elimination", label: "Waste Elimination", url: "/business/lean/waste-elimination" }
         ]
       },
       {
         id: "iso-9001",
         label: "ISO 9001:2015",
-        url: "/business/iso-9001/dashboard",
+        url: "/frameworks/iso-9001/dashboard",
         children: [
-          { id: "context", label: "Context of Organization", url: "/business/iso-9001/context/dashboard" },
-          { id: "leadership", label: "Leadership", url: "/business/iso-9001/leadership/dashboard" },
-          { id: "planning", label: "Planning", url: "/business/iso-9001/planning/dashboard" },
-          { id: "support", label: "Support", url: "/business/iso-9001/support/dashboard" },
-          { id: "operation", label: "Operation", url: "/business/iso-9001/operation/dashboard" },
-          { id: "evaluation", label: "Performance Evaluation", url: "/business/iso-9001/evaluation/dashboard" },
-          { id: "improvement", label: "Improvement", url: "/business/iso-9001/improvement/dashboard" }
+          { id: "capability-map", label: "Capability Map", url: "/frameworks/iso-9001/capability-map" },
+          { id: "context", label: "Context of Organization", url: "/frameworks/iso-9001/context" },
+          { id: "leadership", label: "Leadership", url: "/frameworks/iso-9001/leadership" },
+          { id: "planning", label: "Planning", url: "/frameworks/iso-9001/planning" },
+          { id: "support", label: "Support", url: "/frameworks/iso-9001/support" },
+          { id: "operation", label: "Operation", url: "/frameworks/iso-9001/operation" },
+          { id: "performance", label: "Performance Evaluation", url: "/frameworks/iso-9001/performance" },
+          { id: "improvement", label: "Improvement", url: "/frameworks/iso-9001/improvement" }
         ]
       },
       {
@@ -618,12 +563,13 @@ const navigationData: NavigationItem[] = [
         label: "Kanban Method",
         url: "/business/kanban/dashboard",
         children: [
-          { id: "visualize-workflow", label: "Visualize Workflow", url: "/business/kanban/visualize/dashboard" },
-          { id: "limit-wip", label: "Limit Work in Progress", url: "/business/kanban/limit-wip/dashboard" },
-          { id: "manage-flow", label: "Manage Flow", url: "/business/kanban/manage-flow/dashboard" },
-          { id: "explicit-policies", label: "Make Policies Explicit", url: "/business/kanban/policies/dashboard" },
-          { id: "feedback-loops", label: "Implement Feedback Loops", url: "/business/kanban/feedback/dashboard" },
-          { id: "improve-collaboratively", label: "Improve Collaboratively", url: "/business/kanban/improve/dashboard" }
+          { id: "kanban", label: "Kanban Board", url: "/business/kanban/kanban" },
+          { id: "visualize-workflow", label: "Visualize Workflow", url: "/business/kanban/visualize" },
+          { id: "limit-wip", label: "Limit Work in Progress", url: "/business/kanban/limit-wip" },
+          { id: "manage-flow", label: "Manage Flow", url: "/business/kanban/manage-flow" },
+          { id: "explicit-policies", label: "Make Policies Explicit", url: "/business/kanban/policies" },
+          { id: "feedback-loops", label: "Implement Feedback Loops", url: "/business/kanban/feedback" },
+          { id: "improve-collaboratively", label: "Improve Collaboratively", url: "/business/kanban/improve" }
         ]
       },
       {
@@ -631,42 +577,41 @@ const navigationData: NavigationItem[] = [
         label: "LeSS (Large-Scale Scrum)",
         url: "/business/less/dashboard",
         children: [
-          { id: "less-framework", label: "LeSS Framework", url: "/business/less/framework/dashboard" },
-          { id: "less-huge", label: "LeSS Huge", url: "/business/less/huge/dashboard" },
-          { id: "organizational-structure", label: "Organizational Structure", url: "/business/less/org-structure/dashboard" },
-          { id: "product-owner", label: "Product Owner", url: "/business/less/product-owner/dashboard" },
-          { id: "sprint-planning", label: "Sprint Planning", url: "/business/less/sprint-planning/dashboard" }
+          { id: "kanban", label: "Kanban Board", url: "/business/less/kanban" },
+          { id: "less-framework", label: "LeSS Framework", url: "/business/less/framework" },
+          { id: "less-huge", label: "LeSS Huge", url: "/business/less/huge" },
+          { id: "organizational-structure", label: "Organizational Structure", url: "/business/less/org-structure" },
+          { id: "product-owner", label: "Product Owner", url: "/business/less/product-owner" },
+          { id: "sprint-planning", label: "Sprint Planning", url: "/business/less/sprint-planning" }
         ]
       },
       {
         id: "prince2",
         label: "PRINCE2",
-        url: "/business/prince2/dashboard",
+        url: "/frameworks/prince2/dashboard",
         children: [
-          { id: "starting-project", label: "Starting Up a Project", url: "/business/prince2/starting/dashboard" },
-          { id: "initiating-project", label: "Initiating a Project", url: "/business/prince2/initiating/dashboard" },
-          { id: "directing-project", label: "Directing a Project", url: "/business/prince2/directing/dashboard" },
-          { id: "controlling-stage", label: "Controlling a Stage", url: "/business/prince2/controlling/dashboard" },
-          { id: "managing-product-delivery", label: "Managing Product Delivery", url: "/business/prince2/product-delivery/dashboard" },
-          { id: "managing-stage-boundary", label: "Managing a Stage Boundary", url: "/business/prince2/stage-boundary/dashboard" },
-          { id: "closing-project", label: "Closing a Project", url: "/business/prince2/closing/dashboard" }
+          { id: "kanban", label: "Kanban Board", url: "/frameworks/prince2/kanban" },
+          { id: "starting", label: "Starting Up", url: "/frameworks/prince2/starting" },
+          { id: "initiating", label: "Initiating", url: "/frameworks/prince2/initiating" },
+          { id: "controlling", label: "Controlling", url: "/frameworks/prince2/controlling" },
+          { id: "managing-delivery", label: "Managing Delivery", url: "/frameworks/prince2/managing-delivery" },
+          { id: "closing", label: "Closing", url: "/frameworks/prince2/closing" }
         ]
       },
       {
         id: "pmbok",
         label: "PMBOK",
-        url: "/business/pmbok/dashboard",
+        url: "/frameworks/pmbok/dashboard",
         children: [
-          { id: "integration", label: "Integration Management", url: "/business/pmbok/integration/dashboard" },
-          { id: "scope", label: "Scope Management", url: "/business/pmbok/scope/dashboard" },
-          { id: "schedule", label: "Schedule Management", url: "/business/pmbok/schedule/dashboard" },
-          { id: "cost", label: "Cost Management", url: "/business/pmbok/cost/dashboard" },
-          { id: "quality", label: "Quality Management", url: "/business/pmbok/quality/dashboard" },
-          { id: "resource", label: "Resource Management", url: "/business/pmbok/resource/dashboard" },
-          { id: "communications", label: "Communications Management", url: "/business/pmbok/communications/dashboard" },
-          { id: "risk", label: "Risk Management", url: "/business/pmbok/risk/dashboard" },
-          { id: "procurement", label: "Procurement Management", url: "/business/pmbok/procurement/dashboard" },
-          { id: "stakeholder", label: "Stakeholder Management", url: "/business/pmbok/stakeholder/dashboard" }
+          { id: "kanban", label: "Kanban Board", url: "/frameworks/pmbok/kanban" },
+          { id: "stakeholders", label: "Stakeholders", url: "/frameworks/pmbok/stakeholders" },
+          { id: "team", label: "Team", url: "/frameworks/pmbok/team" },
+          { id: "development-approach", label: "Development Approach", url: "/frameworks/pmbok/development-approach" },
+          { id: "planning", label: "Planning", url: "/frameworks/pmbok/planning" },
+          { id: "project-work", label: "Project Work", url: "/frameworks/pmbok/project-work" },
+          { id: "delivery", label: "Delivery", url: "/frameworks/pmbok/delivery" },
+          { id: "measurement", label: "Measurement", url: "/frameworks/pmbok/measurement" },
+          { id: "uncertainty", label: "Uncertainty", url: "/frameworks/pmbok/uncertainty" }
         ]
       },
       {
@@ -674,11 +619,11 @@ const navigationData: NavigationItem[] = [
         label: "BPMN 2.0",
         url: "/business/bpmn/dashboard",
         children: [
-          { id: "events", label: "Events", url: "/business/bpmn/events/dashboard" },
-          { id: "activities", label: "Activities", url: "/business/bpmn/activities/dashboard" },
-          { id: "gateways", label: "Gateways", url: "/business/bpmn/gateways/dashboard" },
-          { id: "flows", label: "Sequence & Message Flows", url: "/business/bpmn/flows/dashboard" },
-          { id: "pools-lanes", label: "Pools & Lanes", url: "/business/bpmn/pools-lanes/dashboard" }
+          { id: "events", label: "Events", url: "/business/bpmn/events" },
+          { id: "activities", label: "Activities", url: "/business/bpmn/activities" },
+          { id: "gateways", label: "Gateways", url: "/business/bpmn/gateways" },
+          { id: "flows", label: "Sequence & Message Flows", url: "/business/bpmn/flows" },
+          { id: "pools-lanes", label: "Pools & Lanes", url: "/business/bpmn/pools-lanes" }
         ]
       },
       {
@@ -686,6 +631,7 @@ const navigationData: NavigationItem[] = [
         label: "Kotter's 8-Step Change",
         url: "/business/kotters-8-step/dashboard",
         children: [
+          { id: "kanban", label: "Kanban Board", url: "/frameworks/kotter-change/kanban" },
           { id: "create-urgency", label: "Create Urgency", url: "/business/kotter/urgency/dashboard" },
           { id: "build-coalition", label: "Build Guiding Coalition", url: "/business/kotter/coalition/dashboard" },
           { id: "form-vision", label: "Form Strategic Vision", url: "/business/kotter/vision/dashboard" },
@@ -701,6 +647,7 @@ const navigationData: NavigationItem[] = [
         label: "ADKAR Model",
         url: "/business/adkar/dashboard",
         children: [
+          { id: "kanban", label: "Kanban Board", url: "/frameworks/adkar/kanban" },
           { id: "awareness", label: "Awareness", url: "/business/adkar/awareness/dashboard" },
           { id: "desire", label: "Desire", url: "/business/adkar/desire/dashboard" },
           { id: "knowledge", label: "Knowledge", url: "/business/adkar/knowledge/dashboard" },
@@ -713,6 +660,7 @@ const navigationData: NavigationItem[] = [
         label: "Design Thinking",
         url: "/business/design-thinking/dashboard",
         children: [
+          { id: "kanban", label: "Kanban Board", url: "/frameworks/design-thinking/kanban" },
           { id: "empathize", label: "Empathize", url: "/business/design-thinking/empathize/dashboard" },
           { id: "define", label: "Define", url: "/business/design-thinking/define/dashboard" },
           { id: "ideate", label: "Ideate", url: "/business/design-thinking/ideate/dashboard" },
@@ -733,22 +681,14 @@ const navigationData: NavigationItem[] = [
       {
         id: "itil4",
         label: "ITIL 4",
-        url: "/it/itil4/dashboard",
+        url: "/frameworks/itil4/dashboard",
         children: [
-          { id: "service-value-system", label: "Service Value System", url: "/it/itil4/svs/dashboard" },
-          { id: "service-value-chain", label: "Service Value Chain", url: "/it/itil4/svc/dashboard" },
-          { id: "continual-improvement", label: "Continual Improvement", url: "/it/itil4/continual-improvement/dashboard" },
-          { id: "change-enablement", label: "Change Enablement", url: "/it/itil4/change-enablement/dashboard" },
-          { id: "incident-management", label: "Incident Management", url: "/it/itil4/incident/dashboard" },
-          { id: "problem-management", label: "Problem Management", url: "/it/itil4/problem/dashboard" },
-          { id: "service-request", label: "Service Request Management", url: "/it/itil4/service-request/dashboard" },
-          { id: "service-desk", label: "Service Desk", url: "/it/itil4/service-desk/dashboard" },
-          { id: "service-level", label: "Service Level Management", url: "/it/itil4/service-level/dashboard" },
-          { id: "availability", label: "Availability Management", url: "/it/itil4/availability/dashboard" },
-          { id: "capacity-performance", label: "Capacity & Performance Management", url: "/it/itil4/capacity/dashboard" },
-          { id: "monitoring-events", label: "Monitoring & Event Management", url: "/it/itil4/monitoring/dashboard" },
-          { id: "release-management", label: "Release Management", url: "/it/itil4/release/dashboard" },
-          { id: "deployment-management", label: "Deployment Management", url: "/it/itil4/deployment/dashboard" }
+          { id: "capability-map", label: "Capability Map", url: "/frameworks/itil4/capability-map" },
+          { id: "service-value-system", label: "Service Value System", url: "/frameworks/itil4/service-value-system" },
+          { id: "service-value-chain", label: "Service Value Chain", url: "/frameworks/itil4/service-value-chain" },
+          { id: "general-practices", label: "General Management Practices", url: "/frameworks/itil4/general-practices" },
+          { id: "service-practices", label: "Service Management Practices", url: "/frameworks/itil4/service-practices" },
+          { id: "technical-practices", label: "Technical Management Practices", url: "/frameworks/itil4/technical-practices" }
         ]
       },
       {
@@ -786,6 +726,7 @@ const navigationData: NavigationItem[] = [
         label: "CMMI (Capability Maturity Model Integration)",
         url: "/it/cmmi/dashboard",
         children: [
+          { id: "kanban", label: "Kanban Board", url: "/frameworks/cmmi/kanban" },
           { id: "level-1", label: "Level 1: Initial", url: "/it/cmmi/level-1/dashboard" },
           { id: "level-2", label: "Level 2: Managed", url: "/it/cmmi/level-2/dashboard" },
           { id: "level-3", label: "Level 3: Defined", url: "/it/cmmi/level-3/dashboard" },
@@ -798,6 +739,7 @@ const navigationData: NavigationItem[] = [
         label: "Azure Cloud Adoption Framework",
         url: "/it/azure-caf/dashboard",
         children: [
+          { id: "kanban", label: "Kanban Board", url: "/frameworks/azure-caf/kanban" },
           { id: "strategy", label: "Strategy", url: "/it/azure-caf/strategy/dashboard" },
           { id: "plan", label: "Plan", url: "/it/azure-caf/plan/dashboard" },
           { id: "ready", label: "Ready", url: "/it/azure-caf/ready/dashboard" },
@@ -823,6 +765,7 @@ const navigationData: NavigationItem[] = [
         label: "CRISP-DM",
         url: "/it/crisp-dm/dashboard",
         children: [
+          { id: "kanban", label: "Kanban Board", url: "/frameworks/crisp-dm/kanban" },
           { id: "business-understanding", label: "Business Understanding", url: "/it/crisp-dm/business-understanding/dashboard" },
           { id: "data-understanding", label: "Data Understanding", url: "/it/crisp-dm/data-understanding/dashboard" },
           { id: "data-preparation", label: "Data Preparation", url: "/it/crisp-dm/data-preparation/dashboard" },
@@ -836,6 +779,7 @@ const navigationData: NavigationItem[] = [
         label: "DevOps & DORA Metrics",
         url: "/it/devops-dora/dashboard",
         children: [
+          { id: "kanban", label: "Kanban Board", url: "/frameworks/devops/kanban" },
           { id: "deployment-frequency", label: "Deployment Frequency", url: "/it/devops/deployment-frequency/dashboard" },
           { id: "lead-time", label: "Lead Time for Changes", url: "/it/devops/lead-time/dashboard" },
           { id: "mttr", label: "Mean Time to Recovery", url: "/it/devops/mttr/dashboard" },
@@ -869,6 +813,7 @@ const navigationData: NavigationItem[] = [
         label: "FinOps Framework",
         url: "/cost/finops/dashboard",
         children: [
+          { id: "kanban", label: "Kanban Board", url: "/frameworks/finops/kanban" },
           { id: "inform", label: "Inform", url: "/cost/finops/inform/dashboard" },
           { id: "optimize", label: "Optimize", url: "/cost/finops/optimize/dashboard" },
           { id: "operate", label: "Operate", url: "/cost/finops/operate/dashboard" }
@@ -892,6 +837,7 @@ const navigationData: NavigationItem[] = [
         label: "Zero-Based Budgeting",
         url: "/cost/zbb/dashboard",
         children: [
+          { id: "kanban", label: "Kanban Board", url: "/frameworks/zbb/kanban" },
           { id: "decision-packages", label: "Decision Packages", url: "/cost/zbb/decision-packages/dashboard" },
           { id: "ranking", label: "Ranking & Prioritization", url: "/cost/zbb/ranking/dashboard" },
           { id: "allocation", label: "Resource Allocation", url: "/cost/zbb/allocation/dashboard" }
@@ -922,6 +868,7 @@ const navigationData: NavigationItem[] = [
         label: "Digital Transformation Framework",
         url: "/innovation/digital-transformation/dashboard",
         children: [
+          { id: "kanban", label: "Kanban Board", url: "/frameworks/digital-transformation/kanban" },
           { id: "customer-experience", label: "Customer Experience", url: "/innovation/dt/customer-experience/dashboard" },
           { id: "operational-processes", label: "Operational Processes", url: "/innovation/dt/operational-processes/dashboard" },
           { id: "business-models", label: "Business Models", url: "/innovation/dt/business-models/dashboard" }
@@ -961,6 +908,7 @@ const navigationData: NavigationItem[] = [
         label: "Customer Journey Mapping",
         url: "/customer/journey-mapping/dashboard",
         children: [
+          { id: "kanban", label: "Kanban Board", url: "/frameworks/customer-journey/kanban" },
           { id: "awareness", label: "Awareness", url: "/customer/journey/awareness/dashboard" },
           { id: "consideration", label: "Consideration", url: "/customer/journey/consideration/dashboard" },
           { id: "purchase", label: "Purchase", url: "/customer/journey/purchase/dashboard" },
@@ -1030,9 +978,14 @@ function NavigationItemComponent({
   level?: number;
 }) {
   const [isExpanded, setIsExpanded] = React.useState(level < 3); // Auto-expand first 3 levels to show grandchildren
+  const [mounted, setMounted] = React.useState(false);
   const hasChildren = item.children && item.children.length > 0;
   const { state } = useSidebar();
   const isCollapsed = state === "collapsed";
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Render leaf node (no children)
   if (!hasChildren) {
@@ -1057,6 +1010,30 @@ function NavigationItemComponent({
   }
 
   // Render parent node with children
+  // Prevent hydration mismatch by only rendering Collapsible after mount
+  if (!mounted) {
+    return (
+      <SidebarMenuItem>
+        <div className="relative flex items-center w-full">
+          <SidebarMenuButton
+            asChild
+            tooltip={isCollapsed ? item.label : undefined}
+            className={cn(
+              "flex-1 font-medium pr-8",
+              level === 0 && "font-semibold",
+              level > 0 && "text-sm"
+            )}
+          >
+            <Link href={item.url || "#"}>
+              {item.icon && <item.icon className={cn("shrink-0", level === 0 ? "size-4" : "size-3.5")} />}
+              <span className="flex-1 truncate">{item.label}</span>
+            </Link>
+          </SidebarMenuButton>
+        </div>
+      </SidebarMenuItem>
+    );
+  }
+  
   return (
     <Collapsible
       open={isExpanded}
@@ -1064,29 +1041,35 @@ function NavigationItemComponent({
       className="group/collapsible"
     >
       <SidebarMenuItem>
-        <CollapsibleTrigger asChild>
+        <div className="relative flex items-center w-full">
+          {/* Clickable link area */}
           <SidebarMenuButton
+            asChild
             tooltip={isCollapsed ? item.label : undefined}
             className={cn(
-              "relative font-medium",
+              "flex-1 font-medium pr-8",
               level === 0 && "font-semibold",
               level > 0 && "text-sm"
             )}
           >
-            {item.icon && <item.icon className={cn("shrink-0", level === 0 ? "size-4" : "size-3.5")} />}
-            <span className="flex-1 truncate">{item.label}</span>
+            <Link href={item.url || "#"}>
+              {item.icon && <item.icon className={cn("shrink-0", level === 0 ? "size-4" : "size-3.5")} />}
+              <span className="flex-1 truncate">{item.label}</span>
+            </Link>
+          </SidebarMenuButton>
 
-            {/* Chevron indicator */}
-            {!isCollapsed && (
+          {/* Chevron toggle button */}
+          {!isCollapsed && (
+            <CollapsibleTrigger className="absolute right-1 flex items-center justify-center size-6 hover:bg-accent rounded-sm transition-colors">
               <ChevronRight
                 className={cn(
-                  "ml-auto size-4 shrink-0 transition-transform",
+                  "size-4 shrink-0 transition-transform",
                   isExpanded && "rotate-90"
                 )}
               />
-            )}
-          </SidebarMenuButton>
-        </CollapsibleTrigger>
+            </CollapsibleTrigger>
+          )}
+        </div>
 
         {/* Children */}
         <CollapsibleContent>

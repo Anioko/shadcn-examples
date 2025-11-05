@@ -26,6 +26,8 @@ export type WorkflowNodeType =
   | "work-package" | "deliverable" | "implementation-event" | "plateau" | "gap"
   // ArchiMate 3.2 - Composite & Other
   | "grouping"
+  // Capability Model types
+  | "sub-capability" | "application" | "process" | "organization"
 
 export type WorkflowNodeStatus = "active" | "completed" | "pending" | "error"
 
@@ -61,7 +63,7 @@ export interface WorkflowEdge {
   target: string
   label?: string
   condition?: string
-  type?: "default" | "conditional" | "error" | "archimate-structural" | "archimate-dependency" | "archimate-dynamic"
+  type?: "default" | "conditional" | "error" | "archimate-structural" | "archimate-dependency" | "archimate-dynamic" | "capability-relationship"
   // ArchiMate 3.2 specific relationship types
   archimateRelationType?:
     // Structural
@@ -72,6 +74,9 @@ export interface WorkflowEdge {
     | "triggering" | "flow"
     // Other
     | "specialization"
+  // Capability Model specific relationship types
+  capabilityRelationType?:
+    | "supports" | "depends-on" | "enables" | "uses"
 }
 
 export interface WorkflowLane {
