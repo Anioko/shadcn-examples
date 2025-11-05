@@ -1,0 +1,219 @@
+{
+  "samples": [
+    {
+      "url": "https://stripe.com",
+      "companyName": "Stripe",
+      "description": "Online payment processing for internet businesses",
+      "industry": "fintech",
+      "sector": "private",
+      "companySize": "enterprise",
+      "primaryRegion": "north-america",
+      "country": "US",
+      "businessModel": "b2b-saas",
+      "complianceRequirements": ["soc2", "pci-dss", "iso27001", "gdpr"],
+      "technologyStack": ["React", "Ruby", "Kubernetes", "AWS"],
+      "fundingStage": "series-f",
+      "customerBase": {
+        "primarySegment": "enterprise",
+        "averageContractValue": "100k-1m",
+        "customerCount": "over-10k"
+      },
+      "operationalComplexity": {
+        "locations": "international",
+        "shiftOperations": "24/7",
+        "seasonalVariations": false,
+        "regulatoryComplexity": "high"
+      },
+      "implementationUrgency": "high",
+      "budgetRange": "over-1m",
+      "governanceMaturity": "optimized",
+      "confidence": 95,
+      "sourceUrl": "https://stripe.com",
+      "analysisDate": "2024-01-15T10:30:00Z"
+    },
+    {
+      "url": "https://shopify.com",
+      "companyName": "Shopify",
+      "description": "E-commerce platform for online stores and retail point-of-sale systems",
+      "industry": "e-commerce-platforms",
+      "sector": "private",
+      "companySize": "enterprise",
+      "primaryRegion": "north-america",
+      "country": "CA",
+      "businessModel": "b2b-saas",
+      "complianceRequirements": ["soc2", "pci-dss", "iso27001", "gdpr", "pipeda"],
+      "technologyStack": ["Ruby on Rails", "React", "Kubernetes", "Google Cloud"],
+      "fundingStage": "public",
+      "customerBase": {
+        "primarySegment": "small-business",
+        "averageContractValue": "1k-10k",
+        "customerCount": "over-10k"
+      },
+      "operationalComplexity": {
+        "locations": "international",
+        "shiftOperations": "24/7",
+        "seasonalVariations": true,
+        "regulatoryComplexity": "high"
+      },
+      "implementationUrgency": "medium",
+      "budgetRange": "over-1m",
+      "governanceMaturity": "optimized",
+      "confidence": 92,
+      "sourceUrl": "https://shopify.com",
+      "analysisDate": "2024-01-15T10:30:00Z"
+    },
+    {
+      "url": "https://github.com",
+      "companyName": "GitHub",
+      "description": "Code hosting platform for version control and collaboration",
+      "industry": "software-development",
+      "sector": "private",
+      "companySize": "enterprise",
+      "primaryRegion": "north-america",
+      "country": "US",
+      "businessModel": "b2b-saas",
+      "complianceRequirements": ["soc2", "iso27001", "fedramp", "gdpr"],
+      "technologyStack": ["Ruby on Rails", "React", "Kubernetes", "AWS", "MySQL"],
+      "fundingStage": "acquired",
+      "customerBase": {
+        "primarySegment": "enterprise",
+        "averageContractValue": "10k-100k",
+        "customerCount": "over-10k"
+      },
+      "operationalComplexity": {
+        "locations": "international",
+        "shiftOperations": "24/7",
+        "seasonalVariations": false,
+        "regulatoryComplexity": "high"
+      },
+      "implementationUrgency": "high",
+      "budgetRange": "over-1m",
+      "governanceMaturity": "optimized",
+      "confidence": 94,
+      "sourceUrl": "https://github.com",
+      "analysisDate": "2024-01-15T10:30:00Z"
+    },
+    {
+      "url": "https://example-healthtech.com",
+      "companyName": "Example HealthTech",
+      "description": "Digital health platform for patient engagement",
+      "industry": "healthtech",
+      "sector": "private",
+      "companySize": "medium",
+      "primaryRegion": "north-america",
+      "country": "US",
+      "businessModel": "b2b",
+      "complianceRequirements": ["hipaa", "soc2", "hitech", "gdpr"],
+      "technologyStack": ["React", "Node.js", "PostgreSQL", "AWS"],
+      "fundingStage": "series-b",
+      "customerBase": {
+        "primarySegment": "healthcare",
+        "averageContractValue": "10k-100k",
+        "customerCount": "100-1k"
+      },
+      "operationalComplexity": {
+        "locations": "national",
+        "shiftOperations": "business-hours",
+        "seasonalVariations": false,
+        "regulatoryComplexity": "very-high"
+      },
+      "implementationUrgency": "high",
+      "budgetRange": "100k-1m",
+      "governanceMaturity": "managed",
+      "confidence": 88,
+      "sourceUrl": "https://example-healthtech.com",
+      "analysisDate": "2024-01-15T10:30:00Z"
+    },
+    {
+      "url": "https://example-startup.io",
+      "companyName": "Example Startup",
+      "description": "Innovative SaaS solution for team collaboration",
+      "industry": "saas-platforms",
+      "sector": "private",
+      "companySize": "startup",
+      "primaryRegion": "north-america",
+      "country": "US",
+      "businessModel": "b2b-saas",
+      "complianceRequirements": ["soc2", "gdpr"],
+      "technologyStack": ["Next.js", "TypeScript", "PostgreSQL", "Vercel"],
+      "fundingStage": "seed",
+      "customerBase": {
+        "primarySegment": "small-business",
+        "averageContractValue": "under-1k",
+        "customerCount": "under-100"
+      },
+      "operationalComplexity": {
+        "locations": "single-office",
+        "shiftOperations": "business-hours",
+        "seasonalVariations": false,
+        "regulatoryComplexity": "moderate"
+      },
+      "implementationUrgency": "low",
+      "budgetRange": "under-100k",
+      "governanceMaturity": "initial",
+      "confidence": 75,
+      "sourceUrl": "https://example-startup.io",
+      "analysisDate": "2024-01-15T10:30:00Z"
+    },
+    {
+      "url": "https://example-bank.com",
+      "companyName": "Example Bank",
+      "description": "Traditional banking services with digital transformation",
+      "industry": "banking-traditional",
+      "sector": "private",
+      "companySize": "enterprise",
+      "primaryRegion": "north-america",
+      "country": "US",
+      "businessModel": "b2c",
+      "complianceRequirements": ["sox", "pci-dss", "glba", "ffiec", "basel-iii", "soc2", "iso27001"],
+      "technologyStack": ["Java", "Oracle", "Mainframe", "IBM"],
+      "fundingStage": "public",
+      "customerBase": {
+        "primarySegment": "consumer",
+        "averageContractValue": "under-1k",
+        "customerCount": "over-10k"
+      },
+      "operationalComplexity": {
+        "locations": "international",
+        "shiftOperations": "24/7",
+        "seasonalVariations": false,
+        "regulatoryComplexity": "critical"
+      },
+      "implementationUrgency": "high",
+      "budgetRange": "over-1m",
+      "governanceMaturity": "optimized",
+      "confidence": 96,
+      "sourceUrl": "https://example-bank.com",
+      "analysisDate": "2024-01-15T10:30:00Z"
+    }
+  ],
+  "fallbackAnalysis": {
+    "companyName": "Your Company",
+    "description": "Innovative company providing solutions",
+    "industry": "software-development",
+    "sector": "private",
+    "companySize": "medium",
+    "primaryRegion": "north-america",
+    "country": "US",
+    "businessModel": "b2b",
+    "complianceRequirements": ["soc2", "iso27001"],
+    "technologyStack": ["Cloud", "Web", "Mobile"],
+    "fundingStage": "series-a",
+    "customerBase": {
+      "primarySegment": "enterprise",
+      "averageContractValue": "10k-100k",
+      "customerCount": "100-1k"
+    },
+    "operationalComplexity": {
+      "locations": "single-office",
+      "shiftOperations": "business-hours",
+      "seasonalVariations": false,
+      "regulatoryComplexity": "moderate"
+    },
+    "implementationUrgency": "medium",
+    "budgetRange": "100k-1m",
+    "governanceMaturity": "defined",
+    "confidence": 60,
+    "analysisDate": "2024-01-15T10:30:00Z"
+  }
+}
