@@ -64,7 +64,81 @@ export function ProjectSwitcher() {
         }
       } catch (error) {
         console.error('Error fetching projects:', error)
-        setProjects([])
+
+        // Fallback to mock data for demo purposes
+        const mockProjects: Project[] = [
+          {
+            id: 'proj-ea-transformation',
+            name: 'Enterprise Architecture Transformation',
+            description: 'Modernize the enterprise architecture using TOGAF ADM methodology',
+            status: 'active',
+            priority: 'critical',
+            progress: 45,
+            organizationId: 'default-org'
+          },
+          {
+            id: 'proj-data-governance',
+            name: 'Data Governance Initiative',
+            description: 'Implement DAMA-DMBOK data governance framework',
+            status: 'active',
+            priority: 'high',
+            progress: 67,
+            organizationId: 'default-org'
+          },
+          {
+            id: 'proj-security-compliance',
+            name: 'ISO 27001 Compliance Program',
+            description: 'Achieve ISO 27001:2022 certification',
+            status: 'active',
+            priority: 'high',
+            progress: 34,
+            organizationId: 'default-org'
+          },
+          {
+            id: 'proj-cloud-migration',
+            name: 'Cloud Migration Strategy',
+            description: 'Migrate legacy applications to AWS',
+            status: 'planning',
+            priority: 'medium',
+            progress: 12,
+            organizationId: 'default-org'
+          },
+          {
+            id: 'proj-digital-transformation',
+            name: 'Digital Customer Experience',
+            description: 'Transform customer touchpoints',
+            status: 'active',
+            priority: 'critical',
+            progress: 58,
+            organizationId: 'default-org'
+          },
+          {
+            id: 'proj-business-process',
+            name: 'Business Process Optimization',
+            description: 'Optimize core business processes using BPMN 2.0',
+            status: 'on-hold',
+            priority: 'medium',
+            progress: 28,
+            organizationId: 'default-org'
+          },
+          {
+            id: 'proj-archimate-repository',
+            name: 'ArchiMate Repository Setup',
+            description: 'Build comprehensive ArchiMate 3.2 repository',
+            status: 'completed',
+            priority: 'low',
+            progress: 100,
+            organizationId: 'default-org'
+          }
+        ]
+
+        setProjects(mockProjects)
+
+        // Select the first active project
+        if (!selectedProject) {
+          const activeProject = mockProjects.find((p) => p.status === 'active') || mockProjects[0]
+          setSelectedProject(activeProject)
+        }
       } finally {
         setIsLoading(false)
       }
