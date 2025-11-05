@@ -100,13 +100,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { FrameworkItem } from "@/lib/mock-framework-data"
 import { FrameworkGrandchild } from "@/lib/framework-config"
-import { singularize } from "@/lib/utils"
 import { AddItemDrawer } from "@/components/framework/add-item-drawer"
 
 interface DataTableProps {
   frameworkSlug: string
   grandchildren: FrameworkGrandchild[]
   data: FrameworkItem[]
+  onDataChange?: (grandchildId: string) => void
 }
 
 // Create a separate component for the drag handle
@@ -333,11 +333,13 @@ function GrandchildTable({
   grandchildId,
   grandchildName,
   frameworkSlug,
+  onDataChange,
 }: {
   data: FrameworkItem[]
   grandchildId: string
   grandchildName: string
   frameworkSlug: string
+  onDataChange?: (grandchildId: string) => void
 }) {
   const [localData, setLocalData] = React.useState(() => data)
   const [drawerOpen, setDrawerOpen] = React.useState(false)
@@ -355,6 +357,11 @@ function GrandchildTable({
     useSensor(TouchSensor, {}),
     useSensor(KeyboardSensor, {})
   )
+
+  // Update localData when data prop changes
+  React.useEffect(() => {
+    setLocalData(data)
+  }, [data])
 
   const dataIds = React.useMemo<UniqueIdentifier[]>(
     () => localData?.map(({ id }) => id) || [],
@@ -434,7 +441,7 @@ function GrandchildTable({
           </DropdownMenu>
           <Button variant="outline" size="sm" onClick={() => setDrawerOpen(true)}>
             <IconPlus />
-            <span className="hidden lg:inline">Add {singularize(grandchildName)}</span>
+            <span className="hidden lg:inline">Add Item</span>
             <span className="lg:hidden">Add</span>
           </Button>
         </div>
@@ -559,9 +566,9 @@ function GrandchildTable({
         frameworkSlug={frameworkSlug}
         grandchildId={grandchildId}
         grandchildName={grandchildName}
-        onSuccess={(newData) => {
-          // TODO: Refresh data here
-          console.log("New item added:", newData)
+        onSuccess={() => {
+          // Trigger data refresh
+          onDataChange?.(grandchildId)
         }}
       />
     </div>
@@ -569,7 +576,7 @@ function GrandchildTable({
 }
 
 // Main DataTable component with tabs
-export function DataTable({ frameworkSlug, grandchildren, data }: DataTableProps) {
+export function DataTable({ frameworkSlug, grandchildren, data, onDataChange }: DataTableProps) {
   const defaultTab = grandchildren[0]?.id || "all"
 
   return (
@@ -630,6 +637,7 @@ export function DataTable({ frameworkSlug, grandchildren, data }: DataTableProps
               grandchildId={grandchild.id}
               grandchildName={grandchild.name} 
               frameworkSlug={frameworkSlug}
+              onDataChange={onDataChange}
             />
           </TabsContent>
         )

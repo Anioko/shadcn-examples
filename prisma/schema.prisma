@@ -10839,6 +10839,11 @@ model OrganizationFramework {
   tasks                FrameworkTask[]
   milestones           FrameworkMilestone[]
   
+  // Data storage for different visualization types
+  tableData            FrameworkTableData[]
+  kanbanBoards         KanbanBoard[]
+  capabilityMaps       CapabilityMapData[]
+  
   @@unique([organizationId, frameworkTemplateId])
   @@index([organizationId])
   @@index([frameworkTemplateId])
@@ -11320,5 +11325,103 @@ enum RecommendationType {
   SIMILAR_ORGANIZATIONS
   TRENDING
   SEASONAL
+}
+
+// =============================================================================
+// DATA PERSISTENCE MODELS FOR FRAMEWORK VISUALIZATIONS
+// =============================================================================
+
+// Generic table data for framework grandchildren (dashboard tables)
+model FrameworkTableData {
+  id                      String   @id @default(cuid())
+  organizationFrameworkId String
+  grandchildId            String   // e.g., "architecture-vision", "key-partners"
+  
+  // Flexible data storage for table rows
+  data                    Json     // Array of table row objects
+  
+  // Metadata
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+  
+  // Relations
+  organizationFramework   OrganizationFramework @relation(fields: [organizationFrameworkId], references: [id], onDelete: Cascade)
+  
+  @@unique([organizationFrameworkId, grandchildId])
+  @@index([organizationFrameworkId])
+  @@map("framework_table_data")
+}
+
+// Kanban board configuration and state
+model KanbanBoard {
+  id                      String   @id @default(cuid())
+  organizationFrameworkId String
+  frameworkSlug           String
+  
+  // Board configuration
+  columns                 Json     // Column definitions with ids, names, colors
+  
+  // Metadata
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+  
+  // Relations
+  organizationFramework   OrganizationFramework @relation(fields: [organizationFrameworkId], references: [id], onDelete: Cascade)
+  cards                   KanbanCard[]
+  
+  @@unique([organizationFrameworkId, frameworkSlug])
+  @@index([organizationFrameworkId])
+  @@map("kanban_boards")
+}
+
+// Individual kanban cards
+model KanbanCard {
+  id          String   @id @default(cuid())
+  boardId     String
+  columnId    String
+  
+  // Card data
+  title       String   @db.VarChar(500)
+  description String?  @db.Text
+  priority    String?  @db.VarChar(50)
+  assignee    String?  @db.VarChar(255)
+  dueDate     DateTime?
+  tags        String[]
+  metadata    Json?    // Additional custom fields
+  
+  // Position in column
+  position    Int      @default(0)
+  
+  // Metadata
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  board       KanbanBoard @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  
+  @@index([boardId, columnId])
+  @@index([boardId])
+  @@map("kanban_cards")
+}
+
+// Capability map data for frameworks like PCF, ITIL4, ISO-27001
+model CapabilityMapData {
+  id                      String   @id @default(cuid())
+  organizationFrameworkId String
+  frameworkSlug           String
+  
+  // Capability hierarchical data
+  capabilities            Json     // Nested capability structure with metrics
+  
+  // Metadata
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+  
+  // Relations
+  organizationFramework   OrganizationFramework @relation(fields: [organizationFrameworkId], references: [id], onDelete: Cascade)
+  
+  @@unique([organizationFrameworkId, frameworkSlug])
+  @@index([organizationFrameworkId])
+  @@map("capability_map_data")
 }
 
