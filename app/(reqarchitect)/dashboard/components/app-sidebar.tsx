@@ -38,6 +38,9 @@ import {
   useSidebar
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
+import { ProjectSwitcher } from "@/components/project-switcher";
+import { useProject } from "@/lib/contexts/project-context";
+import { Badge } from "@/components/ui/badge";
 
 // Type definitions from Framework-Centric PRD
 type NavigationItem = {
@@ -1089,6 +1092,8 @@ function NavigationItemComponent({
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { selectedProject } = useProject();
+
   return (
     <Sidebar collapsible="icon" className="border-r" {...props}>
       <SidebarHeader className="border-b">
@@ -1105,6 +1110,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 </div>
               </Link>
             </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <ProjectSwitcher />
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
@@ -1150,6 +1158,25 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
       <SidebarFooter className="border-t">
         <SidebarMenu>
+          {selectedProject && (
+            <SidebarMenuItem>
+              <div className="flex flex-col gap-1 px-2 py-1.5">
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <Briefcase className="size-3" />
+                  <span>Current Project</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-medium truncate">{selectedProject.name}</span>
+                  <Badge
+                    variant="secondary"
+                    className="text-xs"
+                  >
+                    {selectedProject.status}
+                  </Badge>
+                </div>
+              </div>
+            </SidebarMenuItem>
+          )}
           <SidebarMenuItem>
             <SidebarMenuButton size="sm" asChild>
               <Link href="/profile/dashboard">
