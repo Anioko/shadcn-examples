@@ -19,7 +19,8 @@ import {
   Users,
   Brain,
   Code,
-  Webhook
+  Webhook,
+  GitCompare
 } from "lucide-react";
 
 import {
@@ -285,7 +286,8 @@ const navigationData: NavigationItem[] = [
         url: "/frameworks/capability-model/dashboard",
         children: [
           { id: "capability-map", label: "Capability Map", url: "/frameworks/capability-model/capability-map" },
-          { id: "workflow", label: "Workflow Designer", url: "/frameworks/capability-model/workflow" }
+          { id: "workflow", label: "Workflow Designer", url: "/frameworks/capability-model/workflow" },
+          { id: "options-analysis", label: "Options Analysis", url: "/dashboard/options-analysis" }
         ]
       },
       {

@@ -1,0 +1,1061 @@
+{
+  "capabilities": [
+    {
+      "id": "crm",
+      "name": "Customer Relationship Management",
+      "description": "Manage customer data, interactions, and relationships throughout the customer lifecycle",
+      "category": "Business Application",
+      "currentState": "Legacy System",
+      "strategicImportance": "High"
+    },
+    {
+      "id": "erp",
+      "name": "Enterprise Resource Planning",
+      "description": "Integrated management of main business processes",
+      "category": "Business Application",
+      "currentState": "Multiple Fragmented Systems",
+      "strategicImportance": "Critical"
+    },
+    {
+      "id": "data-analytics",
+      "name": "Data Analytics & Business Intelligence",
+      "description": "Analyze data to support decision-making and strategic planning",
+      "category": "Information Management",
+      "currentState": "Basic Reporting Tools",
+      "strategicImportance": "High"
+    },
+    {
+      "id": "identity-access",
+      "name": "Identity & Access Management",
+      "description": "Manage user identities and control access to systems and data",
+      "category": "Security",
+      "currentState": "On-Premise Solution",
+      "strategicImportance": "Critical"
+    },
+    {
+      "id": "document-mgmt",
+      "name": "Document Management System",
+      "description": "Store, manage, and track electronic documents and images",
+      "category": "Information Management",
+      "currentState": "File Shares",
+      "strategicImportance": "Medium"
+    },
+    {
+      "id": "hrms",
+      "name": "Human Resource Management System",
+      "description": "Manage employee data, payroll, benefits, and HR processes",
+      "category": "Business Application",
+      "currentState": "Manual Processes",
+      "strategicImportance": "High"
+    },
+    {
+      "id": "project-portfolio-mgmt",
+      "name": "Project & Portfolio Management",
+      "description": "Plan, execute, and track projects and portfolios across the organization",
+      "category": "Business Application",
+      "currentState": "Spreadsheets",
+      "strategicImportance": "Medium"
+    },
+    {
+      "id": "service-desk",
+      "name": "IT Service Desk & ITSM",
+      "description": "Manage IT services, incidents, problems, and changes",
+      "category": "IT Operations",
+      "currentState": "Email-based",
+      "strategicImportance": "High"
+    },
+    {
+      "id": "collaboration-platform",
+      "name": "Enterprise Collaboration Platform",
+      "description": "Enable team collaboration, communication, and content sharing",
+      "category": "Communication & Collaboration",
+      "currentState": "Multiple Tools",
+      "strategicImportance": "Medium"
+    },
+    {
+      "id": "email-messaging",
+      "name": "Enterprise Email & Messaging",
+      "description": "Corporate email, calendar, and instant messaging infrastructure",
+      "category": "Communication & Collaboration",
+      "currentState": "On-Premise Exchange",
+      "strategicImportance": "Critical"
+    },
+    {
+      "id": "backup-recovery",
+      "name": "Backup & Disaster Recovery",
+      "description": "Protect and recover critical data and systems",
+      "category": "Infrastructure",
+      "currentState": "Tape Backup",
+      "strategicImportance": "Critical"
+    },
+    {
+      "id": "monitoring-observability",
+      "name": "Infrastructure Monitoring & Observability",
+      "description": "Monitor systems, applications, and infrastructure health",
+      "category": "IT Operations",
+      "currentState": "Limited Monitoring",
+      "strategicImportance": "High"
+    },
+    {
+      "id": "api-management",
+      "name": "API Management Platform",
+      "description": "Design, publish, secure, and analyze APIs",
+      "category": "Integration",
+      "currentState": "No Centralized Management",
+      "strategicImportance": "Medium"
+    },
+    {
+      "id": "integration-platform",
+      "name": "Integration Platform (iPaaS)",
+      "description": "Connect applications, data, and processes across cloud and on-premise",
+      "category": "Integration",
+      "currentState": "Point-to-Point Integrations",
+      "strategicImportance": "High"
+    },
+    {
+      "id": "data-warehouse",
+      "name": "Enterprise Data Warehouse",
+      "description": "Centralized repository for structured data from multiple sources",
+      "category": "Information Management",
+      "currentState": "Departmental Data Marts",
+      "strategicImportance": "High"
+    },
+    {
+      "id": "master-data-mgmt",
+      "name": "Master Data Management",
+      "description": "Create and maintain single source of truth for critical business data",
+      "category": "Information Management",
+      "currentState": "Inconsistent Data",
+      "strategicImportance": "High"
+    },
+    {
+      "id": "siem",
+      "name": "Security Information & Event Management",
+      "description": "Collect, analyze, and respond to security events and threats",
+      "category": "Security",
+      "currentState": "Log Files",
+      "strategicImportance": "Critical"
+    },
+    {
+      "id": "endpoint-security",
+      "name": "Endpoint Detection & Response",
+      "description": "Protect endpoints from malware, ransomware, and advanced threats",
+      "category": "Security",
+      "currentState": "Antivirus Only",
+      "strategicImportance": "Critical"
+    },
+    {
+      "id": "vulnerability-mgmt",
+      "name": "Vulnerability Management",
+      "description": "Identify, assess, and remediate security vulnerabilities",
+      "category": "Security",
+      "currentState": "Manual Scanning",
+      "strategicImportance": "High"
+    },
+    {
+      "id": "marketing-automation",
+      "name": "Marketing Automation Platform",
+      "description": "Automate marketing campaigns, lead nurturing, and analytics",
+      "category": "Business Application",
+      "currentState": "Manual Email Campaigns",
+      "strategicImportance": "Medium"
+    },
+    {
+      "id": "ecommerce-platform",
+      "name": "E-Commerce Platform",
+      "description": "Enable online sales, product catalog, and order management",
+      "category": "Business Application",
+      "currentState": "Legacy System",
+      "strategicImportance": "High"
+    },
+    {
+      "id": "supply-chain-mgmt",
+      "name": "Supply Chain Management",
+      "description": "Manage procurement, inventory, logistics, and supplier relationships",
+      "category": "Business Application",
+      "currentState": "Manual Processes",
+      "strategicImportance": "High"
+    },
+    {
+      "id": "contract-lifecycle-mgmt",
+      "name": "Contract Lifecycle Management",
+      "description": "Create, negotiate, execute, and manage contracts",
+      "category": "Business Application",
+      "currentState": "Document Repository",
+      "strategicImportance": "Medium"
+    },
+    {
+      "id": "expense-mgmt",
+      "name": "Travel & Expense Management",
+      "description": "Manage employee travel bookings, expenses, and reimbursements",
+      "category": "Business Application",
+      "currentState": "Paper Forms",
+      "strategicImportance": "Low"
+    },
+    {
+      "id": "learning-mgmt",
+      "name": "Learning Management System",
+      "description": "Deliver, track, and manage training and development programs",
+      "category": "Business Application",
+      "currentState": "Classroom Training",
+      "strategicImportance": "Medium"
+    },
+    {
+      "id": "asset-mgmt",
+      "name": "IT Asset Management",
+      "description": "Track and manage IT hardware, software licenses, and contracts",
+      "category": "IT Operations",
+      "currentState": "Spreadsheets",
+      "strategicImportance": "Medium"
+    },
+    {
+      "id": "configuration-mgmt",
+      "name": "Configuration Management Database",
+      "description": "Maintain information about IT infrastructure components and relationships",
+      "category": "IT Operations",
+      "currentState": "No CMDB",
+      "strategicImportance": "Medium"
+    },
+    {
+      "id": "password-mgmt",
+      "name": "Enterprise Password Management",
+      "description": "Securely store and manage passwords and credentials",
+      "category": "Security",
+      "currentState": "Individual Solutions",
+      "strategicImportance": "High"
+    },
+    {
+      "id": "privileged-access-mgmt",
+      "name": "Privileged Access Management",
+      "description": "Control and monitor privileged accounts and access",
+      "category": "Security",
+      "currentState": "Shared Admin Accounts",
+      "strategicImportance": "Critical"
+    },
+    {
+      "id": "data-loss-prevention",
+      "name": "Data Loss Prevention",
+      "description": "Prevent unauthorized data transfer and leakage",
+      "category": "Security",
+      "currentState": "Policy-Based Only",
+      "strategicImportance": "High"
+    },
+    {
+      "id": "network-access-control",
+      "name": "Network Access Control",
+      "description": "Control and secure network access for devices and users",
+      "category": "Security",
+      "currentState": "VLANs Only",
+      "strategicImportance": "High"
+    }
+  ],
+  "applicationOptions": {
+    "crm": [
+      {
+        "id": "salesforce",
+        "name": "Salesforce Sales Cloud",
+        "vendor": "Salesforce",
+        "type": "SaaS",
+        "description": "Industry-leading cloud-based CRM platform"
+      },
+      {
+        "id": "microsoft-dynamics",
+        "name": "Microsoft Dynamics 365",
+        "vendor": "Microsoft",
+        "type": "SaaS/Hybrid",
+        "description": "Integrated CRM and ERP solution"
+      },
+      {
+        "id": "hubspot",
+        "name": "HubSpot CRM",
+        "vendor": "HubSpot",
+        "type": "SaaS",
+        "description": "Marketing and sales focused CRM platform"
+      }
+    ],
+    "erp": [
+      {
+        "id": "sap-s4hana",
+        "name": "SAP S/4HANA",
+        "vendor": "SAP",
+        "type": "On-Premise/Cloud",
+        "description": "Next-generation intelligent ERP suite"
+      },
+      {
+        "id": "oracle-cloud-erp",
+        "name": "Oracle Cloud ERP",
+        "vendor": "Oracle",
+        "type": "SaaS",
+        "description": "Complete cloud ERP solution"
+      },
+      {
+        "id": "netsuite",
+        "name": "NetSuite ERP",
+        "vendor": "Oracle",
+        "type": "SaaS",
+        "description": "Cloud-based ERP for growing businesses"
+      }
+    ],
+    "data-analytics": [
+      {
+        "id": "tableau",
+        "name": "Tableau",
+        "vendor": "Salesforce",
+        "type": "SaaS",
+        "description": "Visual analytics platform"
+      },
+      {
+        "id": "power-bi",
+        "name": "Microsoft Power BI",
+        "vendor": "Microsoft",
+        "type": "SaaS",
+        "description": "Business analytics service"
+      },
+      {
+        "id": "looker",
+        "name": "Looker",
+        "vendor": "Google Cloud",
+        "type": "SaaS",
+        "description": "Enterprise BI and analytics platform"
+      }
+    ],
+    "identity-access": [
+      {
+        "id": "okta",
+        "name": "Okta Identity Cloud",
+        "vendor": "Okta",
+        "type": "SaaS",
+        "description": "Enterprise identity and access management"
+      },
+      {
+        "id": "azure-ad",
+        "name": "Azure Active Directory",
+        "vendor": "Microsoft",
+        "type": "SaaS",
+        "description": "Cloud-based identity and access management"
+      },
+      {
+        "id": "ping-identity",
+        "name": "PingOne",
+        "vendor": "Ping Identity",
+        "type": "SaaS/Hybrid",
+        "description": "Intelligent identity platform"
+      }
+    ],
+    "document-mgmt": [
+      {
+        "id": "sharepoint",
+        "name": "Microsoft SharePoint",
+        "vendor": "Microsoft",
+        "type": "SaaS/On-Premise",
+        "description": "Document management and collaboration"
+      },
+      {
+        "id": "box",
+        "name": "Box",
+        "vendor": "Box",
+        "type": "SaaS",
+        "description": "Cloud content management platform"
+      },
+      {
+        "id": "documentum",
+        "name": "OpenText Documentum",
+        "vendor": "OpenText",
+        "type": "On-Premise/Cloud",
+        "description": "Enterprise content management"
+      }
+    ],
+    "hrms": [
+      {
+        "id": "workday",
+        "name": "Workday HCM",
+        "vendor": "Workday",
+        "type": "SaaS",
+        "description": "Cloud-based human capital management"
+      },
+      {
+        "id": "successfactors",
+        "name": "SAP SuccessFactors",
+        "vendor": "SAP",
+        "type": "SaaS",
+        "description": "Cloud HR and talent management suite"
+      },
+      {
+        "id": "adp-workforce",
+        "name": "ADP Workforce Now",
+        "vendor": "ADP",
+        "type": "SaaS",
+        "description": "Comprehensive HR and payroll platform"
+      }
+    ],
+    "project-portfolio-mgmt": [
+      {
+        "id": "planview",
+        "name": "Planview Enterprise One",
+        "vendor": "Planview",
+        "type": "SaaS",
+        "description": "Strategic portfolio management platform"
+      },
+      {
+        "id": "clarity",
+        "name": "Broadcom Clarity",
+        "vendor": "Broadcom",
+        "type": "On-Premise/SaaS",
+        "description": "Project and portfolio management solution"
+      },
+      {
+        "id": "servicenow-ppm",
+        "name": "ServiceNow PPM",
+        "vendor": "ServiceNow",
+        "type": "SaaS",
+        "description": "Project and portfolio management on Now Platform"
+      }
+    ],
+    "service-desk": [
+      {
+        "id": "servicenow-itsm",
+        "name": "ServiceNow ITSM",
+        "vendor": "ServiceNow",
+        "type": "SaaS",
+        "description": "Enterprise IT service management platform"
+      },
+      {
+        "id": "jira-service",
+        "name": "Jira Service Management",
+        "vendor": "Atlassian",
+        "type": "SaaS",
+        "description": "Modern ITSM and service desk solution"
+      },
+      {
+        "id": "freshservice",
+        "name": "Freshservice",
+        "vendor": "Freshworks",
+        "type": "SaaS",
+        "description": "Cloud-based ITSM and service desk"
+      }
+    ],
+    "collaboration-platform": [
+      {
+        "id": "microsoft-teams",
+        "name": "Microsoft Teams",
+        "vendor": "Microsoft",
+        "type": "SaaS",
+        "description": "Unified communication and collaboration platform"
+      },
+      {
+        "id": "slack",
+        "name": "Slack Enterprise Grid",
+        "vendor": "Salesforce",
+        "type": "SaaS",
+        "description": "Enterprise collaboration and messaging"
+      },
+      {
+        "id": "google-workspace",
+        "name": "Google Workspace",
+        "vendor": "Google",
+        "type": "SaaS",
+        "description": "Cloud productivity and collaboration suite"
+      }
+    ],
+    "email-messaging": [
+      {
+        "id": "microsoft-365",
+        "name": "Microsoft 365 Exchange Online",
+        "vendor": "Microsoft",
+        "type": "SaaS",
+        "description": "Cloud-based enterprise email and calendar"
+      },
+      {
+        "id": "google-gmail",
+        "name": "Gmail for Business",
+        "vendor": "Google",
+        "type": "SaaS",
+        "description": "Enterprise email with Google Workspace"
+      },
+      {
+        "id": "zimbra",
+        "name": "Zimbra Collaboration",
+        "vendor": "Synacor",
+        "type": "On-Premise/Cloud",
+        "description": "Open-source email and collaboration server"
+      }
+    ],
+    "backup-recovery": [
+      {
+        "id": "veeam",
+        "name": "Veeam Backup & Replication",
+        "vendor": "Veeam",
+        "type": "On-Premise/Cloud",
+        "description": "Comprehensive backup and disaster recovery"
+      },
+      {
+        "id": "commvault",
+        "name": "Commvault Complete",
+        "vendor": "Commvault",
+        "type": "Hybrid",
+        "description": "Enterprise data protection and management"
+      },
+      {
+        "id": "rubrik",
+        "name": "Rubrik Cloud Data Management",
+        "vendor": "Rubrik",
+        "type": "SaaS/Hybrid",
+        "description": "Cloud-native data protection platform"
+      }
+    ],
+    "monitoring-observability": [
+      {
+        "id": "datadog",
+        "name": "Datadog",
+        "vendor": "Datadog",
+        "type": "SaaS",
+        "description": "Unified monitoring and observability platform"
+      },
+      {
+        "id": "splunk",
+        "name": "Splunk Enterprise",
+        "vendor": "Splunk",
+        "type": "On-Premise/Cloud",
+        "description": "Data analytics and monitoring platform"
+      },
+      {
+        "id": "dynatrace",
+        "name": "Dynatrace",
+        "vendor": "Dynatrace",
+        "type": "SaaS",
+        "description": "AI-powered observability and security"
+      }
+    ],
+    "api-management": [
+      {
+        "id": "apigee",
+        "name": "Apigee API Management",
+        "vendor": "Google Cloud",
+        "type": "SaaS",
+        "description": "Full lifecycle API management platform"
+      },
+      {
+        "id": "mulesoft",
+        "name": "MuleSoft Anypoint Platform",
+        "vendor": "Salesforce",
+        "type": "SaaS/Hybrid",
+        "description": "API-led connectivity platform"
+      },
+      {
+        "id": "aws-api-gateway",
+        "name": "AWS API Gateway",
+        "vendor": "Amazon Web Services",
+        "type": "SaaS",
+        "description": "Managed API creation and publishing"
+      }
+    ],
+    "integration-platform": [
+      {
+        "id": "boomi",
+        "name": "Dell Boomi",
+        "vendor": "Dell",
+        "type": "SaaS",
+        "description": "Cloud-native integration platform"
+      },
+      {
+        "id": "informatica-ipaas",
+        "name": "Informatica Intelligent Cloud Services",
+        "vendor": "Informatica",
+        "type": "SaaS",
+        "description": "AI-powered integration and data management"
+      },
+      {
+        "id": "snaplogic",
+        "name": "SnapLogic Intelligent Integration Platform",
+        "vendor": "SnapLogic",
+        "type": "SaaS",
+        "description": "Self-service integration and automation"
+      }
+    ],
+    "data-warehouse": [
+      {
+        "id": "snowflake",
+        "name": "Snowflake Data Cloud",
+        "vendor": "Snowflake",
+        "type": "SaaS",
+        "description": "Cloud data platform for analytics"
+      },
+      {
+        "id": "databricks",
+        "name": "Databricks Lakehouse Platform",
+        "vendor": "Databricks",
+        "type": "SaaS",
+        "description": "Unified analytics and data engineering"
+      },
+      {
+        "id": "redshift",
+        "name": "Amazon Redshift",
+        "vendor": "Amazon Web Services",
+        "type": "SaaS",
+        "description": "Cloud data warehouse for analytics"
+      }
+    ],
+    "master-data-mgmt": [
+      {
+        "id": "informatica-mdm",
+        "name": "Informatica MDM",
+        "vendor": "Informatica",
+        "type": "SaaS/On-Premise",
+        "description": "Enterprise master data management"
+      },
+      {
+        "id": "sap-mdg",
+        "name": "SAP Master Data Governance",
+        "vendor": "SAP",
+        "type": "On-Premise/Cloud",
+        "description": "Central master data management solution"
+      },
+      {
+        "id": "oracle-edq",
+        "name": "Oracle Enterprise Data Quality",
+        "vendor": "Oracle",
+        "type": "On-Premise/Cloud",
+        "description": "Data quality and master data management"
+      }
+    ],
+    "siem": [
+      {
+        "id": "splunk-enterprise-security",
+        "name": "Splunk Enterprise Security",
+        "vendor": "Splunk",
+        "type": "On-Premise/Cloud",
+        "description": "Advanced SIEM and security analytics"
+      },
+      {
+        "id": "microsoft-sentinel",
+        "name": "Microsoft Sentinel",
+        "vendor": "Microsoft",
+        "type": "SaaS",
+        "description": "Cloud-native SIEM and SOAR"
+      },
+      {
+        "id": "ibm-qradar",
+        "name": "IBM QRadar SIEM",
+        "vendor": "IBM",
+        "type": "On-Premise/Cloud",
+        "description": "Security intelligence and analytics"
+      }
+    ],
+    "endpoint-security": [
+      {
+        "id": "crowdstrike",
+        "name": "CrowdStrike Falcon",
+        "vendor": "CrowdStrike",
+        "type": "SaaS",
+        "description": "Cloud-native endpoint protection platform"
+      },
+      {
+        "id": "microsoft-defender",
+        "name": "Microsoft Defender for Endpoint",
+        "vendor": "Microsoft",
+        "type": "SaaS",
+        "description": "Enterprise endpoint security platform"
+      },
+      {
+        "id": "sentinelone",
+        "name": "SentinelOne Singularity",
+        "vendor": "SentinelOne",
+        "type": "SaaS",
+        "description": "Autonomous endpoint protection and EDR"
+      }
+    ],
+    "vulnerability-mgmt": [
+      {
+        "id": "tenable",
+        "name": "Tenable.io",
+        "vendor": "Tenable",
+        "type": "SaaS",
+        "description": "Comprehensive vulnerability management"
+      },
+      {
+        "id": "qualys",
+        "name": "Qualys VMDR",
+        "vendor": "Qualys",
+        "type": "SaaS",
+        "description": "Vulnerability management and detection"
+      },
+      {
+        "id": "rapid7",
+        "name": "Rapid7 InsightVM",
+        "vendor": "Rapid7",
+        "type": "SaaS/On-Premise",
+        "description": "Risk-based vulnerability management"
+      }
+    ],
+    "marketing-automation": [
+      {
+        "id": "marketo",
+        "name": "Adobe Marketo Engage",
+        "vendor": "Adobe",
+        "type": "SaaS",
+        "description": "Marketing automation and engagement platform"
+      },
+      {
+        "id": "pardot",
+        "name": "Salesforce Marketing Cloud Account Engagement",
+        "vendor": "Salesforce",
+        "type": "SaaS",
+        "description": "B2B marketing automation"
+      },
+      {
+        "id": "eloqua",
+        "name": "Oracle Eloqua",
+        "vendor": "Oracle",
+        "type": "SaaS",
+        "description": "Marketing automation and campaign management"
+      }
+    ],
+    "ecommerce-platform": [
+      {
+        "id": "shopify-plus",
+        "name": "Shopify Plus",
+        "vendor": "Shopify",
+        "type": "SaaS",
+        "description": "Enterprise e-commerce platform"
+      },
+      {
+        "id": "magento",
+        "name": "Adobe Commerce (Magento)",
+        "vendor": "Adobe",
+        "type": "SaaS/On-Premise",
+        "description": "Flexible e-commerce platform"
+      },
+      {
+        "id": "salesforce-commerce",
+        "name": "Salesforce Commerce Cloud",
+        "vendor": "Salesforce",
+        "type": "SaaS",
+        "description": "AI-powered commerce solution"
+      }
+    ],
+    "supply-chain-mgmt": [
+      {
+        "id": "sap-scm",
+        "name": "SAP Supply Chain Management",
+        "vendor": "SAP",
+        "type": "On-Premise/Cloud",
+        "description": "End-to-end supply chain solution"
+      },
+      {
+        "id": "oracle-scm",
+        "name": "Oracle Cloud SCM",
+        "vendor": "Oracle",
+        "type": "SaaS",
+        "description": "Integrated supply chain management cloud"
+      },
+      {
+        "id": "blue-yonder",
+        "name": "Blue Yonder Supply Chain",
+        "vendor": "Blue Yonder",
+        "type": "SaaS",
+        "description": "AI-driven supply chain platform"
+      }
+    ],
+    "contract-lifecycle-mgmt": [
+      {
+        "id": "icertis",
+        "name": "Icertis Contract Intelligence",
+        "vendor": "Icertis",
+        "type": "SaaS",
+        "description": "AI-powered contract lifecycle management"
+      },
+      {
+        "id": "docusign-clm",
+        "name": "DocuSign CLM",
+        "vendor": "DocuSign",
+        "type": "SaaS",
+        "description": "Automated agreement lifecycle management"
+      },
+      {
+        "id": "coupa-clm",
+        "name": "Coupa Contract Lifecycle Management",
+        "vendor": "Coupa",
+        "type": "SaaS",
+        "description": "Contract management and spend optimization"
+      }
+    ],
+    "expense-mgmt": [
+      {
+        "id": "concur",
+        "name": "SAP Concur",
+        "vendor": "SAP",
+        "type": "SaaS",
+        "description": "Integrated travel and expense management"
+      },
+      {
+        "id": "expensify",
+        "name": "Expensify",
+        "vendor": "Expensify",
+        "type": "SaaS",
+        "description": "Expense tracking and reimbursement"
+      },
+      {
+        "id": "coupa-expense",
+        "name": "Coupa Expense Management",
+        "vendor": "Coupa",
+        "type": "SaaS",
+        "description": "Travel and expense automation"
+      }
+    ],
+    "learning-mgmt": [
+      {
+        "id": "cornerstone",
+        "name": "Cornerstone LMS",
+        "vendor": "Cornerstone OnDemand",
+        "type": "SaaS",
+        "description": "Learning and talent development platform"
+      },
+      {
+        "id": "docebo",
+        "name": "Docebo Learning Platform",
+        "vendor": "Docebo",
+        "type": "SaaS",
+        "description": "AI-powered learning management system"
+      },
+      {
+        "id": "saba-cloud",
+        "name": "Saba Cloud",
+        "vendor": "Saba Software",
+        "type": "SaaS",
+        "description": "Cloud-based learning and talent management"
+      }
+    ],
+    "asset-mgmt": [
+      {
+        "id": "servicenow-itam",
+        "name": "ServiceNow IT Asset Management",
+        "vendor": "ServiceNow",
+        "type": "SaaS",
+        "description": "Comprehensive IT asset lifecycle management"
+      },
+      {
+        "id": "flexera",
+        "name": "Flexera IT Asset Management",
+        "vendor": "Flexera",
+        "type": "SaaS/On-Premise",
+        "description": "IT asset and software license optimization"
+      },
+      {
+        "id": "snow-software",
+        "name": "Snow License Manager",
+        "vendor": "Snow Software",
+        "type": "SaaS/On-Premise",
+        "description": "Software asset management and optimization"
+      }
+    ],
+    "configuration-mgmt": [
+      {
+        "id": "servicenow-cmdb",
+        "name": "ServiceNow CMDB",
+        "vendor": "ServiceNow",
+        "type": "SaaS",
+        "description": "Configuration management database on Now Platform"
+      },
+      {
+        "id": "bmc-helix",
+        "name": "BMC Helix CMDB",
+        "vendor": "BMC Software",
+        "type": "SaaS",
+        "description": "Multi-cloud configuration management"
+      },
+      {
+        "id": "device42",
+        "name": "Device42",
+        "vendor": "Device42",
+        "type": "On-Premise/Cloud",
+        "description": "IT infrastructure and CMDB solution"
+      }
+    ],
+    "password-mgmt": [
+      {
+        "id": "1password-business",
+        "name": "1Password Business",
+        "vendor": "1Password",
+        "type": "SaaS",
+        "description": "Enterprise password and secrets management"
+      },
+      {
+        "id": "lastpass-enterprise",
+        "name": "LastPass Enterprise",
+        "vendor": "LastPass",
+        "type": "SaaS",
+        "description": "Password management and single sign-on"
+      },
+      {
+        "id": "keeper",
+        "name": "Keeper Security",
+        "vendor": "Keeper Security",
+        "type": "SaaS",
+        "description": "Zero-knowledge password and secrets platform"
+      }
+    ],
+    "privileged-access-mgmt": [
+      {
+        "id": "cyberark",
+        "name": "CyberArk Privileged Access Manager",
+        "vendor": "CyberArk",
+        "type": "On-Premise/Cloud",
+        "description": "Enterprise privileged access security"
+      },
+      {
+        "id": "beyondtrust",
+        "name": "BeyondTrust Privileged Access Management",
+        "vendor": "BeyondTrust",
+        "type": "SaaS/On-Premise",
+        "description": "Integrated privileged access and identity security"
+      },
+      {
+        "id": "delinea",
+        "name": "Delinea Secret Server",
+        "vendor": "Delinea",
+        "type": "SaaS/On-Premise",
+        "description": "Privileged account and session management"
+      }
+    ],
+    "data-loss-prevention": [
+      {
+        "id": "microsoft-purview",
+        "name": "Microsoft Purview DLP",
+        "vendor": "Microsoft",
+        "type": "SaaS",
+        "description": "Comprehensive data loss prevention"
+      },
+      {
+        "id": "symantec-dlp",
+        "name": "Symantec Data Loss Prevention",
+        "vendor": "Broadcom",
+        "type": "On-Premise/Cloud",
+        "description": "Advanced data loss prevention solution"
+      },
+      {
+        "id": "digital-guardian",
+        "name": "Digital Guardian DLP",
+        "vendor": "Digital Guardian",
+        "type": "SaaS/On-Premise",
+        "description": "Data protection and threat detection"
+      }
+    ],
+    "network-access-control": [
+      {
+        "id": "cisco-ise",
+        "name": "Cisco Identity Services Engine",
+        "vendor": "Cisco",
+        "type": "On-Premise/Cloud",
+        "description": "Network access control and policy enforcement"
+      },
+      {
+        "id": "forescout",
+        "name": "Forescout Platform",
+        "vendor": "Forescout",
+        "type": "On-Premise/Cloud",
+        "description": "Device visibility and network access control"
+      },
+      {
+        "id": "aruba-clearpass",
+        "name": "Aruba ClearPass",
+        "vendor": "HPE Aruba",
+        "type": "On-Premise/Cloud",
+        "description": "Policy management and network access control"
+      }
+    ]
+  },
+  "evaluationCriteria": [
+    {
+      "id": "functional-fit",
+      "name": "Functional Fit",
+      "description": "How well the solution meets functional requirements",
+      "weight": 25,
+      "category": "Business"
+    },
+    {
+      "id": "technical-fit",
+      "name": "Technical Fit",
+      "description": "Alignment with technical architecture and standards",
+      "weight": 20,
+      "category": "Technical"
+    },
+    {
+      "id": "total-cost",
+      "name": "Total Cost of Ownership",
+      "description": "5-year TCO including licenses, implementation, and operations",
+      "weight": 20,
+      "category": "Financial"
+    },
+    {
+      "id": "vendor-viability",
+      "name": "Vendor Viability",
+      "description": "Vendor stability, support, and long-term viability",
+      "weight": 10,
+      "category": "Risk"
+    },
+    {
+      "id": "implementation-risk",
+      "name": "Implementation Risk",
+      "description": "Risk and complexity of implementation",
+      "weight": 10,
+      "category": "Risk"
+    },
+    {
+      "id": "scalability",
+      "name": "Scalability",
+      "description": "Ability to scale with business growth",
+      "weight": 10,
+      "category": "Technical"
+    },
+    {
+      "id": "user-experience",
+      "name": "User Experience",
+      "description": "Ease of use and user adoption potential",
+      "weight": 5,
+      "category": "Business"
+    }
+  ],
+  "savedAnalyses": [
+    {
+      "id": "analysis-001",
+      "name": "CRM Modernization Initiative",
+      "capability": "crm",
+      "selectedOptions": ["salesforce", "microsoft-dynamics", "hubspot"],
+      "status": "In Progress",
+      "createdDate": "2024-01-15T10:00:00Z",
+      "lastModified": "2024-01-20T15:30:00Z",
+      "createdBy": "John Smith",
+      "scores": {
+        "salesforce": {
+          "functional-fit": 9,
+          "technical-fit": 8,
+          "total-cost": 6,
+          "vendor-viability": 10,
+          "implementation-risk": 7,
+          "scalability": 9,
+          "user-experience": 9
+        },
+        "microsoft-dynamics": {
+          "functional-fit": 8,
+          "technical-fit": 9,
+          "total-cost": 7,
+          "vendor-viability": 9,
+          "implementation-risk": 6,
+          "scalability": 8,
+          "user-experience": 7
+        },
+        "hubspot": {
+          "functional-fit": 7,
+          "technical-fit": 8,
+          "total-cost": 9,
+          "vendor-viability": 7,
+          "implementation-risk": 8,
+          "scalability": 7,
+          "user-experience": 10
+        }
+      },
+      "notes": "Initial scoring completed. Need to validate TCO calculations with finance team.",
+      "recommendation": "Salesforce recommended based on functional fit and market leadership"
+    }
+  ]
+}

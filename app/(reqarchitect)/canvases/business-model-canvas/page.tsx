@@ -15,7 +15,8 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { ArrowLeft, Download, Upload, Save, RefreshCw, FileText, Image, Code, FileSpreadsheet } from 'lucide-react'
 import Link from 'next/link'
-import { useToast } from '@/components/ui/use-toast'
+import { toast } from 'sonner'
+import { Toaster } from 'sonner'
 import {
   exportCanvasAsJSON,
   exportCanvasAsCSV,
@@ -46,68 +47,59 @@ const initialCanvas: BusinessModelCanvas = {
 
 export default function BusinessModelCanvasPage() {
   const [canvas, setCanvas] = useState<BusinessModelCanvas>(initialCanvas)
-  const { toast } = useToast()
 
   const handleSave = () => {
     console.log('Saving business model canvas:', canvas)
-    toast({
-      title: 'Saved',
+    toast.success('Saved', {
       description: 'Business Model Canvas has been saved successfully.',
     })
   }
 
   const handleExportCSV = () => {
     exportCanvasAsCSV(canvas)
-    toast({
-      title: 'Exported',
+    toast.success('Exported', {
       description: 'Business Model Canvas has been exported as CSV.',
     })
   }
 
   const handleExportTXT = () => {
     exportCanvasAsTXT(canvas)
-    toast({
-      title: 'Exported',
+    toast.success('Exported', {
       description: 'Business Model Canvas has been exported as TXT.',
     })
   }
 
   const handleExportMarkdown = () => {
     exportCanvasAsMarkdown(canvas)
-    toast({
-      title: 'Exported',
+    toast.success('Exported', {
       description: 'Business Model Canvas has been exported as Markdown.',
     })
   }
 
   const handleExportJSON = () => {
     exportCanvasAsJSON(canvas)
-    toast({
-      title: 'Exported',
+    toast.success('Exported', {
       description: 'Business Model Canvas has been exported as JSON.',
     })
   }
 
   const handleExportPNG = async () => {
     await exportCanvasAsPNG('business-model-canvas')
-    toast({
-      title: 'Exported',
+    toast.success('Exported', {
       description: 'Business Model Canvas has been exported as PNG.',
     })
   }
 
   const handleExportJPEG = async () => {
     await exportCanvasAsJPEG('business-model-canvas')
-    toast({
-      title: 'Exported',
+    toast.success('Exported', {
       description: 'Business Model Canvas has been exported as JPEG.',
     })
   }
 
   const handleExportSVG = async () => {
     await exportCanvasAsSVG('business-model-canvas')
-    toast({
-      title: 'Exported',
+    toast.success('Exported', {
       description: 'Business Model Canvas has been exported as SVG.',
     })
   }
@@ -125,15 +117,12 @@ export default function BusinessModelCanvasPage() {
         try {
           const imported = JSON.parse(event.target?.result as string) as BusinessModelCanvas
           setCanvas(imported)
-          toast({
-            title: 'Imported',
+          toast.success('Imported', {
             description: 'Business Model Canvas has been imported successfully.',
           })
         } catch (error) {
-          toast({
-            title: 'Import Failed',
+          toast.error('Import Failed', {
             description: 'Invalid JSON file format.',
-            variant: 'destructive',
           })
         }
       }
@@ -144,14 +133,15 @@ export default function BusinessModelCanvasPage() {
 
   const handleReset = () => {
     setCanvas(initialCanvas)
-    toast({
-      title: 'Reset',
+    toast.success('Reset', {
       description: 'Business Model Canvas has been reset to blank template.',
     })
   }
 
   return (
-    <div className="container mx-auto py-8 px-4 space-y-6">
+    <>
+      <Toaster position="top-right" />
+      <div className="container mx-auto py-8 px-4 space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="space-y-1">
@@ -242,5 +232,6 @@ export default function BusinessModelCanvasPage() {
         <BusinessModelCanvasComponent canvas={canvas} onUpdate={setCanvas} />
       </div>
     </div>
+    </>
   )
 }
