@@ -21,7 +21,10 @@ import { toPng, toJpeg, toSvg } from 'html-to-image'
 import { WorkflowBoardConfig, WorkflowNode, WorkflowEdge } from "@/lib/types/workflow"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Plus, Download, Upload, Trash2 } from "lucide-react"
+import { Plus, Download, Upload, Trash2, Undo2, Redo2, Copy, Clipboard, Save, FileUp } from "lucide-react"
+import { useToast } from "@/components/ui/use-toast"
+import { useHistory } from "@/lib/use-history"
+import { useKeyboardShortcuts } from "@/lib/use-keyboard-shortcuts"
 import { WorkflowNodeEditDialog } from "./workflow-node-edit-dialog"
 import { WorkflowEdgeEditDialog } from "./workflow-edge-edit-dialog"
 import {
@@ -168,6 +171,180 @@ export function ArchimateWorkflowBoardWrapper({
 
   // Ref for ReactFlow component
   const reactFlowWrapper = useRef<HTMLDivElement>(null)
+  const { toast } = useToast()
+
+  // History management for undo/redo
+  const history = useHistory({ nodes: workflowNodes, edges: workflowEdges })
+
+  // Clipboard for copy/paste
+  const [clipboard, setClipboard] = useState<{ nodes: WorkflowNode[], edges: WorkflowEdge[] } | null>(null)
+
+  // Ref to track current nodes for handlers (avoids dependency issues)
+  const nodesRef = useRef<Node[]>([])
+
+  // Track if a drag is currently happening to prevent sync interference
+  const isDraggingRef = useRef(false)
+
+
+
+  // Update history when nodes/edges change
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      history.setState({ nodes: workflowNodes, edges: workflowEdges })
+    }, 500) // Debounce to avoid too many history entries
+    return () => clearTimeout(timeoutId)
+  }, [workflowNodes, workflowEdges])
+
+  // Undo handler
+  const handleUndo = useCallback(() => {
+    if (history.canUndo) {
+      history.undo()
+      const prevState = history.state
+      setWorkflowNodes(prevState.nodes)
+      setWorkflowEdges(prevState.edges)
+      toast({ title: "Undo", description: "Reverted last change" })
+    }
+  }, [history, toast])
+
+  // Redo handler
+  const handleRedo = useCallback(() => {
+    if (history.canRedo) {
+      history.redo()
+      const nextState = history.state
+      setWorkflowNodes(nextState.nodes)
+      setWorkflowEdges(nextState.edges)
+      toast({ title: "Redo", description: "Reapplied change" })
+    }
+  }, [history, toast])
+
+  // Copy selected nodes
+  const handleCopy = useCallback(() => {
+    // Get selected node IDs from current React Flow nodes ref
+    const selectedNodeIds = new Set(nodesRef.current.filter(n => n.selected).map(n => n.id))
+
+    if (selectedNodeIds.size === 0) {
+      toast({ title: "Nothing to copy", description: "Select nodes first" })
+      return
+    }
+
+    // Get the workflow nodes that are selected
+    const selectedNodes = workflowNodes.filter(n => selectedNodeIds.has(n.id))
+    const selectedEdges = workflowEdges.filter(e =>
+      selectedNodeIds.has(e.source) && selectedNodeIds.has(e.target)
+    )
+
+    setClipboard({ nodes: selectedNodes, edges: selectedEdges })
+    toast({ title: "Copied", description: `Copied ${selectedNodes.length} node(s)` })
+  }, [workflowNodes, workflowEdges, toast])
+
+  // Paste copied nodes
+  const handlePaste = useCallback(() => {
+    if (!clipboard) {
+      toast({ title: "Nothing to paste", description: "Copy nodes first" })
+      return
+    }
+
+    const offset = 50
+    const idMap = new Map<string, string>()
+
+    const newNodes = clipboard.nodes.map(node => {
+      const newId = `node-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+      idMap.set(node.id, newId)
+      return {
+        ...node,
+        id: newId,
+        position: {
+          x: node.position.x + offset,
+          y: node.position.y + offset
+        }
+      }
+    })
+
+    const newEdges = clipboard.edges.map(edge => ({
+      ...edge,
+      id: `edge-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      source: idMap.get(edge.source)!,
+      target: idMap.get(edge.target)!
+    }))
+
+    setWorkflowNodes(prev => [...prev, ...newNodes])
+    setWorkflowEdges(prev => [...prev, ...newEdges])
+    toast({ title: "Pasted", description: `Pasted ${newNodes.length} node(s)` })
+  }, [clipboard, toast])
+
+  // Export to JSON
+  const handleExportJSON = useCallback(() => {
+    const data = {
+      nodes: workflowNodes,
+      edges: workflowEdges,
+      metadata: {
+        version: '1.0',
+        type: config.type,
+        exportedAt: new Date().toISOString()
+      }
+    }
+
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `workflow-${Date.now()}.json`
+    a.click()
+    URL.revokeObjectURL(url)
+    toast({ title: "Exported", description: "Workflow saved to JSON file" })
+  }, [workflowNodes, workflowEdges, config.type, toast])
+
+  // Import from JSON
+  const handleImportJSON = useCallback(() => {
+    const input = document.createElement('input')
+    input.type = 'file'
+    input.accept = '.json'
+    input.onchange = async (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0]
+      if (!file) return
+
+      try {
+        const text = await file.text()
+        const data = JSON.parse(text)
+
+        if (!data.nodes || !data.edges) {
+          toast({ title: "Invalid file", description: "JSON file is not a valid workflow", variant: "destructive" })
+          return
+        }
+
+        setWorkflowNodes(data.nodes)
+        setWorkflowEdges(data.edges)
+        toast({ title: "Imported", description: "Workflow loaded from JSON file" })
+      } catch (error) {
+        toast({ title: "Error", description: "Failed to import workflow", variant: "destructive" })
+      }
+    }
+    input.click()
+  }, [toast])
+
+  // Delete selected nodes
+  const handleDeleteSelected = useCallback(() => {
+    // Get selected node IDs from React Flow nodes ref
+    const selectedNodeIds = nodesRef.current.filter(n => n.selected).map(n => n.id)
+
+    if (selectedNodeIds.length === 0) return
+
+    setWorkflowNodes(prev => prev.filter(n => !selectedNodeIds.includes(n.id)))
+    setWorkflowEdges(prev => prev.filter(e =>
+      !selectedNodeIds.includes(e.source) && !selectedNodeIds.includes(e.target)
+    ))
+    toast({ title: "Deleted", description: `Deleted ${selectedNodeIds.length} node(s)` })
+  }, [toast])
+
+  // Keyboard shortcuts
+  useKeyboardShortcuts({
+    onUndo: handleUndo,
+    onRedo: handleRedo,
+    onCopy: handleCopy,
+    onPaste: handlePaste,
+    onDelete: handleDeleteSelected,
+    onSave: handleExportJSON,
+  })
 
   // Helper to calculate child count
   const getChildCount = useCallback((nodeId: string) => {
@@ -260,13 +437,13 @@ export function ArchimateWorkflowBoardWrapper({
           childCount,
           onToggleCollapse: () => toggleNodeCollapse(node.id),
         },
-        style: {
-          width,
-          height,
-        },
+        // Don't set style.width/height here - let NodeResizer handle dynamic sizing
+        // The node components use data.width and data.height for their internal sizing
         parentNode: node.metadata?.parentNode as string | undefined,
         extent: node.metadata?.parentNode ? 'parent' : undefined,
         hidden: node.metadata?.hidden || false,
+        draggable: true,
+        selectable: true,
       }
     })
   }, [workflowNodes, getChildCount, toggleNodeCollapse])
@@ -415,9 +592,17 @@ export function ArchimateWorkflowBoardWrapper({
   const [nodes, setNodes, onNodesChange] = useNodesState(transformedNodes)
   const [edges, setEdges, onEdgesChange] = useEdgesState(transformedEdges)
 
-  // Sync workflowNodes to React Flow nodes when workflowNodes change
+  // Keep nodesRef in sync with nodes state (for handlers that need current selection)
   useEffect(() => {
-    setNodes(transformedNodes)
+    nodesRef.current = nodes
+  }, [nodes])
+
+  // Sync workflowNodes to React Flow nodes when workflowNodes change
+  // Skip sync during active drag to prevent position reset
+  useEffect(() => {
+    if (!isDraggingRef.current) {
+      setNodes(transformedNodes)
+    }
   }, [transformedNodes, setNodes])
 
   // Sync workflowEdges to React Flow edges when workflowEdges change
@@ -430,7 +615,17 @@ export function ArchimateWorkflowBoardWrapper({
     (changes: NodeChange[]) => {
       onNodesChange(changes)
 
-      // Update workflowNodes positions after drag
+      // Track if any position change is actively dragging
+      const hasDragging = changes.some(
+        (c): c is NodeChange & { type: 'position'; dragging: boolean } =>
+          c.type === 'position' && 'dragging' in c && c.dragging === true
+      )
+      if (hasDragging) {
+        isDraggingRef.current = true
+        return // Don't update workflowNodes during active drag
+      }
+
+      // Update workflowNodes positions after drag ends
       const positionChanges = changes.filter(
         (c): c is NodeChange & { type: 'position'; position: { x: number; y: number }; dragging: boolean } =>
           c.type === 'position' && 'dragging' in c && c.dragging === false && 'position' in c
@@ -474,9 +669,24 @@ export function ArchimateWorkflowBoardWrapper({
 
           return result
         })
+
+        // Re-enable sync after state update completes
+        setTimeout(() => {
+          isDraggingRef.current = false
+        }, 50)
       }
 
-      // Update workflowNodes dimensions after resize
+      // Track if any dimension change is actively resizing
+      const hasResizing = changes.some(
+        (c): c is NodeChange & { type: 'dimensions'; resizing: boolean } =>
+          c.type === 'dimensions' && 'resizing' in c && c.resizing === true
+      )
+      if (hasResizing) {
+        isDraggingRef.current = true
+        return // Don't update workflowNodes during active resize
+      }
+
+      // Update workflowNodes dimensions after resize ends
       const dimensionChanges = changes.filter(
         (c): c is NodeChange & { type: 'dimensions'; dimensions?: { width: number; height: number }; resizing: boolean } =>
           c.type === 'dimensions' && 'resizing' in c && c.resizing === false && 'dimensions' in c
@@ -527,6 +737,11 @@ export function ArchimateWorkflowBoardWrapper({
 
           return result
         })
+
+        // Re-enable sync after state update completes
+        setTimeout(() => {
+          isDraggingRef.current = false
+        }, 50)
       }
     },
     [onNodesChange, autoResizeParent]
@@ -974,6 +1189,75 @@ export function ArchimateWorkflowBoardWrapper({
           </Select>
         </div>
         <div className="flex items-center gap-2">
+          {/* Undo/Redo */}
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleUndo}
+            disabled={!history.canUndo}
+            className="h-8"
+            title="Undo (Ctrl+Z)"
+          >
+            <Undo2 className="h-3 w-3" />
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleRedo}
+            disabled={!history.canRedo}
+            className="h-8"
+            title="Redo (Ctrl+Y)"
+          >
+            <Redo2 className="h-3 w-3" />
+          </Button>
+
+          {/* Copy/Paste */}
+          <div className="w-px h-5 bg-border" />
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleCopy}
+            className="h-8"
+            title="Copy (Ctrl+C)"
+          >
+            <Copy className="h-3 w-3" />
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handlePaste}
+            disabled={!clipboard}
+            className="h-8"
+            title="Paste (Ctrl+V)"
+          >
+            <Clipboard className="h-3 w-3" />
+          </Button>
+
+          {/* JSON Import/Export */}
+          <div className="w-px h-5 bg-border" />
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleExportJSON}
+            className="h-8"
+            title="Save to JSON (Ctrl+S)"
+          >
+            <Save className="h-3 w-3 mr-1" />
+            Save
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleImportJSON}
+            className="h-8"
+            title="Load from JSON"
+          >
+            <FileUp className="h-3 w-3 mr-1" />
+            Load
+          </Button>
+
+          {/* Other actions */}
+          <div className="w-px h-5 bg-border" />
           <Button
             variant={deleteMode ? "destructive" : "outline"}
             size="sm"
@@ -1159,6 +1443,9 @@ export function ArchimateWorkflowBoardWrapper({
         </div>
         <div>
           <strong>🔄 Resizing & Nesting:</strong> Select an element and drag resize handles to adjust size. Drop elements onto Grouping or Location nodes to nest them (parent-child). Click chevron icons to toggle between black box (collapsed) and white box (expanded) views.
+        </div>
+        <div>
+          <strong>⌨️ Keyboard Shortcuts:</strong> Undo (Ctrl+Z), Redo (Ctrl+Y), Copy (Ctrl+C), Paste (Ctrl+V), Delete (Del/Backspace), Save (Ctrl+S). Multi-select with Shift+Click or drag selection box.
         </div>
       </div>
 

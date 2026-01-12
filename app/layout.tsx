@@ -4,6 +4,7 @@ import "./globals.css";
 import React from "react";
 import GoogleAnalyticsInit from "@/lib/ga";
 import { ThemeProvider } from "next-themes";
+import ApiMockProvider from "@/app/(client)/ApiMockProvider";
 
 const geist = localFont({
   src: [
@@ -49,9 +50,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning className={`${geist.className} `}>
-        <ThemeProvider defaultTheme="light" attribute="class" disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
+        <ApiMockProvider>
+          <ThemeProvider defaultTheme="light" attribute="class" disableTransitionOnChange>
+            {children}
+          </ThemeProvider>
+        </ApiMockProvider>
         {process.env.NODE_ENV === "production" ? <GoogleAnalyticsInit /> : null}
       </body>
     </html>

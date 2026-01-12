@@ -1,0 +1,1 @@
+- yes! canvases are still needed BUT a canvas is NOT a dashboard, such conflicts shouldn't exist. Keep Canvases, keep dashboards!

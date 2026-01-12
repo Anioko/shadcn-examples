@@ -1,0 +1,21 @@
+{
+  "projectId": "bf400919-f293-447f-b069-171b228b9e2e",
+  "grandchildId": "0e5b80e1-d753-4d45-b751-a73cd57b0716",
+  "entries": [
+    {
+      "title": "Manufacturing Partner A",
+      "id": "f241a92c-79b5-4aa2-b21b-0f2963e475c6"
+    },
+    {
+      "title": "Technology Provider B",
+      "id": "aab4c465-da30-4a5a-85c1-0869ce237069"
+    },
+    {
+      "title": "Distribution Partner C",
+      "id": "974b552d-6604-4e97-8f44-10255f5149ae"
+    }
+  ],
+  "frameworkSlug": "business-model-canvas",
+  "frameworkId": "608949ef-fbc9-4e60-bbbd-13b9f40f71ac",
+  "instanceId": "fd6562ce-58a8-4cd2-aed5-4e4083f0aa31"
+}

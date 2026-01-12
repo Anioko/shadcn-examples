@@ -17,6 +17,7 @@ import { FrameworkItem } from "@/lib/mock-framework-data"
 import { FrameworkGrandchild } from "@/lib/framework-config"
 import { singularize } from "@/lib/utils"
 import { AddItemDrawer } from "@/components/framework/add-item-drawer"
+import { useGrandchildEntries, useCreateEntry, useDeleteEntry } from "@/lib/api/useGrandchildEntries"
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 import {
@@ -67,17 +68,24 @@ export function GrandchildDashboard({
   const [drawerOpen, setDrawerOpen] = React.useState(false)
   const singularName = singularize(grandchild.name)
 
-  // Calculate stats
-  const totalCount = data.length
-  const doneCount = data.filter((item) => item.status === "Done").length
-  const inProgressCount = data.filter((item) => item.status === "In Process").length
-  const notStartedCount = data.filter((item) => item.status === "Not Started").length
-  const completionRate = totalCount > 0 ? Math.round((doneCount / totalCount) * 100) : 0
+  // Fetch entries from API (falls back to provided `data` prop if offline)
+  const { data: entriesData = [], isLoading, isError } = useGrandchildEntries(frameworkSlug, grandchild.id, true)
 
-  const handleSuccess = (newData: Record<string, any>) => {
-    // TODO: Refresh data
-    console.log("New item added:", newData)
+  const createMutation = useCreateEntry(frameworkSlug, grandchild.id)
+  const deleteMutation = useDeleteEntry(frameworkSlug, grandchild.id)
+
+  const handleSuccess = (newData: Record<string, unknown>) => {
+    // create the new entry via API
+    createMutation.mutate(newData)
   }
+
+  // Calculate stats (prefer live entries when available)
+  const source = entriesData?.length ? entriesData : data
+  const totalCount = source.length
+  const doneCount = source.filter((item: FrameworkItem) => item.status === "Done").length
+  const inProgressCount = source.filter((item: FrameworkItem) => item.status === "In Progress").length
+  const notStartedCount = source.filter((item: FrameworkItem) => item.status === "Not Started").length
+  const completionRate = totalCount > 0 ? Math.round((doneCount / totalCount) * 100) : 0
 
   // Chart data
   const chartData = [
@@ -184,10 +192,11 @@ export function GrandchildDashboard({
           {/* Data Table */}
           <div className="px-4 lg:px-6">
             <GrandchildTable
-              data={data}
+              data={source}
               grandchildId={grandchild.id}
               grandchildName={grandchild.name}
               frameworkSlug={frameworkSlug}
+              onDelete={(id: string | number) => deleteMutation.mutate(id)}
             />
           </div>
         </div>
@@ -212,11 +221,13 @@ function GrandchildTable({
   grandchildId,
   grandchildName,
   frameworkSlug,
+  onDelete,
 }: {
   data: FrameworkItem[]
   grandchildId: string
   grandchildName: string
   frameworkSlug: string
+  onDelete?: (id: string | number) => void
 }) {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
@@ -273,7 +284,7 @@ function GrandchildTable({
     },
     {
       id: "actions",
-      cell: ({ row }) => (
+        cell: ({ row }) => (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="h-8 w-8 p-0">
@@ -285,7 +296,9 @@ function GrandchildTable({
             <DropdownMenuItem>View details</DropdownMenuItem>
             <DropdownMenuItem>Edit</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="text-red-600">Delete</DropdownMenuItem>
+              <DropdownMenuItem className="text-red-600" onSelect={() => onDelete && onDelete((row.original as FrameworkItem).id)}>
+                Delete
+              </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       ),

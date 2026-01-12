@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "dev:turbo": "next dev --turbopack",
+    "dev": "next dev --turbopack",
+    "dev:webpack": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -54,7 +54,12 @@
     "@react-email/components": "^0.0.34",
     "@react-email/render": "^1.0.5",
     "@remixicon/react": "^4.6.0",
+    "@supabase/auth-helpers-nextjs": "^0.10.0",
+    "@supabase/ssr": "^0.7.0",
+    "@supabase/supabase-js": "^2.78.0",
     "@tabler/icons-react": "^3.34.1",
+    "@tanstack/react-query": "^5.4.0",
+    "@tanstack/react-query-devtools": "^5.4.0",
     "@tanstack/react-table": "^8.21.3",
     "@uidotdev/usehooks": "^2.4.1",
     "@xyflow/react": "^12.9.0",
@@ -90,6 +95,7 @@
     "tailwind-merge": "^3.0.2",
     "tw-animate-css": "^1.2.5",
     "vaul": "^1.1.2",
+    "xlsx": "^0.18.5",
     "zod": "^3.25.49",
     "zustand": "^5.0.3"
   },
@@ -101,10 +107,12 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "axios-mock-adapter": "^2.1.0",
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
     "prisma": "^6.18.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "uuid": "^13.0.0"
   }
 }

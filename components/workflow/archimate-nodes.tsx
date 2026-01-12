@@ -19,11 +19,8 @@ const PHYSICAL_COLOR = "#C9E7C7" // Light Gray-Green
 
 // Business Actor - Active Structure (rounded rectangle with icon)
 export const BusinessActorNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
-
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#ca8a04"
         isVisible={selected}
@@ -31,8 +28,8 @@ export const BusinessActorNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-yellow-600 p-3 shadow-md flex items-center justify-center"
-        style={{ backgroundColor: BUSINESS_COLOR }}
+        className="rounded-lg border-2 border-yellow-600 p-3 shadow-md flex items-center justify-center"
+        style={{ backgroundColor: BUSINESS_COLOR, minWidth: 100, minHeight: 60 }}
       >
         <div className="text-xs font-semibold text-center">{data.label}</div>
       </div>
@@ -46,11 +43,8 @@ BusinessActorNode.displayName = "BusinessActorNode"
 
 // Business Process - Behavior (rounded rectangle)
 export const BusinessProcessNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 120
-  const height = data.height || 60
-
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#ca8a04"
         isVisible={selected}
@@ -58,8 +52,8 @@ export const BusinessProcessNode = memo(({ data, selected }: NodeProps) => {
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-yellow-600 p-3 shadow-md flex items-center justify-center"
-        style={{ backgroundColor: BUSINESS_COLOR }}
+        className="rounded-lg border-2 border-yellow-600 p-3 shadow-md flex items-center justify-center"
+        style={{ backgroundColor: BUSINESS_COLOR, minWidth: 120, minHeight: 60 }}
       >
         <div className="text-xs font-semibold text-center">{data.label}</div>
       </div>
@@ -73,12 +67,10 @@ BusinessProcessNode.displayName = "BusinessProcessNode"
 
 // Business Service - Behavior (rounded rectangle with service icon)
 export const BusinessServiceNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#ca8a04"
         isVisible={selected}
@@ -86,10 +78,12 @@ export const BusinessServiceNode = memo(({ data, selected }: NodeProps) => {
         minHeight={50}
       />
       <div
-        className="w-full h-full rounded-t-lg border-2 border-yellow-600 p-3 shadow-md overflow-hidden"
+        className="rounded-t-lg border-2 border-yellow-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: BUSINESS_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -127,12 +121,10 @@ BusinessServiceNode.displayName = "BusinessServiceNode"
 
 // Business Object - Passive Structure (rectangle with flat corners)
 export const BusinessObjectNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 90
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#ca8a04"
         isVisible={selected}
@@ -140,10 +132,12 @@ export const BusinessObjectNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full border-2 border-yellow-600 p-3 shadow-md overflow-hidden"
+        className="border-2 border-yellow-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: BUSINESS_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 90,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -181,12 +175,10 @@ BusinessObjectNode.displayName = "BusinessObjectNode"
 
 // Business Role - Active Structure (rounded rectangle)
 export const BusinessRoleNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#ca8a04"
         isVisible={selected}
@@ -194,10 +186,12 @@ export const BusinessRoleNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-yellow-600 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-yellow-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: BUSINESS_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -236,12 +230,10 @@ BusinessRoleNode.displayName = "BusinessRoleNode"
 
 // Business Collaboration - Active Structure (rounded rectangle)
 export const BusinessCollaborationNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#ca8a04"
         isVisible={selected}
@@ -249,10 +241,12 @@ export const BusinessCollaborationNode = memo(({ data, selected }: NodeProps) =>
         minHeight={40}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-yellow-600 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-yellow-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: BUSINESS_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -291,12 +285,10 @@ BusinessCollaborationNode.displayName = "BusinessCollaborationNode"
 
 // Business Interface - Active Structure (rounded rectangle with circle)
 export const BusinessInterfaceNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#ca8a04"
         isVisible={selected}
@@ -304,10 +296,12 @@ export const BusinessInterfaceNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-yellow-600 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-yellow-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: BUSINESS_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -345,12 +339,10 @@ BusinessInterfaceNode.displayName = "BusinessInterfaceNode"
 
 // Business Function - Behavior (rounded rectangle)
 export const BusinessFunctionNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 120
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#ca8a04"
         isVisible={selected}
@@ -358,10 +350,12 @@ export const BusinessFunctionNode = memo(({ data, selected }: NodeProps) => {
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-yellow-600 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-yellow-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: BUSINESS_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 120,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -400,12 +394,10 @@ BusinessFunctionNode.displayName = "BusinessFunctionNode"
 
 // Business Interaction - Behavior (rounded rectangle)
 export const BusinessInteractionNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 120
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#ca8a04"
         isVisible={selected}
@@ -413,10 +405,12 @@ export const BusinessInteractionNode = memo(({ data, selected }: NodeProps) => {
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-yellow-600 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-yellow-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: BUSINESS_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 120,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -455,12 +449,10 @@ BusinessInteractionNode.displayName = "BusinessInteractionNode"
 
 // Business Event - Behavior (rounded rectangle)
 export const BusinessEventNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 120
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#ca8a04"
         isVisible={selected}
@@ -468,10 +460,12 @@ export const BusinessEventNode = memo(({ data, selected }: NodeProps) => {
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-yellow-600 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-yellow-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: BUSINESS_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 120,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -509,12 +503,10 @@ BusinessEventNode.displayName = "BusinessEventNode"
 
 // Contract - Passive Structure (rectangle)
 export const ContractNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 90
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#ca8a04"
         isVisible={selected}
@@ -522,10 +514,12 @@ export const ContractNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full border-2 border-yellow-600 p-3 shadow-md overflow-hidden"
+        className="border-2 border-yellow-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: BUSINESS_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 90,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -563,12 +557,10 @@ ContractNode.displayName = "ContractNode"
 
 // Representation - Passive Structure (rectangle)
 export const RepresentationNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 90
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#ca8a04"
         isVisible={selected}
@@ -576,10 +568,12 @@ export const RepresentationNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full border-2 border-yellow-600 p-3 shadow-md overflow-hidden"
+        className="border-2 border-yellow-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: BUSINESS_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 90,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -617,12 +611,10 @@ RepresentationNode.displayName = "RepresentationNode"
 
 // Product - Passive Structure (rectangle)
 export const ProductNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 90
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#ca8a04"
         isVisible={selected}
@@ -630,10 +622,12 @@ export const ProductNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full border-2 border-yellow-600 p-3 shadow-md overflow-hidden"
+        className="border-2 border-yellow-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: BUSINESS_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 90,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -675,11 +669,9 @@ ProductNode.displayName = "ProductNode"
 
 // Application Component - Active Structure
 export const ApplicationComponentNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#2563eb"
         isVisible={selected}
@@ -687,8 +679,12 @@ export const ApplicationComponentNode = memo(({ data, selected }: NodeProps) => 
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-blue-600 p-3 shadow-md flex items-center justify-center"
-        style={{ backgroundColor: APPLICATION_COLOR }}
+        className="rounded-lg border-2 border-blue-600 p-3 shadow-md flex items-center justify-center"
+        style={{
+          backgroundColor: APPLICATION_COLOR,
+          minWidth: 100,
+          minHeight: 60,
+        }}
       >
         <div className="text-xs font-semibold text-center">{data.label}</div>
       </div>
@@ -703,12 +699,10 @@ ApplicationComponentNode.displayName = "ApplicationComponentNode"
 
 // Application Service - Behavior
 export const ApplicationServiceNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#2563eb"
         isVisible={selected}
@@ -716,10 +710,12 @@ export const ApplicationServiceNode = memo(({ data, selected }: NodeProps) => {
         minHeight={50}
       />
       <div
-        className="w-full h-full rounded-t-lg border-2 border-blue-600 p-3 shadow-md overflow-hidden"
+        className="rounded-t-lg border-2 border-blue-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: APPLICATION_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -757,12 +753,10 @@ ApplicationServiceNode.displayName = "ApplicationServiceNode"
 
 // Data Object - Passive Structure
 export const DataObjectNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 90
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#2563eb"
         isVisible={selected}
@@ -770,10 +764,12 @@ export const DataObjectNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full border-2 border-blue-600 p-3 shadow-md overflow-hidden"
+        className="border-2 border-blue-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: APPLICATION_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 90,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -811,12 +807,10 @@ DataObjectNode.displayName = "DataObjectNode"
 
 // Application Collaboration - Active Structure
 export const ApplicationCollaborationNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#2563eb"
         isVisible={selected}
@@ -824,10 +818,12 @@ export const ApplicationCollaborationNode = memo(({ data, selected }: NodeProps)
         minHeight={40}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-blue-600 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-blue-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: APPLICATION_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -867,12 +863,10 @@ ApplicationCollaborationNode.displayName = "ApplicationCollaborationNode"
 
 // Application Interface - Active Structure
 export const ApplicationInterfaceNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#2563eb"
         isVisible={selected}
@@ -880,10 +874,12 @@ export const ApplicationInterfaceNode = memo(({ data, selected }: NodeProps) => 
         minHeight={40}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-blue-600 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-blue-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: APPLICATION_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -921,12 +917,10 @@ ApplicationInterfaceNode.displayName = "ApplicationInterfaceNode"
 
 // Application Function - Behavior
 export const ApplicationFunctionNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 120
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#2563eb"
         isVisible={selected}
@@ -934,10 +928,12 @@ export const ApplicationFunctionNode = memo(({ data, selected }: NodeProps) => {
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-blue-600 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-blue-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: APPLICATION_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 120,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -976,12 +972,10 @@ ApplicationFunctionNode.displayName = "ApplicationFunctionNode"
 
 // Application Interaction - Behavior
 export const ApplicationInteractionNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 120
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#2563eb"
         isVisible={selected}
@@ -989,10 +983,12 @@ export const ApplicationInteractionNode = memo(({ data, selected }: NodeProps) =
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-blue-600 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-blue-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: APPLICATION_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 120,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -1031,12 +1027,10 @@ ApplicationInteractionNode.displayName = "ApplicationInteractionNode"
 
 // Application Process - Behavior
 export const ApplicationProcessNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 120
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#2563eb"
         isVisible={selected}
@@ -1044,10 +1038,12 @@ export const ApplicationProcessNode = memo(({ data, selected }: NodeProps) => {
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-blue-600 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-blue-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: APPLICATION_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 120,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -1086,12 +1082,10 @@ ApplicationProcessNode.displayName = "ApplicationProcessNode"
 
 // Application Event - Behavior
 export const ApplicationEventNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 120
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#2563eb"
         isVisible={selected}
@@ -1099,10 +1093,12 @@ export const ApplicationEventNode = memo(({ data, selected }: NodeProps) => {
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-blue-600 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-blue-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: APPLICATION_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 120,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -1144,12 +1140,10 @@ ApplicationEventNode.displayName = "ApplicationEventNode"
 
 // Node (Infrastructure) - Active Structure
 export const InfrastructureNodeNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#16a34a"
         isVisible={selected}
@@ -1157,10 +1151,12 @@ export const InfrastructureNodeNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: TECHNOLOGY_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -1200,12 +1196,10 @@ InfrastructureNodeNode.displayName = "InfrastructureNodeNode"
 
 // Technology Service
 export const TechnologyServiceNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#16a34a"
         isVisible={selected}
@@ -1213,10 +1207,12 @@ export const TechnologyServiceNode = memo(({ data, selected }: NodeProps) => {
         minHeight={50}
       />
       <div
-        className="w-full h-full rounded-t-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
+        className="rounded-t-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: TECHNOLOGY_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -1254,12 +1250,10 @@ TechnologyServiceNode.displayName = "TechnologyServiceNode"
 
 // Device - Active Structure
 export const DeviceNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#16a34a"
         isVisible={selected}
@@ -1267,10 +1261,12 @@ export const DeviceNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: TECHNOLOGY_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -1310,12 +1306,10 @@ DeviceNode.displayName = "DeviceNode"
 
 // System Software - Active Structure
 export const SystemSoftwareNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#16a34a"
         isVisible={selected}
@@ -1323,10 +1317,12 @@ export const SystemSoftwareNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: TECHNOLOGY_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -1366,12 +1362,10 @@ SystemSoftwareNode.displayName = "SystemSoftwareNode"
 
 // Technology Collaboration - Active Structure
 export const TechnologyCollaborationNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#16a34a"
         isVisible={selected}
@@ -1379,10 +1373,12 @@ export const TechnologyCollaborationNode = memo(({ data, selected }: NodeProps) 
         minHeight={40}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: TECHNOLOGY_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -1422,12 +1418,10 @@ TechnologyCollaborationNode.displayName = "TechnologyCollaborationNode"
 
 // Technology Interface - Active Structure
 export const TechnologyInterfaceNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#16a34a"
         isVisible={selected}
@@ -1435,10 +1429,12 @@ export const TechnologyInterfaceNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: TECHNOLOGY_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -1476,12 +1472,10 @@ TechnologyInterfaceNode.displayName = "TechnologyInterfaceNode"
 
 // Path - Active Structure
 export const PathNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#16a34a"
         isVisible={selected}
@@ -1489,10 +1483,12 @@ export const PathNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: TECHNOLOGY_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -1530,12 +1526,10 @@ PathNode.displayName = "PathNode"
 
 // Communication Network - Active Structure
 export const CommunicationNetworkNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#16a34a"
         isVisible={selected}
@@ -1543,10 +1537,12 @@ export const CommunicationNetworkNode = memo(({ data, selected }: NodeProps) => 
         minHeight={40}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: TECHNOLOGY_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -1586,12 +1582,10 @@ CommunicationNetworkNode.displayName = "CommunicationNetworkNode"
 
 // Technology Function - Behavior
 export const TechnologyFunctionNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 120
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#16a34a"
         isVisible={selected}
@@ -1599,10 +1593,12 @@ export const TechnologyFunctionNode = memo(({ data, selected }: NodeProps) => {
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: TECHNOLOGY_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 120,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -1641,12 +1637,10 @@ TechnologyFunctionNode.displayName = "TechnologyFunctionNode"
 
 // Technology Process - Behavior
 export const TechnologyProcessNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 120
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#16a34a"
         isVisible={selected}
@@ -1654,10 +1648,12 @@ export const TechnologyProcessNode = memo(({ data, selected }: NodeProps) => {
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: TECHNOLOGY_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 120,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -1696,12 +1692,10 @@ TechnologyProcessNode.displayName = "TechnologyProcessNode"
 
 // Technology Interaction - Behavior
 export const TechnologyInteractionNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 120
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#16a34a"
         isVisible={selected}
@@ -1709,10 +1703,12 @@ export const TechnologyInteractionNode = memo(({ data, selected }: NodeProps) =>
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: TECHNOLOGY_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 120,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -1751,12 +1747,10 @@ TechnologyInteractionNode.displayName = "TechnologyInteractionNode"
 
 // Technology Event - Behavior
 export const TechnologyEventNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 120
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#16a34a"
         isVisible={selected}
@@ -1764,10 +1758,12 @@ export const TechnologyEventNode = memo(({ data, selected }: NodeProps) => {
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-green-700 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: TECHNOLOGY_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 120,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -1805,12 +1801,10 @@ TechnologyEventNode.displayName = "TechnologyEventNode"
 
 // Artifact - Passive Structure
 export const ArtifactNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 90
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#16a34a"
         isVisible={selected}
@@ -1818,10 +1812,12 @@ export const ArtifactNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full  border-2 border-green-700 p-3 shadow-md overflow-hidden"
+        className="border-2 border-green-700 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: TECHNOLOGY_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 90,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -1863,11 +1859,9 @@ ArtifactNode.displayName = "ArtifactNode"
 
 // Capability - Strategy
 export const CapabilityNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 110
-  const height = data.height || 60
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#ef4444"
         isVisible={selected}
@@ -1875,8 +1869,12 @@ export const CapabilityNode = memo(({ data, selected }: NodeProps) => {
         minHeight={50}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-red-500 p-3 shadow-md flex items-center justify-center"
-        style={{ backgroundColor: STRATEGY_COLOR }}
+        className="rounded-lg border-2 border-red-500 p-3 shadow-md flex items-center justify-center"
+        style={{
+          backgroundColor: STRATEGY_COLOR,
+          minWidth: 110,
+          minHeight: 60,
+        }}
       >
         <div className="text-xs font-semibold text-center">{data.label}</div>
       </div>
@@ -1890,12 +1888,10 @@ CapabilityNode.displayName = "CapabilityNode"
 
 // Course of Action
 export const CourseOfActionNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#ef4444"
         isVisible={selected}
@@ -1903,10 +1899,12 @@ export const CourseOfActionNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-red-500 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-red-500 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: STRATEGY_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -1944,12 +1942,10 @@ CourseOfActionNode.displayName = "CourseOfActionNode"
 
 // Resource - Active Structure (rounded rectangle)
 export const ResourceNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#ef4444"
         isVisible={selected}
@@ -1957,9 +1953,11 @@ export const ResourceNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-red-500 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-red-500 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: STRATEGY_COLOR,
+          minWidth: 100,
+          minHeight: 60,
           transition: 'all 0.2s ease-in-out',
         }}
       >
@@ -1999,12 +1997,10 @@ ResourceNode.displayName = "ResourceNode"
 
 // Value Stream - Behavior (rounded rectangle)
 export const ValueStreamNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 120
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#ef4444"
         isVisible={selected}
@@ -2012,10 +2008,12 @@ export const ValueStreamNode = memo(({ data, selected }: NodeProps) => {
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-red-500 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-red-500 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: STRATEGY_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 120,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -2057,12 +2055,10 @@ ValueStreamNode.displayName = "ValueStreamNode"
 
 // Work Package
 export const WorkPackageNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#ea580c"
         isVisible={selected}
@@ -2070,10 +2066,12 @@ export const WorkPackageNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-orange-600 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-orange-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: IMPLEMENTATION_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -2111,12 +2109,10 @@ WorkPackageNode.displayName = "WorkPackageNode"
 
 // Deliverable
 export const DeliverableNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 90
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#ea580c"
         isVisible={selected}
@@ -2124,10 +2120,12 @@ export const DeliverableNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full  border-2 border-orange-600 p-3 shadow-md overflow-hidden"
+        className="border-2 border-orange-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: IMPLEMENTATION_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 90,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -2165,12 +2163,10 @@ DeliverableNode.displayName = "DeliverableNode"
 
 // Implementation Event - Behavior
 export const ImplementationEventNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 120
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#ea580c"
         isVisible={selected}
@@ -2178,10 +2174,12 @@ export const ImplementationEventNode = memo(({ data, selected }: NodeProps) => {
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-orange-600 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-orange-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: IMPLEMENTATION_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 120,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -2219,12 +2217,10 @@ ImplementationEventNode.displayName = "ImplementationEventNode"
 
 // Plateau - Composite
 export const PlateauNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#ea580c"
         isVisible={selected}
@@ -2232,10 +2228,12 @@ export const PlateauNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-orange-600 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-orange-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: IMPLEMENTATION_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -2273,12 +2271,10 @@ PlateauNode.displayName = "PlateauNode"
 
 // Gap - Composite
 export const GapNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#ea580c"
         isVisible={selected}
@@ -2286,10 +2282,12 @@ export const GapNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-orange-600 border-dashed p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-orange-600 border-dashed p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: IMPLEMENTATION_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -2331,12 +2329,10 @@ GapNode.displayName = "GapNode"
 
 // Equipment - Active Structure
 export const EquipmentNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#4b5563"
         isVisible={selected}
@@ -2344,10 +2340,12 @@ export const EquipmentNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-gray-600 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-gray-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: PHYSICAL_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -2387,12 +2385,10 @@ EquipmentNode.displayName = "EquipmentNode"
 
 // Facility - Active Structure
 export const FacilityNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#4b5563"
         isVisible={selected}
@@ -2400,10 +2396,12 @@ export const FacilityNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-gray-600 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-gray-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: PHYSICAL_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -2443,12 +2441,10 @@ FacilityNode.displayName = "FacilityNode"
 
 // Distribution Network - Active Structure
 export const DistributionNetworkNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#4b5563"
         isVisible={selected}
@@ -2456,10 +2452,12 @@ export const DistributionNetworkNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-gray-600 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-gray-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: PHYSICAL_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -2499,12 +2497,10 @@ DistributionNetworkNode.displayName = "DistributionNetworkNode"
 
 // Material - Passive Structure
 export const MaterialNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 90
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#4b5563"
         isVisible={selected}
@@ -2512,10 +2508,12 @@ export const MaterialNode = memo(({ data, selected }: NodeProps) => {
         minHeight={40}
       />
       <div
-        className="w-full h-full  border-2 border-gray-600 p-3 shadow-md overflow-hidden"
+        className="border-2 border-gray-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: PHYSICAL_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 90,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -2553,12 +2551,10 @@ MaterialNode.displayName = "MaterialNode"
 
 // Location - Composite Element (can contain other physical elements)
 export const LocationNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 160
-  const height = data.height || 120
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#4b5563"
         isVisible={selected}
@@ -2566,10 +2562,12 @@ export const LocationNode = memo(({ data, selected }: NodeProps) => {
         minHeight={80}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-gray-600 p-3 shadow-md overflow-hidden"
+        className="rounded-lg border-2 border-gray-600 p-3 shadow-md overflow-hidden"
         style={{
           backgroundColor: PHYSICAL_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 160,
+          minHeight: 120,
         }}
       >
         <div className="flex items-center justify-between mb-2">
@@ -2622,12 +2620,10 @@ LocationNode.displayName = "LocationNode"
 
 // Grouping - Visual grouping element (dashed border, no structural meaning)
 export const GroupingNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 200
-  const height = data.height || 140
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#94a3b8"
         isVisible={selected}
@@ -2635,9 +2631,11 @@ export const GroupingNode = memo(({ data, selected }: NodeProps) => {
         minHeight={100}
       />
       <div
-        className="w-full h-full rounded-lg border-2 border-dashed border-slate-400 p-4 shadow-sm bg-slate-50/30 overflow-hidden"
+        className="rounded-lg border-2 border-dashed border-slate-400 p-4 shadow-sm bg-slate-50/30 overflow-hidden"
         style={{
           transition: 'all 0.2s ease-in-out',
+          minWidth: 200,
+          minHeight: 140,
         }}
       >
         <div className="flex items-center justify-between mb-2">
@@ -2692,11 +2690,8 @@ GroupingNode.displayName = "GroupingNode"
 
 // Goal - Cloud-like shape
 export const GoalNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
-
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#9333ea"
         isVisible={selected}
@@ -2704,8 +2699,12 @@ export const GoalNode = memo(({ data, selected }: NodeProps) => {
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-full border-2 border-purple-600 p-3 shadow-md flex flex-col items-center justify-center"
-        style={{ backgroundColor: MOTIVATION_COLOR }}
+        className="rounded-full border-2 border-purple-600 p-3 shadow-md flex flex-col items-center justify-center"
+        style={{
+          backgroundColor: MOTIVATION_COLOR,
+          minWidth: 100,
+          minHeight: 60,
+        }}
       >
         <div className="text-xs font-semibold text-center">{data.label}</div>
       </div>
@@ -2718,12 +2717,10 @@ GoalNode.displayName = "GoalNode"
 
 // Driver - Oval shape
 export const DriverNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#9333ea"
         isVisible={selected}
@@ -2731,10 +2728,12 @@ export const DriverNode = memo(({ data, selected }: NodeProps) => {
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-full border-2 border-purple-600 px-4 py-2 shadow-md overflow-hidden"
+        className="rounded-full border-2 border-purple-600 px-4 py-2 shadow-md overflow-hidden"
         style={{
           backgroundColor: MOTIVATION_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -2771,12 +2770,10 @@ DriverNode.displayName = "DriverNode"
 
 // Stakeholder - Oval shape
 export const StakeholderNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#9333ea"
         isVisible={selected}
@@ -2784,10 +2781,12 @@ export const StakeholderNode = memo(({ data, selected }: NodeProps) => {
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-full border-2 border-purple-600 px-4 py-2 shadow-md overflow-hidden"
+        className="rounded-full border-2 border-purple-600 px-4 py-2 shadow-md overflow-hidden"
         style={{
           backgroundColor: MOTIVATION_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -2825,12 +2824,10 @@ StakeholderNode.displayName = "StakeholderNode"
 
 // Assessment - Oval shape
 export const AssessmentNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#9333ea"
         isVisible={selected}
@@ -2838,10 +2835,12 @@ export const AssessmentNode = memo(({ data, selected }: NodeProps) => {
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-full border-2 border-purple-600 px-4 py-2 shadow-md overflow-hidden"
+        className="rounded-full border-2 border-purple-600 px-4 py-2 shadow-md overflow-hidden"
         style={{
           backgroundColor: MOTIVATION_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -2879,12 +2878,10 @@ AssessmentNode.displayName = "AssessmentNode"
 
 // Outcome - Oval shape
 export const OutcomeNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#9333ea"
         isVisible={selected}
@@ -2892,10 +2889,12 @@ export const OutcomeNode = memo(({ data, selected }: NodeProps) => {
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-full border-2 border-purple-600 px-4 py-2 shadow-md overflow-hidden"
+        className="rounded-full border-2 border-purple-600 px-4 py-2 shadow-md overflow-hidden"
         style={{
           backgroundColor: MOTIVATION_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -2933,12 +2932,10 @@ OutcomeNode.displayName = "OutcomeNode"
 
 // Principle - Oval shape
 export const PrincipleNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#9333ea"
         isVisible={selected}
@@ -2946,10 +2943,12 @@ export const PrincipleNode = memo(({ data, selected }: NodeProps) => {
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-full border-2 border-purple-600 px-4 py-2 shadow-md overflow-hidden"
+        className="rounded-full border-2 border-purple-600 px-4 py-2 shadow-md overflow-hidden"
         style={{
           backgroundColor: MOTIVATION_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -2987,12 +2986,10 @@ PrincipleNode.displayName = "PrincipleNode"
 
 // Requirement - Oval shape
 export const RequirementNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#9333ea"
         isVisible={selected}
@@ -3000,10 +2997,12 @@ export const RequirementNode = memo(({ data, selected }: NodeProps) => {
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-full border-2 border-purple-600 px-4 py-2 shadow-md overflow-hidden"
+        className="rounded-full border-2 border-purple-600 px-4 py-2 shadow-md overflow-hidden"
         style={{
           backgroundColor: MOTIVATION_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -3041,12 +3040,10 @@ RequirementNode.displayName = "RequirementNode"
 
 // Constraint - Oval shape
 export const ConstraintNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#9333ea"
         isVisible={selected}
@@ -3054,10 +3051,12 @@ export const ConstraintNode = memo(({ data, selected }: NodeProps) => {
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-full border-2 border-purple-600 px-4 py-2 shadow-md overflow-hidden"
+        className="rounded-full border-2 border-purple-600 px-4 py-2 shadow-md overflow-hidden"
         style={{
           backgroundColor: MOTIVATION_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -3095,12 +3094,10 @@ ConstraintNode.displayName = "ConstraintNode"
 
 // Meaning - Oval shape
 export const MeaningNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#9333ea"
         isVisible={selected}
@@ -3108,10 +3105,12 @@ export const MeaningNode = memo(({ data, selected }: NodeProps) => {
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-full border-2 border-purple-600 px-4 py-2 shadow-md overflow-hidden"
+        className="rounded-full border-2 border-purple-600 px-4 py-2 shadow-md overflow-hidden"
         style={{
           backgroundColor: MOTIVATION_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
@@ -3149,12 +3148,10 @@ MeaningNode.displayName = "MeaningNode"
 
 // Value - Oval shape
 export const ValueNode = memo(({ data, selected }: NodeProps) => {
-  const width = data.width || 100
-  const height = data.height || 60
   const isCollapsed = data.isCollapsed || false
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative" style={{ padding: 10 }}>
       <NodeResizer
         color="#9333ea"
         isVisible={selected}
@@ -3162,10 +3159,12 @@ export const ValueNode = memo(({ data, selected }: NodeProps) => {
         minHeight={60}
       />
       <div
-        className="w-full h-full rounded-full border-2 border-purple-600 px-4 py-2 shadow-md overflow-hidden"
+        className="rounded-full border-2 border-purple-600 px-4 py-2 shadow-md overflow-hidden"
         style={{
           backgroundColor: MOTIVATION_COLOR,
           transition: 'all 0.2s ease-in-out',
+          minWidth: 100,
+          minHeight: 60,
         }}
       >
         {data.hasChildren && (
